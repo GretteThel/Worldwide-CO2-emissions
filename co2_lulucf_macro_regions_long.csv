@@ -1,0 +1,2171 @@
+sector,region,substance,year,lulucf_mt_co2
+Net,Africa,CO2,1990,-1962.2440188439678
+Net,Asia-Pacific Developed,CO2,1990,-70.58320245726054
+Net,Eastern Asia,CO2,1990,-1380.81033821898
+Net,Eurasia,CO2,1990,-848.9111019203891
+Net,Europe,CO2,1990,-593.0529228336809
+Net,Latin America and Caribbean,CO2,1990,934.0193643240032
+Net,Middle East,CO2,1990,89.89885290150815
+Net,North America,CO2,1990,-1721.0212101658576
+Net,South-East Asia and developing Pacific,CO2,1990,1200.0076887183413
+Net,Southern Asia,CO2,1990,829.2249634380892
+nan,nan,,1990,
+Deforestation,Africa,CO2,1990,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1990,176.899425904087
+Deforestation,Eastern Asia,CO2,1990,2.303
+Deforestation,Eurasia,CO2,1990,18.8127623464528
+Deforestation,Europe,CO2,1990,36.363822465416504
+Deforestation,Latin America and Caribbean,CO2,1990,2464.825507
+Deforestation,Middle East,CO2,1990,99.6917299999999
+Deforestation,North America,CO2,1990,128.780501856806
+Deforestation,South-East Asia and developing Pacific,CO2,1990,533.7878548
+Deforestation,Southern Asia,CO2,1990,28.874991199999997
+Fires,Africa,CO2,1990,125.899474020442
+Fires,Asia-Pacific Developed,CO2,1990,312.082405063545
+Fires,Eastern Asia,CO2,1990,141.13527530094
+Fires,Eurasia,CO2,1990,413.942884926274
+Fires,Europe,CO2,1990,44.203892202297595
+Fires,Latin America and Caribbean,CO2,1990,78.7003857205633
+Fires,Middle East,CO2,1990,2.56197012458276
+Fires,North America,CO2,1990,195.11667186498
+Fires,South-East Asia and developing Pacific,CO2,1990,1.0075121409512702
+Fires,Southern Asia,CO2,1990,3.32052313870823
+Forest Land,Africa,CO2,1990,-3767.38396544441
+Forest Land,Asia-Pacific Developed,CO2,1990,-567.171809970801
+Forest Land,Eastern Asia,CO2,1990,-1406.46781351992
+Forest Land,Eurasia,CO2,1990,-1382.7777921677
+Forest Land,Europe,CO2,1990,-705.868829195528
+Forest Land,Latin America and Caribbean,CO2,1990,-1613.32638599656
+Forest Land,Middle East,CO2,1990,-11.2863072230745
+Forest Land,North America,CO2,1990,-1731.45281937235
+Forest Land,South-East Asia and developing Pacific,CO2,1990,262.699361777391
+Forest Land,Southern Asia,CO2,1990,936.504449099381
+Organic Soil,Asia-Pacific Developed,CO2,1990,3.30483894890836
+Organic Soil,Eurasia,CO2,1990,161.41807168758402
+Organic Soil,Europe,CO2,1990,132.10440508109
+Organic Soil,North America,CO2,1990,45.8450361847062
+Organic Soil,South-East Asia and developing Pacific,CO2,1990,445.662199999999
+Other,Africa,CO2,1990,37.25707
+Other,Asia-Pacific Developed,CO2,1990,4.301937597
+Other,Eastern Asia,CO2,1990,-117.7808
+Other,Eurasia,CO2,1990,-60.307028713
+Other,Europe,CO2,1990,-99.856213386957
+Other,Latin America and Caribbean,CO2,1990,3.8198576000000197
+Other,Middle East,CO2,1990,-1.06854
+Other,North America,CO2,1990,-359.3106007
+Other,South-East Asia and developing Pacific,CO2,1990,-43.14924
+Other,Southern Asia,CO2,1990,-139.475
+nan,nan,,1990,
+nan,nan,,1990,
+Net,EU27,CO2,1990,-395.3976001725518
+Forest Land,EU27,CO2,1990,-465.6290321228913
+Organic Soil,EU27,CO2,1990,101.447589324114
+Deforestation,EU27,CO2,1990,25.7450717036098
+Other,EU27,CO2,1990,-82.14667613738536
+Fires,EU27,CO2,1990,25.18544706
+Net,WORLD,CO2,1990,-3523.4404554416697
+Forest Land,WORLD,CO2,1990,-9986.5
+Organic Soil,WORLD,CO2,1990,788.33455190229
+Deforestation,WORLD,CO2,1990,5132.32299815276
+Other,WORLD,CO2,1990,-775.569
+Fires,WORLD,CO2,1990,1317.97099450328
+Net,Africa,CO2,1991,-1936.9490318808084
+Net,Asia-Pacific Developed,CO2,1991,-51.289556611721885
+Net,Eastern Asia,CO2,1991,-1385.6278086595582
+Net,Eurasia,CO2,1991,-767.7817216771281
+Net,Europe,CO2,1991,-722.1527870874876
+Net,Latin America and Caribbean,CO2,1991,979.4906496926039
+Net,Middle East,CO2,1991,93.97792159117645
+Net,North America,CO2,1991,-1746.6380583271782
+Net,South-East Asia and developing Pacific,CO2,1991,1195.1806402814211
+Net,Southern Asia,CO2,1991,874.3625847265207
+nan,nan,,1991,
+Deforestation,Africa,CO2,1991,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1991,163.185757761149
+Deforestation,Eastern Asia,CO2,1991,2.303
+Deforestation,Eurasia,CO2,1991,16.243131300002897
+Deforestation,Europe,CO2,1991,34.678694436915094
+Deforestation,Latin America and Caribbean,CO2,1991,2464.825507
+Deforestation,Middle East,CO2,1991,99.6917299999999
+Deforestation,North America,CO2,1991,128.890215180626
+Deforestation,South-East Asia and developing Pacific,CO2,1991,533.7878548
+Deforestation,Southern Asia,CO2,1991,28.874991199999997
+Fires,Africa,CO2,1991,108.36267788012199
+Fires,Asia-Pacific Developed,CO2,1991,354.05619723096
+Fires,Eastern Asia,CO2,1991,138.691793549832
+Fires,Eurasia,CO2,1991,438.05022784752003
+Fires,Europe,CO2,1991,28.3244954742193
+Fires,Latin America and Caribbean,CO2,1991,72.18595824444391
+Fires,Middle East,CO2,1991,5.46649213201926
+Fires,North America,CO2,1991,210.301687550183
+Fires,South-East Asia and developing Pacific,CO2,1991,3.87168364790791
+Fires,Southern Asia,CO2,1991,8.393178197821731
+Forest Land,Africa,CO2,1991,-3724.5521823409304
+Forest Land,Asia-Pacific Developed,CO2,1991,-568.105425831126
+Forest Land,Eastern Asia,CO2,1991,-1408.8418022093902
+Forest Land,Eurasia,CO2,1991,-1379.72852346555
+Forest Land,Europe,CO2,1991,-832.9880344054341
+Forest Land,Latin America and Caribbean,CO2,1991,-1561.34067315184
+Forest Land,Middle East,CO2,1991,-10.1117605408427
+Forest Land,North America,CO2,1991,-1766.2489618583
+Forest Land,South-East Asia and developing Pacific,CO2,1991,255.008141833514
+Forest Land,Southern Asia,CO2,1991,976.569415328699
+Organic Soil,Asia-Pacific Developed,CO2,1991,3.33280957229517
+Organic Soil,Eurasia,CO2,1991,160.279410671999
+Organic Soil,Europe,CO2,1991,132.075123207333
+Organic Soil,North America,CO2,1991,45.1263190003127
+Organic Soil,South-East Asia and developing Pacific,CO2,1991,445.662199999999
+Other,Africa,CO2,1991,37.25707
+Other,Asia-Pacific Developed,CO2,1991,-3.758895345
+Other,Eastern Asia,CO2,1991,-117.7808
+Other,Eurasia,CO2,1991,-2.6259680311
+Other,Europe,CO2,1991,-84.243065800521
+Other,Latin America and Caribbean,CO2,1991,3.8198576000000197
+Other,Middle East,CO2,1991,-1.06854
+Other,North America,CO2,1991,-364.7073182
+Other,South-East Asia and developing Pacific,CO2,1991,-43.14924
+Other,Southern Asia,CO2,1991,-139.475
+nan,nan,,1991,
+nan,nan,,1991,
+Net,EU27,CO2,1991,-505.8875251999122
+Forest Land,EU27,CO2,1991,-589.7062911671701
+Organic Soil,EU27,CO2,1991,101.237842432351
+Deforestation,EU27,CO2,1991,25.226825118266202
+Other,EU27,CO2,1991,-61.50559038336003
+Fires,EU27,CO2,1991,18.8596888
+Net,WORLD,CO2,1991,-3467.3874615343375
+Forest Land,WORLD,CO2,1991,-10020.3
+Organic Soil,WORLD,CO2,1991,786.475862451941
+Deforestation,WORLD,CO2,1991,5114.46428425869
+Other,WORLD,CO2,1991,-715.732
+Fires,WORLD,CO2,1991,1367.70439175503
+Net,Africa,CO2,1992,-1825.070047714154
+Net,Asia-Pacific Developed,CO2,1992,-47.31915924900261
+Net,Eastern Asia,CO2,1992,-1338.0502799166238
+Net,Eurasia,CO2,1992,-796.058195775971
+Net,Europe,CO2,1992,-712.6277973739734
+Net,Latin America and Caribbean,CO2,1992,927.8950261223856
+Net,Middle East,CO2,1992,90.24488789432894
+Net,North America,CO2,1992,-1803.798842644406
+Net,South-East Asia and developing Pacific,CO2,1992,1183.5870107745163
+Net,Southern Asia,CO2,1992,885.6170636798719
+nan,nan,,1992,
+Deforestation,Africa,CO2,1992,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1992,120.21709842855299
+Deforestation,Eastern Asia,CO2,1992,2.303
+Deforestation,Eurasia,CO2,1992,15.7947567302772
+Deforestation,Europe,CO2,1992,34.9916738016832
+Deforestation,Latin America and Caribbean,CO2,1992,2464.825507
+Deforestation,Middle East,CO2,1992,99.6917299999999
+Deforestation,North America,CO2,1992,128.960045335239
+Deforestation,South-East Asia and developing Pacific,CO2,1992,533.7878548
+Deforestation,Southern Asia,CO2,1992,28.874991199999997
+Fires,Africa,CO2,1992,122.673040452496
+Fires,Asia-Pacific Developed,CO2,1992,419.224902985899
+Fires,Eastern Asia,CO2,1992,191.508689965566
+Fires,Eurasia,CO2,1992,391.468923266046
+Fires,Europe,CO2,1992,22.6388162992185
+Fires,Latin America and Caribbean,CO2,1992,58.0760706163254
+Fires,Middle East,CO2,1992,1.77277638693755
+Fires,North America,CO2,1992,126.66055588002301
+Fires,South-East Asia and developing Pacific,CO2,1992,3.65636400255015
+Fires,Southern Asia,CO2,1992,6.85457551726496
+Forest Land,Africa,CO2,1992,-3626.9835607466503
+Forest Land,Asia-Pacific Developed,CO2,1992,-567.5468396827649
+Forest Land,Eastern Asia,CO2,1992,-1414.08116988219
+Forest Land,Eurasia,CO2,1992,-1378.0590539888801
+Forest Land,Europe,CO2,1992,-825.445061139732
+Forest Land,Latin America and Caribbean,CO2,1992,-1598.82640909394
+Forest Land,Middle East,CO2,1992,-10.1510784926085
+Forest Land,North America,CO2,1992,-1763.58726218761
+Forest Land,South-East Asia and developing Pacific,CO2,1992,243.629831971967
+Forest Land,Southern Asia,CO2,1992,989.362496962607
+Organic Soil,Asia-Pacific Developed,CO2,1992,3.29166332431035
+Organic Soil,Eurasia,CO2,1992,158.768147179586
+Organic Soil,Europe,CO2,1992,131.145174924513
+Organic Soil,North America,CO2,1992,45.3684582279418
+Organic Soil,South-East Asia and developing Pacific,CO2,1992,445.662199999999
+Other,Africa,CO2,1992,37.25707
+Other,Asia-Pacific Developed,CO2,1992,-22.505984305000002
+Other,Eastern Asia,CO2,1992,-117.7808
+Other,Eurasia,CO2,1992,15.969031037
+Other,Europe,CO2,1992,-75.958401259656
+Other,Latin America and Caribbean,CO2,1992,3.8198576000000197
+Other,Middle East,CO2,1992,-1.06854
+Other,North America,CO2,1992,-341.2006399
+Other,South-East Asia and developing Pacific,CO2,1992,-43.14924
+Other,Southern Asia,CO2,1992,-139.475
+nan,nan,,1992,
+nan,nan,,1992,
+Net,EU27,CO2,1992,-499.9329349090335
+Forest Land,EU27,CO2,1992,-584.856485032013
+Organic Soil,EU27,CO2,1992,100.579906552973
+Deforestation,EU27,CO2,1992,23.7336991655869
+Other,EU27,CO2,1992,-53.21350133700118
+Fires,EU27,CO2,1992,13.82344574142
+Net,WORLD,CO2,1992,-3435.5925810955696
+Forest Land,WORLD,CO2,1992,-9951.7
+Organic Soil,WORLD,CO2,1992,784.235643656351
+Deforestation,WORLD,CO2,1992,5071.43005987575
+Other,WORLD,CO2,1992,-684.093
+Fires,WORLD,CO2,1992,1344.5347153723299
+Net,Africa,CO2,1993,-1650.28358501695
+Net,Asia-Pacific Developed,CO2,1993,269.16416360167835
+Net,Eastern Asia,CO2,1993,-1391.008062657646
+Net,Eurasia,CO2,1993,-1148.6235005862786
+Net,Europe,CO2,1993,-730.8693295706186
+Net,Latin America and Caribbean,CO2,1993,942.4355804230615
+Net,Middle East,CO2,1993,91.10200457737041
+Net,North America,CO2,1993,-1772.245041929632
+Net,South-East Asia and developing Pacific,CO2,1993,1100.9349400989427
+Net,Southern Asia,CO2,1993,901.0691804162892
+nan,nan,,1993,
+Deforestation,Africa,CO2,1993,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1993,104.799764228012
+Deforestation,Eastern Asia,CO2,1993,2.303
+Deforestation,Eurasia,CO2,1993,15.5485795847293
+Deforestation,Europe,CO2,1993,30.874044457770598
+Deforestation,Latin America and Caribbean,CO2,1993,2464.825507
+Deforestation,Middle East,CO2,1993,99.6917299999999
+Deforestation,North America,CO2,1993,128.919027950215
+Deforestation,South-East Asia and developing Pacific,CO2,1993,533.7878548
+Deforestation,Southern Asia,CO2,1993,28.874991199999997
+Fires,Africa,CO2,1993,193.62309412873998
+Fires,Asia-Pacific Developed,CO2,1993,756.191262031342
+Fires,Eastern Asia,CO2,1993,145.780569723684
+Fires,Eurasia,CO2,1993,258.24956302275496
+Fires,Europe,CO2,1993,15.5371693806588
+Fires,Latin America and Caribbean,CO2,1993,50.7479413993917
+Fires,Middle East,CO2,1993,2.24350843957471
+Fires,North America,CO2,1993,149.294879478123
+Fires,South-East Asia and developing Pacific,CO2,1993,7.64370137486255
+Fires,Southern Asia,CO2,1993,7.73251894527912
+Forest Land,Africa,CO2,1993,-3523.14715172569
+Forest Land,Asia-Pacific Developed,CO2,1993,-567.112656315041
+Forest Land,Eastern Asia,CO2,1993,-1421.3108323813299
+Forest Land,Eurasia,CO2,1993,-1613.8259102181
+Forest Land,Europe,CO2,1993,-836.508410091222
+Forest Land,Latin America and Caribbean,CO2,1993,-1576.95772557633
+Forest Land,Middle East,CO2,1993,-9.76469386220419
+Forest Land,North America,CO2,1993,-1776.3452039859399
+Forest Land,South-East Asia and developing Pacific,CO2,1993,156.990423924081
+Forest Land,Southern Asia,CO2,1993,1003.93667027101
+Organic Soil,Asia-Pacific Developed,CO2,1993,3.22955465336531
+Organic Soil,Eurasia,CO2,1993,157.84818330633698
+Organic Soil,Europe,CO2,1993,130.556414050412
+Organic Soil,North America,CO2,1993,45.670790127969795
+Organic Soil,South-East Asia and developing Pacific,CO2,1993,445.662199999999
+Other,Africa,CO2,1993,37.25707
+Other,Asia-Pacific Developed,CO2,1993,-27.943760996
+Other,Eastern Asia,CO2,1993,-117.7808
+Other,Eurasia,CO2,1993,33.556083718000004
+Other,Europe,CO2,1993,-71.32854736823799
+Other,Latin America and Caribbean,CO2,1993,3.8198576000000197
+Other,Middle East,CO2,1993,-1.06854
+Other,North America,CO2,1993,-319.7845355
+Other,South-East Asia and developing Pacific,CO2,1993,-43.14924
+Other,Southern Asia,CO2,1993,-139.475
+nan,nan,,1993,
+nan,nan,,1993,
+Net,EU27,CO2,1993,-524.3023660478897
+Forest Land,EU27,CO2,1993,-595.2198370462668
+Organic Soil,EU27,CO2,1993,99.80132913809341
+Deforestation,EU27,CO2,1993,25.436923545861
+Other,EU27,CO2,1993,-63.554944593577396
+Fires,EU27,CO2,1993,9.234162907999998
+Net,WORLD,CO2,1993,-3388.277748136785
+Forest Land,WORLD,CO2,1993,-10164.0
+Organic Soil,WORLD,CO2,1993,782.967142138085
+Deforestation,WORLD,CO2,1993,5051.60790180072
+Other,WORLD,CO2,1993,-645.897
+Fires,WORLD,CO2,1993,1587.04420792441
+Net,Africa,CO2,1994,-1606.6011779469577
+Net,Asia-Pacific Developed,CO2,1994,-102.6228538290494
+Net,Eastern Asia,CO2,1994,-1430.34502169279
+Net,Eurasia,CO2,1994,-1131.1841860195161
+Net,Europe,CO2,1994,-687.2529731436938
+Net,Latin America and Caribbean,CO2,1994,1066.0521131168148
+Net,Middle East,CO2,1994,93.96249773611756
+Net,North America,CO2,1994,-1646.9914454409009
+Net,South-East Asia and developing Pacific,CO2,1994,1026.1324054073054
+Net,Southern Asia,CO2,1994,911.1664472127596
+nan,nan,,1994,
+Deforestation,Africa,CO2,1994,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1994,92.1451238024871
+Deforestation,Eastern Asia,CO2,1994,2.303
+Deforestation,Eurasia,CO2,1994,12.662615412975901
+Deforestation,Europe,CO2,1994,29.9792692479082
+Deforestation,Latin America and Caribbean,CO2,1994,2464.825507
+Deforestation,Middle East,CO2,1994,99.6917299999999
+Deforestation,North America,CO2,1994,128.970718686455
+Deforestation,South-East Asia and developing Pacific,CO2,1994,533.7878548
+Deforestation,Southern Asia,CO2,1994,28.874991199999997
+Fires,Africa,CO2,1994,124.398526237692
+Fires,Asia-Pacific Developed,CO2,1994,386.51833772829804
+Fires,Eastern Asia,CO2,1994,118.61550522847999
+Fires,Eurasia,CO2,1994,589.504504824646
+Fires,Europe,CO2,1994,34.0091358941481
+Fires,Latin America and Caribbean,CO2,1994,96.50860264874481
+Fires,Middle East,CO2,1994,4.91960512920331
+Fires,North America,CO2,1994,285.80428894352
+Fires,South-East Asia and developing Pacific,CO2,1994,2.6370678246413397
+Fires,Southern Asia,CO2,1994,8.6494934658997
+Forest Land,Africa,CO2,1994,-3410.2401767646497
+Forest Land,Asia-Pacific Developed,CO2,1994,-565.045065134131
+Forest Land,Eastern Asia,CO2,1994,-1433.48272692127
+Forest Land,Eurasia,CO2,1994,-1886.38238047852
+Forest Land,Europe,CO2,1994,-788.0240845981391
+Forest Land,Latin America and Caribbean,CO2,1994,-1499.10185413193
+Forest Land,Middle East,CO2,1994,-9.58029739308565
+Forest Land,North America,CO2,1994,-1757.63047636198
+Forest Land,South-East Asia and developing Pacific,CO2,1994,87.19452278266499
+Forest Land,Southern Asia,CO2,1994,1013.11696254686
+Organic Soil,Asia-Pacific Developed,CO2,1994,3.29304999429653
+Organic Soil,Eurasia,CO2,1994,156.420820396382
+Organic Soil,Europe,CO2,1994,129.7686300374
+Organic Soil,North America,CO2,1994,45.9670871911044
+Organic Soil,South-East Asia and developing Pacific,CO2,1994,445.662199999999
+Other,Africa,CO2,1994,37.25707
+Other,Asia-Pacific Developed,CO2,1994,-19.534300220000002
+Other,Eastern Asia,CO2,1994,-117.7808
+Other,Eurasia,CO2,1994,-3.3897461750000004
+Other,Europe,CO2,1994,-92.985923725011
+Other,Latin America and Caribbean,CO2,1994,3.8198576000000197
+Other,Middle East,CO2,1994,-1.06854
+Other,North America,CO2,1994,-350.1030639
+Other,South-East Asia and developing Pacific,CO2,1994,-43.14924
+Other,Southern Asia,CO2,1994,-139.475
+nan,nan,,1994,
+nan,nan,,1994,
+Net,EU27,CO2,1994,-476.31381959822704
+Forest Land,EU27,CO2,1994,-541.9726489210751
+Organic Soil,EU27,CO2,1994,99.004318976754
+Deforestation,EU27,CO2,1994,25.1355489289695
+Other,EU27,CO2,1994,-82.26134018287556
+Fires,EU27,CO2,1994,23.7803016
+Net,WORLD,CO2,1994,-3507.708931725727
+Forest Land,WORLD,CO2,1994,-10249.2
+Organic Soil,WORLD,CO2,1994,781.1117876191839
+Deforestation,WORLD,CO2,1994,5035.22421272982
+Other,WORLD,CO2,1994,-726.41
+Fires,WORLD,CO2,1994,1651.5650679252701
+Net,Africa,CO2,1995,-1501.702794171988
+Net,Asia-Pacific Developed,CO2,1995,-124.72887791085364
+Net,Eastern Asia,CO2,1995,-1424.87326397394
+Net,Eurasia,CO2,1995,-1132.7783873238875
+Net,Europe,CO2,1995,-658.8403107761652
+Net,Latin America and Caribbean,CO2,1995,1140.0195268351947
+Net,Middle East,CO2,1995,94.12630861158367
+Net,North America,CO2,1995,-1600.9056024595156
+Net,South-East Asia and developing Pacific,CO2,1995,986.483906934513
+Net,Southern Asia,CO2,1995,918.7974818349397
+nan,nan,,1995,
+Deforestation,Africa,CO2,1995,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1995,81.75476012097441
+Deforestation,Eastern Asia,CO2,1995,2.303
+Deforestation,Eurasia,CO2,1995,13.9041434666314
+Deforestation,Europe,CO2,1995,30.1544574027876
+Deforestation,Latin America and Caribbean,CO2,1995,2464.825507
+Deforestation,Middle East,CO2,1995,99.6917299999999
+Deforestation,North America,CO2,1995,128.978306439119
+Deforestation,South-East Asia and developing Pacific,CO2,1995,533.7878548
+Deforestation,Southern Asia,CO2,1995,28.874991199999997
+Fires,Africa,CO2,1995,124.398526237692
+Fires,Asia-Pacific Developed,CO2,1995,386.51833772829804
+Fires,Eastern Asia,CO2,1995,118.61550522847999
+Fires,Eurasia,CO2,1995,589.504504824646
+Fires,Europe,CO2,1995,34.0091358941481
+Fires,Latin America and Caribbean,CO2,1995,96.50860264874481
+Fires,Middle East,CO2,1995,4.91960512920331
+Fires,North America,CO2,1995,285.80428894352
+Fires,South-East Asia and developing Pacific,CO2,1995,2.6370678246413397
+Fires,Southern Asia,CO2,1995,8.6494934658997
+Forest Land,Africa,CO2,1995,-3305.34179298968
+Forest Land,Asia-Pacific Developed,CO2,1995,-559.712821517825
+Forest Land,Eastern Asia,CO2,1995,-1428.01096920242
+Forest Land,Eurasia,CO2,1995,-1868.95220344729
+Forest Land,Europe,CO2,1995,-749.4952559305
+Forest Land,Latin America and Caribbean,CO2,1995,-1425.13444041355
+Forest Land,Middle East,CO2,1995,-9.41648651761954
+Forest Land,North America,CO2,1995,-1752.96538649323
+Forest Land,South-East Asia and developing Pacific,CO2,1995,47.5460243098726
+Forest Land,Southern Asia,CO2,1995,1020.74799716904
+Organic Soil,Asia-Pacific Developed,CO2,1995,3.2330685976988898
+Organic Soil,Eurasia,CO2,1995,155.217687710125
+Organic Soil,Europe,CO2,1995,129.328677034793
+Organic Soil,North America,CO2,1995,46.008219351075496
+Organic Soil,South-East Asia and developing Pacific,CO2,1995,445.662199999999
+Other,Africa,CO2,1995,37.25707
+Other,Asia-Pacific Developed,CO2,1995,-36.522222840000005
+Other,Eastern Asia,CO2,1995,-117.7808
+Other,Eurasia,CO2,1995,-22.452519878
+Other,Europe,CO2,1995,-102.83732517739399
+Other,Latin America and Caribbean,CO2,1995,3.8198576000000197
+Other,Middle East,CO2,1995,-1.06854
+Other,North America,CO2,1995,-308.7310307
+Other,South-East Asia and developing Pacific,CO2,1995,-43.14924
+Other,Southern Asia,CO2,1995,-139.475
+nan,nan,,1995,
+nan,nan,,1995,
+Net,EU27,CO2,1995,-456.48072651394745
+Forest Land,EU27,CO2,1995,-510.4657196247782
+Organic Soil,EU27,CO2,1995,98.4451616004354
+Deforestation,EU27,CO2,1995,21.6973562386269
+Other,EU27,CO2,1995,-89.9378263282315
+Fires,EU27,CO2,1995,23.7803016
+Net,WORLD,CO2,1995,-3304.366926371529
+Forest Land,WORLD,CO2,1995,-10030.7
+Organic Soil,WORLD,CO2,1995,779.449852693692
+Deforestation,WORLD,CO2,1995,5026.25815300951
+Other,WORLD,CO2,1995,-730.94
+Fires,WORLD,CO2,1995,1651.5650679252701
+Net,Africa,CO2,1996,-1437.7736076771498
+Net,Asia-Pacific Developed,CO2,1996,-266.3896698508935
+Net,Eastern Asia,CO2,1996,-1468.8205117485059
+Net,Eurasia,CO2,1996,-1272.2128840104144
+Net,Europe,CO2,1996,-675.2437612008513
+Net,Latin America and Caribbean,CO2,1996,1148.136607087271
+Net,Middle East,CO2,1996,96.31852252451957
+Net,North America,CO2,1996,-1813.9338047711494
+Net,South-East Asia and developing Pacific,CO2,1996,954.3827349314731
+Net,Southern Asia,CO2,1996,890.4280904465624
+nan,nan,,1996,
+Deforestation,Africa,CO2,1996,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1996,76.85317341949161
+Deforestation,Eastern Asia,CO2,1996,2.303
+Deforestation,Eurasia,CO2,1996,12.215284177926499
+Deforestation,Europe,CO2,1996,31.5194814856143
+Deforestation,Latin America and Caribbean,CO2,1996,2464.825507
+Deforestation,Middle East,CO2,1996,99.6917299999999
+Deforestation,North America,CO2,1996,129.021753665818
+Deforestation,South-East Asia and developing Pacific,CO2,1996,533.7878548
+Deforestation,Southern Asia,CO2,1996,28.874991199999997
+Fires,Africa,CO2,1996,138.62793970928
+Fires,Asia-Pacific Developed,CO2,1996,241.857215320657
+Fires,Eastern Asia,CO2,1996,74.988898078894
+Fires,Eurasia,CO2,1996,535.401156949547
+Fires,Europe,CO2,1996,37.2649816105525
+Fires,Latin America and Caribbean,CO2,1996,82.6207584068309
+Fires,Middle East,CO2,1996,7.07214940248441
+Fires,North America,CO2,1996,126.93761751503699
+Fires,South-East Asia and developing Pacific,CO2,1996,3.1229292943372697
+Fires,Southern Asia,CO2,1996,6.216880307841301
+Forest Land,Africa,CO2,1996,-3255.64201996643
+Forest Land,Asia-Pacific Developed,CO2,1996,-560.9442703367121
+Forest Land,Eastern Asia,CO2,1996,-1428.3316098274
+Forest Land,Eurasia,CO2,1996,-1937.44883355924
+Forest Land,Europe,CO2,1996,-770.5650463674281
+Forest Land,Latin America and Caribbean,CO2,1996,-1403.1295159195602
+Forest Land,Middle East,CO2,1996,-9.37681687796475
+Forest Land,North America,CO2,1996,-1769.2221509362598
+Forest Land,South-East Asia and developing Pacific,CO2,1996,14.9589908371369
+Forest Land,Southern Asia,CO2,1996,994.811218938721
+Organic Soil,Asia-Pacific Developed,CO2,1996,3.33896166767
+Organic Soil,Eurasia,CO2,1996,153.583160636352
+Organic Soil,Europe,CO2,1996,128.84521686027
+Organic Soil,North America,CO2,1996,45.9375269842556
+Organic Soil,South-East Asia and developing Pacific,CO2,1996,445.662199999999
+Other,Africa,CO2,1996,37.25707
+Other,Asia-Pacific Developed,CO2,1996,-27.494749922
+Other,Eastern Asia,CO2,1996,-117.7808
+Other,Eurasia,CO2,1996,-35.963652215
+Other,Europe,CO2,1996,-102.30839478986
+Other,Latin America and Caribbean,CO2,1996,3.8198576000000197
+Other,Middle East,CO2,1996,-1.06854
+Other,North America,CO2,1996,-346.60855200000003
+Other,South-East Asia and developing Pacific,CO2,1996,-43.14924
+Other,Southern Asia,CO2,1996,-139.475
+nan,nan,,1996,
+nan,nan,,1996,
+Net,EU27,CO2,1996,-471.5942872451926
+Forest Land,EU27,CO2,1996,-527.9411375629229
+Organic Soil,EU27,CO2,1996,98.2669829593716
+Deforestation,EU27,CO2,1996,22.4008404503251
+Other,EU27,CO2,1996,-91.8452305489666
+Fires,EU27,CO2,1996,27.524257457
+Net,WORLD,CO2,1996,-3845.118228927141
+Forest Land,WORLD,CO2,1996,-10124.9
+Organic Soil,WORLD,CO2,1996,777.367066148548
+Deforestation,WORLD,CO2,1996,5021.07617832885
+Other,WORLD,CO2,1996,-772.772
+Fires,WORLD,CO2,1996,1254.11052659546
+Net,Africa,CO2,1997,-1478.0338556656116
+Net,Asia-Pacific Developed,CO2,1997,-359.02817869479134
+Net,Eastern Asia,CO2,1997,-1523.3700681012324
+Net,Eurasia,CO2,1997,-1319.1738743160377
+Net,Europe,CO2,1997,-665.8367114982976
+Net,Latin America and Caribbean,CO2,1997,1163.206344986235
+Net,Middle East,CO2,1997,91.3634530659114
+Net,North America,CO2,1997,-1831.5021849012667
+Net,South-East Asia and developing Pacific,CO2,1997,942.3936163016965
+Net,Southern Asia,CO2,1997,881.9716278083055
+nan,nan,,1997,
+Deforestation,Africa,CO2,1997,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1997,76.4414008822261
+Deforestation,Eastern Asia,CO2,1997,2.303
+Deforestation,Eurasia,CO2,1997,10.9079900392773
+Deforestation,Europe,CO2,1997,34.026415988061295
+Deforestation,Latin America and Caribbean,CO2,1997,2464.825507
+Deforestation,Middle East,CO2,1997,99.6917299999999
+Deforestation,North America,CO2,1997,129.105101871461
+Deforestation,South-East Asia and developing Pacific,CO2,1997,533.7878548
+Deforestation,Southern Asia,CO2,1997,28.874991199999997
+Fires,Africa,CO2,1997,47.5709069030189
+Fires,Asia-Pacific Developed,CO2,1997,143.908495798128
+Fires,Eastern Asia,CO2,1997,25.620026603637598
+Fires,Eurasia,CO2,1997,348.273242769566
+Fires,Europe,CO2,1997,7.93113971510302
+Fires,Latin America and Caribbean,CO2,1997,53.6875471250953
+Fires,Middle East,CO2,1997,1.66995288961982
+Fires,North America,CO2,1997,84.4645177169746
+Fires,South-East Asia and developing Pacific,CO2,1997,1.73976886054229
+Fires,Southern Asia,CO2,1997,3.07904114833641
+Forest Land,Africa,CO2,1997,-3204.8452351486303
+Forest Land,Asia-Pacific Developed,CO2,1997,-555.367614857723
+Forest Land,Eastern Asia,CO2,1997,-1433.51229470487
+Forest Land,Eurasia,CO2,1997,-1771.37499228349
+Forest Land,Europe,CO2,1997,-726.608514997836
+Forest Land,Latin America and Caribbean,CO2,1997,-1359.12656673886
+Forest Land,Middle East,CO2,1997,-8.92968982370831
+Forest Land,North America,CO2,1997,-1761.21513227948
+Forest Land,South-East Asia and developing Pacific,CO2,1997,4.35303264115512
+Forest Land,Southern Asia,CO2,1997,989.492595459969
+Organic Soil,Asia-Pacific Developed,CO2,1997,3.2102090625775097
+Organic Soil,Eurasia,CO2,1997,152.008902371609
+Organic Soil,Europe,CO2,1997,127.95829586681201
+Organic Soil,North America,CO2,1997,45.8987744897777
+Organic Soil,South-East Asia and developing Pacific,CO2,1997,445.662199999999
+Other,Africa,CO2,1997,37.25707
+Other,Asia-Pacific Developed,CO2,1997,-27.220669580000003
+Other,Eastern Asia,CO2,1997,-117.7808
+Other,Eurasia,CO2,1997,-58.989017213
+Other,Europe,CO2,1997,-109.144048070438
+Other,Latin America and Caribbean,CO2,1997,3.8198576000000197
+Other,Middle East,CO2,1997,-1.06854
+Other,North America,CO2,1997,-329.7554467
+Other,South-East Asia and developing Pacific,CO2,1997,-43.14924
+Other,Southern Asia,CO2,1997,-139.475
+nan,nan,,1997,
+nan,nan,,1997,
+Net,EU27,CO2,1997,-467.7623511404697
+Forest Land,EU27,CO2,1997,-490.04882608690133
+Organic Soil,EU27,CO2,1997,97.592471657526
+Deforestation,EU27,CO2,1997,23.7878386830413
+Other,EU27,CO2,1997,-103.72104710413572
+Fires,EU27,CO2,1997,4.62721171
+Net,WORLD,CO2,1997,-4097.97558431818
+Forest Land,WORLD,CO2,1997,-9827.1
+Organic Soil,WORLD,CO2,1997,774.738381790777
+Deforestation,WORLD,CO2,1997,5021.94739436102
+Other,WORLD,CO2,1997,-785.506
+Fires,WORLD,CO2,1997,717.944639530023
+Net,Africa,CO2,1998,-1359.760751281765
+Net,Asia-Pacific Developed,CO2,1998,-140.31437307214946
+Net,Eastern Asia,CO2,1998,-1420.1842436000682
+Net,Eurasia,CO2,1998,-1568.7082503867125
+Net,Europe,CO2,1998,-629.7775522898562
+Net,Latin America and Caribbean,CO2,1998,1214.8131173380386
+Net,Middle East,CO2,1998,96.33321870914563
+Net,North America,CO2,1998,-1621.3394868947044
+Net,South-East Asia and developing Pacific,CO2,1998,931.2857525659356
+Net,Southern Asia,CO2,1998,895.4880422663174
+nan,nan,,1998,
+Deforestation,Africa,CO2,1998,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1998,74.7647224102066
+Deforestation,Eastern Asia,CO2,1998,2.303
+Deforestation,Eurasia,CO2,1998,10.785526362198501
+Deforestation,Europe,CO2,1998,58.9634769686265
+Deforestation,Latin America and Caribbean,CO2,1998,2464.825507
+Deforestation,Middle East,CO2,1998,99.6917299999999
+Deforestation,North America,CO2,1998,129.255336111904
+Deforestation,South-East Asia and developing Pacific,CO2,1998,533.7878548
+Deforestation,Southern Asia,CO2,1998,28.874991199999997
+Fires,Africa,CO2,1998,125.65529369346501
+Fires,Asia-Pacific Developed,CO2,1998,381.224406432436
+Fires,Eastern Asia,CO2,1998,128.481678421082
+Fires,Eurasia,CO2,1998,194.71248310651202
+Fires,Europe,CO2,1998,50.7655321188683
+Fires,Latin America and Caribbean,CO2,1998,58.4430089969485
+Fires,Middle East,CO2,1998,6.8927261359694
+Fires,North America,CO2,1998,327.830107939344
+Fires,South-East Asia and developing Pacific,CO2,1998,3.20213024642679
+Fires,Southern Asia,CO2,1998,6.0564436964273405
+Forest Land,Africa,CO2,1998,-3164.65651755523
+Forest Land,Asia-Pacific Developed,CO2,1998,-558.9564909583349
+Forest Land,Eastern Asia,CO2,1998,-1433.18812202115
+Forest Land,Eurasia,CO2,1998,-1838.27266058207
+Forest Land,Europe,CO2,1998,-723.051688357626
+Forest Land,Latin America and Caribbean,CO2,1998,-1312.27525625891
+Forest Land,Middle East,CO2,1998,-9.18269742682367
+Forest Land,North America,CO2,1998,-1772.56856218109
+Forest Land,South-East Asia and developing Pacific,CO2,1998,-8.217192480490159
+Forest Land,Southern Asia,CO2,1998,1000.03160736989
+Organic Soil,Asia-Pacific Developed,CO2,1998,3.28026974354285
+Organic Soil,Eurasia,CO2,1998,150.717514993647
+Organic Soil,Europe,CO2,1998,126.89398989213699
+Organic Soil,North America,CO2,1998,45.9894515351377
+Organic Soil,South-East Asia and developing Pacific,CO2,1998,445.662199999999
+Other,Africa,CO2,1998,37.25707
+Other,Asia-Pacific Developed,CO2,1998,-40.6272807
+Other,Eastern Asia,CO2,1998,-117.7808
+Other,Eurasia,CO2,1998,-86.651114267
+Other,Europe,CO2,1998,-143.348862911862
+Other,Latin America and Caribbean,CO2,1998,3.8198576000000197
+Other,Middle East,CO2,1998,-1.06854
+Other,North America,CO2,1998,-351.8458203
+Other,South-East Asia and developing Pacific,CO2,1998,-43.14924
+Other,Southern Asia,CO2,1998,-139.475
+nan,nan,,1998,
+nan,nan,,1998,
+Net,EU27,CO2,1998,-442.9154091976198
+Forest Land,EU27,CO2,1998,-491.41323996911774
+Organic Soil,EU27,CO2,1998,96.7831170015523
+Deforestation,EU27,CO2,1998,23.300478469732
+Other,EU27,CO2,1998,-108.89609729978633
+Fires,EU27,CO2,1998,37.310332599999995
+Net,WORLD,CO2,1998,-3602.1272156151354
+Forest Land,WORLD,CO2,1998,-9820.3
+Organic Soil,WORLD,CO2,1998,772.543426164464
+Deforestation,WORLD,CO2,1998,5045.23554743293
+Other,WORLD,CO2,1998,-882.87
+Fires,WORLD,CO2,1998,1283.26381078747
+Net,Africa,CO2,1999,-1276.5278212448834
+Net,Asia-Pacific Developed,CO2,1999,-41.25897188863283
+Net,Eastern Asia,CO2,1999,-1441.1375930134382
+Net,Eurasia,CO2,1999,-1259.870101493655
+Net,Europe,CO2,1999,-721.2404552372143
+Net,Latin America and Caribbean,CO2,1999,1327.7162911163268
+Net,Middle East,CO2,1999,93.63224347312408
+Net,North America,CO2,1999,-1790.5651639590465
+Net,South-East Asia and developing Pacific,CO2,1999,949.3922454749413
+Net,Southern Asia,CO2,1999,906.7547920581443
+nan,nan,,1999,
+Deforestation,Africa,CO2,1999,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,1999,85.05058248426819
+Deforestation,Eastern Asia,CO2,1999,2.303
+Deforestation,Eurasia,CO2,1999,11.2654008106239
+Deforestation,Europe,CO2,1999,38.4599992287763
+Deforestation,Latin America and Caribbean,CO2,1999,2464.825507
+Deforestation,Middle East,CO2,1999,99.6917299999999
+Deforestation,North America,CO2,1999,129.370745771814
+Deforestation,South-East Asia and developing Pacific,CO2,1999,533.7878548
+Deforestation,Southern Asia,CO2,1999,28.874991199999997
+Fires,Africa,CO2,1999,158.839256136667
+Fires,Asia-Pacific Developed,CO2,1999,466.635826401104
+Fires,Eastern Asia,CO2,1999,104.868051460522
+Fires,Eurasia,CO2,1999,428.458230906706
+Fires,Europe,CO2,1999,20.3421723968246
+Fires,Latin America and Caribbean,CO2,1999,81.2390586682766
+Fires,Middle East,CO2,1999,4.38257436847209
+Fires,North America,CO2,1999,135.304532913511
+Fires,South-East Asia and developing Pacific,CO2,1999,3.71177135169339
+Fires,Southern Asia,CO2,1999,6.22830909461426
+Forest Land,Africa,CO2,1999,-3114.6075499615504
+Forest Land,Asia-Pacific Developed,CO2,1999,-552.603777445042
+Forest Land,Eastern Asia,CO2,1999,-1430.5278444739602
+Forest Land,Eurasia,CO2,1999,-1748.83974394532
+Forest Land,Europe,CO2,1999,-707.528297504517
+Forest Land,Latin America and Caribbean,CO2,1999,-1222.16813215195
+Forest Land,Middle East,CO2,1999,-9.37352089534791
+Forest Land,North America,CO2,1999,-1741.92531648654
+Forest Land,South-East Asia and developing Pacific,CO2,1999,9.37965932324895
+Forest Land,Southern Asia,CO2,1999,1011.12649176353
+Organic Soil,Asia-Pacific Developed,CO2,1999,3.44033686903702
+Organic Soil,Eurasia,CO2,1999,149.206828713335
+Organic Soil,Europe,CO2,1999,126.38608060568498
+Organic Soil,North America,CO2,1999,40.388596142168495
+Organic Soil,South-East Asia and developing Pacific,CO2,1999,445.662199999999
+Other,Africa,CO2,1999,37.25707
+Other,Asia-Pacific Developed,CO2,1999,-43.781940197999994
+Other,Eastern Asia,CO2,1999,-117.7808
+Other,Eurasia,CO2,1999,-99.960817979
+Other,Europe,CO2,1999,-198.900409963983
+Other,Latin America and Caribbean,CO2,1999,3.8198576000000197
+Other,Middle East,CO2,1999,-1.06854
+Other,North America,CO2,1999,-353.70372230000004
+Other,South-East Asia and developing Pacific,CO2,1999,-43.14924
+Other,Southern Asia,CO2,1999,-139.475
+nan,nan,,1999,
+nan,nan,,1999,
+Net,EU27,CO2,1999,-524.760642744511
+Forest Land,EU27,CO2,1999,-471.7288055228341
+Organic Soil,EU27,CO2,1999,96.4408833161551
+Deforestation,EU27,CO2,1999,25.7090089898614
+Other,EU27,CO2,1999,-187.7332861376936
+Fires,EU27,CO2,1999,12.551556609999999
+Net,WORLD,CO2,1999,-3253.036960095905
+Forest Land,WORLD,CO2,1999,-9507.0
+Organic Soil,WORLD,CO2,1999,765.084042330226
+Deforestation,WORLD,CO2,1999,5035.613213875479
+Other,WORLD,CO2,1999,-956.744
+Fires,WORLD,CO2,1999,1410.00978369839
+Net,Africa,CO2,2000,-1092.964839519832
+Net,Asia-Pacific Developed,CO2,2000,204.0834343695231
+Net,Eastern Asia,CO2,2000,-1400.188505905596
+Net,Eurasia,CO2,2000,-1124.3677249253108
+Net,Europe,CO2,2000,-574.3342477272356
+Net,Latin America and Caribbean,CO2,2000,1341.4815773352084
+Net,Middle East,CO2,2000,92.63337871202671
+Net,North America,CO2,2000,-1740.8670592616627
+Net,South-East Asia and developing Pacific,CO2,2000,929.2278899521732
+Net,Southern Asia,CO2,2000,908.8659820222186
+nan,nan,,2000,
+Deforestation,Africa,CO2,2000,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,2000,84.084868683224
+Deforestation,Eastern Asia,CO2,2000,2.303
+Deforestation,Eurasia,CO2,2000,11.1618490500545
+Deforestation,Europe,CO2,2000,34.932614001269
+Deforestation,Latin America and Caribbean,CO2,2000,2464.825507
+Deforestation,Middle East,CO2,2000,99.6917299999999
+Deforestation,North America,CO2,2000,129.607691364072
+Deforestation,South-East Asia and developing Pacific,CO2,2000,533.7878548
+Deforestation,Southern Asia,CO2,2000,28.874991199999997
+Fires,Africa,CO2,2000,273.563893169738
+Fires,Asia-Pacific Developed,CO2,2000,699.805253734912
+Fires,Eastern Asia,CO2,2000,153.22438581968402
+Fires,Eurasia,CO2,2000,506.39399661095297
+Fires,Europe,CO2,2000,40.7306834321354
+Fires,Latin America and Caribbean,CO2,2000,42.8316197342984
+Fires,Middle East,CO2,2000,3.29868970086526
+Fires,North America,CO2,2000,149.159859992464
+Fires,South-East Asia and developing Pacific,CO2,2000,6.11062059342163
+Fires,Southern Asia,CO2,2000,7.9454988944486304
+Forest Land,Africa,CO2,2000,-3045.76920526957
+Forest Land,Asia-Pacific Developed,CO2,2000,-541.8879317377839
+Forest Land,Eastern Asia,CO2,2000,-1437.93509172528
+Forest Land,Eurasia,CO2,2000,-1689.53773379121
+Forest Land,Europe,CO2,2000,-636.224601921101
+Forest Land,Latin America and Caribbean,CO2,2000,-1169.99540699909
+Forest Land,Middle East,CO2,2000,-9.28850098883843
+Forest Land,North America,CO2,2000,-1734.72030065267
+Forest Land,South-East Asia and developing Pacific,CO2,2000,-13.1835454412475
+Forest Land,Southern Asia,CO2,2000,1011.52049192777
+Organic Soil,Asia-Pacific Developed,CO2,2000,3.34837222817099
+Organic Soil,Eurasia,CO2,2000,147.69915780489202
+Organic Soil,Europe,CO2,2000,126.68964466435901
+Organic Soil,North America,CO2,2000,40.0741959344715
+Organic Soil,South-East Asia and developing Pacific,CO2,2000,445.662199999999
+Other,Africa,CO2,2000,37.25707
+Other,Asia-Pacific Developed,CO2,2000,-41.267128539
+Other,Eastern Asia,CO2,2000,-117.7808
+Other,Eurasia,CO2,2000,-100.0849946
+Other,Europe,CO2,2000,-140.462587903898
+Other,Latin America and Caribbean,CO2,2000,3.8198576000000197
+Other,Middle East,CO2,2000,-1.06854
+Other,North America,CO2,2000,-324.9885059
+Other,South-East Asia and developing Pacific,CO2,2000,-43.14924
+Other,Southern Asia,CO2,2000,-139.475
+nan,nan,,2000,
+nan,nan,,2000,
+Net,EU27,CO2,2000,-404.78599663972017
+Forest Land,EU27,CO2,2000,-412.84550727134854
+Organic Soil,EU27,CO2,2000,97.12176748672769
+Deforestation,EU27,CO2,2000,22.5786044565757
+Other,EU27,CO2,2000,-131.10207223167515
+Fires,EU27,CO2,2000,19.46121092
+Net,WORLD,CO2,2000,-2456.4084190065673
+Forest Land,WORLD,CO2,2000,-9267.0
+Organic Soil,WORLD,CO2,2000,763.4735706318941
+Deforestation,WORLD,CO2,2000,5031.253508678619
+Other,WORLD,CO2,2000,-867.2
+Fires,WORLD,CO2,2000,1883.0645016829199
+Net,Africa,CO2,2001,-1134.5768739226419
+Net,Asia-Pacific Developed,CO2,2001,305.40552553898425
+Net,Eastern Asia,CO2,2001,-1504.4803331257588
+Net,Eurasia,CO2,2001,-1483.9387228736998
+Net,Europe,CO2,2001,-605.4294682917887
+Net,Latin America and Caribbean,CO2,2001,1310.0821924498753
+Net,Middle East,CO2,2001,93.29564606032454
+Net,North America,CO2,2001,-1922.9131738958288
+Net,South-East Asia and developing Pacific,CO2,2001,830.170596087281
+Net,Southern Asia,CO2,2001,916.5020569631291
+nan,nan,,2001,
+Deforestation,Africa,CO2,2001,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,2001,98.3058369744297
+Deforestation,Eastern Asia,CO2,2001,2.303
+Deforestation,Eurasia,CO2,2001,9.417053373222101
+Deforestation,Europe,CO2,2001,35.974632669746704
+Deforestation,Latin America and Caribbean,CO2,2001,2464.825507
+Deforestation,Middle East,CO2,2001,99.6917299999999
+Deforestation,North America,CO2,2001,129.817633757361
+Deforestation,South-East Asia and developing Pacific,CO2,2001,533.7878548
+Deforestation,Southern Asia,CO2,2001,28.874991199999997
+Fires,Africa,CO2,2001,173.072286906018
+Fires,Asia-Pacific Developed,CO2,2001,790.199797515073
+Fires,Eastern Asia,CO2,2001,54.5181811909812
+Fires,Eurasia,CO2,2001,156.199305467202
+Fires,Europe,CO2,2001,37.144435953202596
+Fires,Latin America and Caribbean,CO2,2001,60.7240536539453
+Fires,Middle East,CO2,2001,3.9093612177928496
+Fires,North America,CO2,2001,89.9781191585884
+Fires,South-East Asia and developing Pacific,CO2,2001,2.18073298323595
+Fires,Southern Asia,CO2,2001,4.4896185193691505
+Forest Land,Africa,CO2,2001,-2986.88963340866
+Forest Land,Asia-Pacific Developed,CO2,2001,-542.6602920536191
+Forest Land,Eastern Asia,CO2,2001,-1443.52071431674
+Forest Land,Eurasia,CO2,2001,-1661.27549930927
+Forest Land,Europe,CO2,2001,-687.172480118373
+Forest Land,Latin America and Caribbean,CO2,2001,-1219.28722580407
+Forest Land,Middle East,CO2,2001,-9.2369051574682
+Forest Land,North America,CO2,2001,-1814.70901629505
+Forest Land,South-East Asia and developing Pacific,CO2,2001,-108.310951695954
+Forest Land,Southern Asia,CO2,2001,1022.61244724376
+Organic Soil,Asia-Pacific Developed,CO2,2001,3.36883982210063
+Organic Soil,Eurasia,CO2,2001,146.186925935146
+Organic Soil,Europe,CO2,2001,126.092504523972
+Organic Soil,North America,CO2,2001,46.4644888832719
+Organic Soil,South-East Asia and developing Pacific,CO2,2001,445.662199999999
+Other,Africa,CO2,2001,37.25707
+Other,Asia-Pacific Developed,CO2,2001,-43.808656719
+Other,Eastern Asia,CO2,2001,-117.7808
+Other,Eurasia,CO2,2001,-134.46650834
+Other,Europe,CO2,2001,-117.468561320337
+Other,Latin America and Caribbean,CO2,2001,3.8198576000000197
+Other,Middle East,CO2,2001,-1.06854
+Other,North America,CO2,2001,-374.4643994
+Other,South-East Asia and developing Pacific,CO2,2001,-43.14924
+Other,Southern Asia,CO2,2001,-139.475
+nan,nan,,2001,
+nan,nan,,2001,
+Net,EU27,CO2,2001,-430.06386517563885
+Forest Land,EU27,CO2,2001,-455.78840482784375
+Organic Soil,EU27,CO2,2001,96.7394097041649
+Deforestation,EU27,CO2,2001,25.5588342506899
+Other,EU27,CO2,2001,-118.24012888265013
+Fires,EU27,CO2,2001,21.666424579999997
+Net,WORLD,CO2,2001,-3195.932505915349
+Forest Land,WORLD,CO2,2001,-9450.5
+Organic Soil,WORLD,CO2,2001,767.7749591644911
+Deforestation,WORLD,CO2,2001,5044.98164235475
+Other,WORLD,CO2,2001,-930.605
+Fires,WORLD,CO2,2001,1372.4158925654099
+Net,Africa,CO2,2002,-1106.0008859154045
+Net,Asia-Pacific Developed,CO2,2002,621.5325270323439
+Net,Eastern Asia,CO2,2002,-1554.088888627013
+Net,Eurasia,CO2,2002,-1491.5425777538032
+Net,Europe,CO2,2002,-638.4153863750312
+Net,Latin America and Caribbean,CO2,2002,1335.7464135261164
+Net,Middle East,CO2,2002,89.39704138692707
+Net,North America,CO2,2002,-1883.8523233436906
+Net,South-East Asia and developing Pacific,CO2,2002,884.1364172439007
+Net,Southern Asia,CO2,2002,1000.5288880692177
+nan,nan,,2002,
+Deforestation,Africa,CO2,2002,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,2002,93.1709163539765
+Deforestation,Eastern Asia,CO2,2002,2.303
+Deforestation,Eurasia,CO2,2002,9.588948352736919
+Deforestation,Europe,CO2,2002,38.5215844423262
+Deforestation,Latin America and Caribbean,CO2,2002,2464.825507
+Deforestation,Middle East,CO2,2002,99.6917299999999
+Deforestation,North America,CO2,2002,129.99622950474398
+Deforestation,South-East Asia and developing Pacific,CO2,2002,533.7878548
+Deforestation,Southern Asia,CO2,2002,28.874991199999997
+Fires,Africa,CO2,2002,163.184921852905
+Fires,Asia-Pacific Developed,CO2,2002,1122.36751925517
+Fires,Eastern Asia,CO2,2002,7.250100186447139
+Fires,Eurasia,CO2,2002,172.25798720593198
+Fires,Europe,CO2,2002,6.20100510557556
+Fires,Latin America and Caribbean,CO2,2002,24.1599049499664
+Fires,Middle East,CO2,2002,0.9628330901641841
+Fires,North America,CO2,2002,79.0809150909424
+Fires,South-East Asia and developing Pacific,CO2,2002,4.0766099699859595
+Fires,Southern Asia,CO2,2002,0.474569135627746
+Forest Land,Africa,CO2,2002,-2948.42628034831
+Forest Land,Asia-Pacific Developed,CO2,2002,-544.1390736413141
+Forest Land,Eastern Asia,CO2,2002,-1445.86118881346
+Forest Land,Eurasia,CO2,2002,-1657.7800378604402
+Forest Land,Europe,CO2,2002,-676.375108602854
+Forest Land,Latin America and Caribbean,CO2,2002,-1157.05885602385
+Forest Land,Middle East,CO2,2002,-10.188981703237
+Forest Land,North America,CO2,2002,-1798.52183719094
+Forest Land,South-East Asia and developing Pacific,CO2,2002,-56.241007526084196
+Forest Land,Southern Asia,CO2,2002,1110.65432773359
+Organic Soil,Asia-Pacific Developed,CO2,2002,3.15803593051143
+Organic Soil,Eurasia,CO2,2002,144.674444947968
+Organic Soil,Europe,CO2,2002,125.757242884878
+Organic Soil,North America,CO2,2002,46.448832651563
+Organic Soil,South-East Asia and developing Pacific,CO2,2002,445.662199999999
+Other,Africa,CO2,2002,37.25707
+Other,Asia-Pacific Developed,CO2,2002,-53.024870866
+Other,Eastern Asia,CO2,2002,-117.7808
+Other,Eurasia,CO2,2002,-160.2839204
+Other,Europe,CO2,2002,-132.52011020495698
+Other,Latin America and Caribbean,CO2,2002,3.8198576000000197
+Other,Middle East,CO2,2002,-1.06854
+Other,North America,CO2,2002,-340.8564634
+Other,South-East Asia and developing Pacific,CO2,2002,-43.14924
+Other,Southern Asia,CO2,2002,-139.475
+nan,nan,,2002,
+nan,nan,,2002,
+Net,EU27,CO2,2002,-453.2196099891355
+Forest Land,EU27,CO2,2002,-449.26933327895915
+Organic Soil,EU27,CO2,2002,96.330642487756
+Deforestation,EU27,CO2,2002,26.6492134748022
+Other,EU27,CO2,2002,-129.39879397473464
+Fires,EU27,CO2,2002,2.468661302
+Net,WORLD,CO2,2002,-2742.5207135085793
+Forest Land,WORLD,CO2,2002,-9183.9
+Organic Soil,WORLD,CO2,2002,765.700756414921
+Deforestation,WORLD,CO2,2002,5042.74416423378
+Other,WORLD,CO2,2002,-947.082
+Fires,WORLD,CO2,2002,1580.01636584272
+Net,Africa,CO2,2003,-1092.094403351904
+Net,Asia-Pacific Developed,CO2,2003,-210.5450247126794
+Net,Eastern Asia,CO2,2003,-1538.742471842653
+Net,Eurasia,CO2,2003,-1270.5693112698118
+Net,Europe,CO2,2003,-628.6105819912456
+Net,Latin America and Caribbean,CO2,2003,1490.0591185916767
+Net,Middle East,CO2,2003,89.78485113702446
+Net,North America,CO2,2003,-1978.6351670013178
+Net,South-East Asia and developing Pacific,CO2,2003,924.0560521903662
+Net,Southern Asia,CO2,2003,1011.2084686430654
+nan,nan,,2003,
+Deforestation,Africa,CO2,2003,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,2003,87.3778952911556
+Deforestation,Eastern Asia,CO2,2003,2.303
+Deforestation,Eurasia,CO2,2003,8.90599894707726
+Deforestation,Europe,CO2,2003,34.640091488213706
+Deforestation,Latin America and Caribbean,CO2,2003,2464.825507
+Deforestation,Middle East,CO2,2003,99.6917299999999
+Deforestation,North America,CO2,2003,130.311321892262
+Deforestation,South-East Asia and developing Pacific,CO2,2003,533.7878548
+Deforestation,Southern Asia,CO2,2003,28.874991199999997
+Fires,Africa,CO2,2003,117.874542288276
+Fires,Asia-Pacific Developed,CO2,2003,285.335503965065
+Fires,Eastern Asia,CO2,2003,26.345195368926998
+Fires,Eurasia,CO2,2003,362.93089127503197
+Fires,Europe,CO2,2003,15.0017308864517
+Fires,Latin America and Caribbean,CO2,2003,26.931506842536898
+Fires,Middle East,CO2,2003,0.642183028442382
+Fires,North America,CO2,2003,87.8539479434585
+Fires,South-East Asia and developing Pacific,CO2,2003,5.79247365908813
+Fires,Southern Asia,CO2,2003,2.77467564094543
+Forest Land,Africa,CO2,2003,-2889.20941822018
+Forest Land,Asia-Pacific Developed,CO2,2003,-547.729172041237
+Forest Land,Eastern Asia,CO2,2003,-1449.60986721158
+Forest Land,Eurasia,CO2,2003,-1618.83964582625
+Forest Land,Europe,CO2,2003,-646.0546076395859
+Forest Land,Latin America and Caribbean,CO2,2003,-1005.51775285086
+Forest Land,Middle East,CO2,2003,-9.48052189141783
+Forest Land,North America,CO2,2003,-1836.3907138785999
+Forest Land,South-East Asia and developing Pacific,CO2,2003,-18.0372362687209
+Forest Land,Southern Asia,CO2,2003,1119.03380180212
+Organic Soil,Asia-Pacific Developed,CO2,2003,3.12231354933699
+Organic Soil,Eurasia,CO2,2003,143.150083744329
+Organic Soil,Europe,CO2,2003,124.915870918091
+Organic Soil,North America,CO2,2003,46.0781085415616
+Organic Soil,South-East Asia and developing Pacific,CO2,2003,445.662199999999
+Other,Africa,CO2,2003,37.25707
+Other,Asia-Pacific Developed,CO2,2003,-38.651565477
+Other,Eastern Asia,CO2,2003,-117.7808
+Other,Eurasia,CO2,2003,-166.71663941
+Other,Europe,CO2,2003,-157.113667644416
+Other,Latin America and Caribbean,CO2,2003,3.8198576000000197
+Other,Middle East,CO2,2003,-1.06854
+Other,North America,CO2,2003,-406.48783149999997
+Other,South-East Asia and developing Pacific,CO2,2003,-43.14924
+Other,Southern Asia,CO2,2003,-139.475
+nan,nan,,2003,
+nan,nan,,2003,
+Net,EU27,CO2,2003,-428.07758528159627
+Forest Land,EU27,CO2,2003,-422.242441120481
+Organic Soil,EU27,CO2,2003,96.04849940912919
+Deforestation,EU27,CO2,2003,27.9447509244406
+Other,EU27,CO2,2003,-140.90373902468514
+Fires,EU27,CO2,2003,11.07534453
+Net,WORLD,CO2,2003,-3204.0569791497564
+Forest Land,WORLD,CO2,2003,-8901.8
+Organic Soil,WORLD,CO2,2003,762.928576753319
+Deforestation,WORLD,CO2,2003,5032.7017931987
+Other,WORLD,CO2,2003,-1029.37
+Fires,WORLD,CO2,2003,931.482650898223
+Net,Africa,CO2,2004,-1058.5937950373363
+Net,Asia-Pacific Developed,CO2,2004,81.63583084931923
+Net,Eastern Asia,CO2,2004,-1552.529936829339
+Net,Eurasia,CO2,2004,-1430.1619105172317
+Net,Europe,CO2,2004,-610.6665190112982
+Net,Latin America and Caribbean,CO2,2004,1515.960432353575
+Net,Middle East,CO2,2004,90.0779439341908
+Net,North America,CO2,2004,-1845.9859756958078
+Net,South-East Asia and developing Pacific,CO2,2004,929.6134189997779
+Net,Southern Asia,CO2,2004,1006.1923320909642
+nan,nan,,2004,
+Deforestation,Africa,CO2,2004,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,2004,88.3341185831369
+Deforestation,Eastern Asia,CO2,2004,2.303
+Deforestation,Eurasia,CO2,2004,8.8225805726333
+Deforestation,Europe,CO2,2004,37.7167968813083
+Deforestation,Latin America and Caribbean,CO2,2004,2464.825507
+Deforestation,Middle East,CO2,2004,99.6917299999999
+Deforestation,North America,CO2,2004,130.56812969177201
+Deforestation,South-East Asia and developing Pacific,CO2,2004,533.7878548
+Deforestation,Southern Asia,CO2,2004,28.874991199999997
+Fires,Africa,CO2,2004,118.727922966484
+Fires,Asia-Pacific Developed,CO2,2004,579.2536918957741
+Fires,Eastern Asia,CO2,2004,16.1981103479309
+Fires,Eurasia,CO2,2004,170.07692947789
+Fires,Europe,CO2,2004,2.9241026273574797
+Fires,Latin America and Caribbean,CO2,2004,12.229800773262001
+Fires,Middle East,CO2,2004,0.8434202804565429
+Fires,North America,CO2,2004,70.50625568637079
+Fires,South-East Asia and developing Pacific,CO2,2004,8.737733884346
+Fires,Southern Asia,CO2,2004,2.75022988129425
+Forest Land,Africa,CO2,2004,-2856.56219058382
+Forest Land,Asia-Pacific Developed,CO2,2004,-548.112183717891
+Forest Land,Eastern Asia,CO2,2004,-1453.25024717727
+Forest Land,Eurasia,CO2,2004,-1598.94937878693
+Forest Land,Europe,CO2,2004,-621.766932459256
+Forest Land,Latin America and Caribbean,CO2,2004,-964.914733019687
+Forest Land,Middle East,CO2,2004,-9.388666346265639
+Forest Land,North America,CO2,2004,-1758.42914828944
+Forest Land,South-East Asia and developing Pacific,CO2,2004,-15.425129684567201
+Forest Land,Southern Asia,CO2,2004,1114.04211100967
+Organic Soil,Asia-Pacific Developed,CO2,2004,3.27112429729917
+Organic Soil,Eurasia,CO2,2004,141.88868672917502
+Organic Soil,Europe,CO2,2004,124.289358794758
+Organic Soil,North America,CO2,2004,45.9018068154894
+Organic Soil,South-East Asia and developing Pacific,CO2,2004,445.662199999999
+Other,Africa,CO2,2004,37.25707
+Other,Asia-Pacific Developed,CO2,2004,-41.11092020900001
+Other,Eastern Asia,CO2,2004,-117.7808
+Other,Eurasia,CO2,2004,-152.00072851
+Other,Europe,CO2,2004,-153.829844855466
+Other,Latin America and Caribbean,CO2,2004,3.8198576000000197
+Other,Middle East,CO2,2004,-1.06854
+Other,North America,CO2,2004,-334.5330196
+Other,South-East Asia and developing Pacific,CO2,2004,-43.14924
+Other,Southern Asia,CO2,2004,-139.475
+nan,nan,,2004,
+nan,nan,,2004,
+Net,EU27,CO2,2004,-428.6605281175183
+Forest Land,EU27,CO2,2004,-402.6500111214042
+Organic Soil,EU27,CO2,2004,95.769397925568
+Deforestation,EU27,CO2,2004,30.6937958118977
+Other,EU27,CO2,2004,-154.52517335357982
+Fires,EU27,CO2,2004,2.05146262
+Net,WORLD,CO2,2004,-2874.5015142332604
+Forest Land,WORLD,CO2,2004,-8712.8
+Organic Soil,WORLD,CO2,2004,761.0131766367219
+Deforestation,WORLD,CO2,2004,5036.90811130885
+Other,WORLD,CO2,2004,-941.871
+Fires,WORLD,CO2,2004,982.248197821167
+Net,Africa,CO2,2005,-975.8552704941147
+Net,Asia-Pacific Developed,CO2,2005,-328.214595327074
+Net,Eastern Asia,CO2,2005,-1573.8602536510195
+Net,Eurasia,CO2,2005,-1454.2204309373287
+Net,Europe,CO2,2005,-563.0425963767027
+Net,Latin America and Caribbean,CO2,2005,1439.537472658085
+Net,Middle East,CO2,2005,90.05771500858259
+Net,North America,CO2,2005,-1892.0056003029338
+Net,South-East Asia and developing Pacific,CO2,2005,896.4610724930376
+Net,Southern Asia,CO2,2005,1009.801470347346
+nan,nan,,2005,
+Deforestation,Africa,CO2,2005,1641.98340258
+Deforestation,Asia-Pacific Developed,CO2,2005,108.305092181976
+Deforestation,Eastern Asia,CO2,2005,2.303
+Deforestation,Eurasia,CO2,2005,8.402688791452249
+Deforestation,Europe,CO2,2005,43.8630576994791
+Deforestation,Latin America and Caribbean,CO2,2005,2464.825507
+Deforestation,Middle East,CO2,2005,99.6917299999999
+Deforestation,North America,CO2,2005,130.900045562434
+Deforestation,South-East Asia and developing Pacific,CO2,2005,533.7878548
+Deforestation,Southern Asia,CO2,2005,28.874991199999997
+Fires,Africa,CO2,2005,132.411929211685
+Fires,Asia-Pacific Developed,CO2,2005,139.555863426536
+Fires,Eastern Asia,CO2,2005,8.79379819799041
+Fires,Eurasia,CO2,2005,144.99926104430298
+Fires,Europe,CO2,2005,12.6102162152862
+Fires,Latin America and Caribbean,CO2,2005,17.459704037445
+Fires,Middle East,CO2,2005,0.975338630249023
+Fires,North America,CO2,2005,74.96986257754509
+Fires,South-East Asia and developing Pacific,CO2,2005,5.53658659677886
+Fires,Southern Asia,CO2,2005,1.8392958556060701
+Forest Land,Africa,CO2,2005,-2787.5076722858
+Forest Land,Asia-Pacific Developed,CO2,2005,-549.398293973311
+Forest Land,Eastern Asia,CO2,2005,-1467.17625184901
+Forest Land,Eurasia,CO2,2005,-1583.8756081884899
+Forest Land,Europe,CO2,2005,-569.2915887686889
+Forest Land,Latin America and Caribbean,CO2,2005,-1046.56759597936
+Forest Land,Middle East,CO2,2005,-9.540813621666329
+Forest Land,North America,CO2,2005,-1762.2200754183
+Forest Land,South-East Asia and developing Pacific,CO2,2005,-45.3763289037404
+Forest Land,Southern Asia,CO2,2005,1118.56218329174
+Organic Soil,Asia-Pacific Developed,CO2,2005,3.19279279572496
+Organic Soil,Eurasia,CO2,2005,140.593126685406
+Organic Soil,Europe,CO2,2005,124.136430574275
+Organic Soil,North America,CO2,2005,45.6116588753872
+Organic Soil,South-East Asia and developing Pacific,CO2,2005,445.662199999999
+Other,Africa,CO2,2005,37.25707
+Other,Asia-Pacific Developed,CO2,2005,-29.870049758
+Other,Eastern Asia,CO2,2005,-117.7808
+Other,Eurasia,CO2,2005,-164.33989927
+Other,Europe,CO2,2005,-174.360712097054
+Other,Latin America and Caribbean,CO2,2005,3.8198576000000197
+Other,Middle East,CO2,2005,-1.06854
+Other,North America,CO2,2005,-381.2670919
+Other,South-East Asia and developing Pacific,CO2,2005,-43.14924
+Other,Southern Asia,CO2,2005,-139.475
+nan,nan,,2005,
+nan,nan,,2005,
+Net,EU27,CO2,2005,-373.87180277066625
+Forest Land,EU27,CO2,2005,-349.9487050373692
+Organic Soil,EU27,CO2,2005,96.0370774755724
+Deforestation,EU27,CO2,2005,32.8897567272838
+Other,EU27,CO2,2005,-162.8697519271533
+Fires,EU27,CO2,2005,10.019819990999999
+Net,WORLD,CO2,2005,-3351.3445654604398
+Forest Land,WORLD,CO2,2005,-8702.4
+Organic Soil,WORLD,CO2,2005,759.196208930794
+Deforestation,WORLD,CO2,2005,5062.9373698153395
+Other,WORLD,CO2,2005,-1010.23
+Fires,WORLD,CO2,2005,539.151855793426
+Net,Africa,CO2,2006,-908.6466155192098
+Net,Asia-Pacific Developed,CO2,2006,216.60502891494338
+Net,Eastern Asia,CO2,2006,-1603.6563380862244
+Net,Eurasia,CO2,2006,-1403.0958756426726
+Net,Europe,CO2,2006,-630.1815773675363
+Net,Latin America and Caribbean,CO2,2006,577.770924464645
+Net,Middle East,CO2,2006,90.06420474311292
+Net,North America,CO2,2006,-2001.066767268198
+Net,South-East Asia and developing Pacific,CO2,2006,1028.8013528276397
+Net,Southern Asia,CO2,2006,1012.6946815419609
+nan,nan,,2006,
+Deforestation,Africa,CO2,2006,1636.71756854
+Deforestation,Asia-Pacific Developed,CO2,2006,109.316666177608
+Deforestation,Eastern Asia,CO2,2006,2.303
+Deforestation,Eurasia,CO2,2006,13.137536308113301
+Deforestation,Europe,CO2,2006,46.850230686624904
+Deforestation,Latin America and Caribbean,CO2,2006,1653.06822939999
+Deforestation,Middle East,CO2,2006,99.6917299999999
+Deforestation,North America,CO2,2006,131.236225817658
+Deforestation,South-East Asia and developing Pacific,CO2,2006,518.9159931999991
+Deforestation,Southern Asia,CO2,2006,28.8934165999999
+Fires,Africa,CO2,2006,139.84670684381
+Fires,Asia-Pacific Developed,CO2,2006,673.3682980120919
+Fires,Eastern Asia,CO2,2006,6.85553611928558
+Fires,Eurasia,CO2,2006,160.254577771492
+Fires,Europe,CO2,2006,6.39293568161773
+Fires,Latin America and Caribbean,CO2,2006,14.8049118494949
+Fires,Middle East,CO2,2006,0.7429089957885741
+Fires,North America,CO2,2006,47.8964958454132
+Fires,South-East Asia and developing Pacific,CO2,2006,4.79263383620452
+Fires,Southern Asia,CO2,2006,2.56751844184112
+Forest Land,Africa,CO2,2006,-2723.05665090302
+Forest Land,Asia-Pacific Developed,CO2,2006,-545.552657438237
+Forest Land,Eastern Asia,CO2,2006,-1476.00817020551
+Forest Land,Eurasia,CO2,2006,-1551.48078218391
+Forest Land,Europe,CO2,2006,-611.982141235179
+Forest Land,Latin America and Caribbean,CO2,2006,-1078.56296158484
+Forest Land,Middle East,CO2,2006,-9.36305025267554
+Forest Land,North America,CO2,2006,-1823.8725189652798
+Forest Land,South-East Asia and developing Pacific,CO2,2006,-101.952434208564
+Forest Land,Southern Asia,CO2,2006,1120.70874650012
+Organic Soil,Asia-Pacific Developed,CO2,2006,3.31815562548047
+Organic Soil,Eurasia,CO2,2006,139.27958372163198
+Organic Soil,Europe,CO2,2006,123.812604683442
+Organic Soil,North America,CO2,2006,45.4147276340106
+Organic Soil,South-East Asia and developing Pacific,CO2,2006,647.5958
+Other,Africa,CO2,2006,37.84576
+Other,Asia-Pacific Developed,CO2,2006,-23.845433462000003
+Other,Eastern Asia,CO2,2006,-136.806704
+Other,Eurasia,CO2,2006,-164.28679126
+Other,Europe,CO2,2006,-195.255207184042
+Other,Latin America and Caribbean,CO2,2006,-11.5392552
+Other,Middle East,CO2,2006,-1.007384
+Other,North America,CO2,2006,-401.7416976
+Other,South-East Asia and developing Pacific,CO2,2006,-40.55064
+Other,Southern Asia,CO2,2006,-139.475
+nan,nan,,2006,
+nan,nan,,2006,
+Net,EU27,CO2,2006,-446.2276202579527
+Forest Land,EU27,CO2,2006,-397.3096716315973
+Organic Soil,EU27,CO2,2006,95.94418245750249
+Deforestation,EU27,CO2,2006,35.3869338881253
+Other,EU27,CO2,2006,-184.7872425629832
+Fires,EU27,CO2,2006,4.538177591
+Net,WORLD,CO2,2006,-3620.6860082083936
+Forest Land,WORLD,CO2,2006,-8801.1
+Organic Soil,WORLD,CO2,2006,959.420871664566
+Deforestation,WORLD,CO2,2006,4240.13059673
+Other,WORLD,CO2,2006,-1076.66
+Fires,WORLD,CO2,2006,1057.52252339704
+Net,Africa,CO2,2007,-884.726267375204
+Net,Asia-Pacific Developed,CO2,2007,155.36650753331006
+Net,Eastern Asia,CO2,2007,-1540.4844712012973
+Net,Eurasia,CO2,2007,-1424.2385753569306
+Net,Europe,CO2,2007,-556.9677277058001
+Net,Latin America and Caribbean,CO2,2007,615.5558460656467
+Net,Middle East,CO2,2007,90.50833822890819
+Net,North America,CO2,2007,-1997.8259808093017
+Net,South-East Asia and developing Pacific,CO2,2007,1050.4343308395007
+Net,Southern Asia,CO2,2007,1025.0715087331107
+nan,nan,,2007,
+Deforestation,Africa,CO2,2007,1636.71756854
+Deforestation,Asia-Pacific Developed,CO2,2007,115.011718048647
+Deforestation,Eastern Asia,CO2,2007,2.303
+Deforestation,Eurasia,CO2,2007,13.0580294074529
+Deforestation,Europe,CO2,2007,48.6902490053245
+Deforestation,Latin America and Caribbean,CO2,2007,1653.06822939999
+Deforestation,Middle East,CO2,2007,99.6917299999999
+Deforestation,North America,CO2,2007,131.556751122687
+Deforestation,South-East Asia and developing Pacific,CO2,2007,518.9159931999991
+Deforestation,Southern Asia,CO2,2007,28.8934165999999
+Fires,Africa,CO2,2007,127.62420086242601
+Fires,Asia-Pacific Developed,CO2,2007,588.1210839934839
+Fires,Eastern Asia,CO2,2007,8.39731962457275
+Fires,Eurasia,CO2,2007,98.2039865479355
+Fires,Europe,CO2,2007,9.51381533357238
+Fires,Latin America and Caribbean,CO2,2007,9.64611993641662
+Fires,Middle East,CO2,2007,0.8823506464233389
+Fires,North America,CO2,2007,62.0204082145385
+Fires,South-East Asia and developing Pacific,CO2,2007,7.40891046682739
+Fires,Southern Asia,CO2,2007,2.77007460646057
+Forest Land,Africa,CO2,2007,-2686.91379677763
+Forest Land,Asia-Pacific Developed,CO2,2007,-541.8848817853651
+Forest Land,Eastern Asia,CO2,2007,-1414.37808682587
+Forest Land,Eurasia,CO2,2007,-1488.06672811737
+Forest Land,Europe,CO2,2007,-538.454998039512
+Forest Land,Latin America and Caribbean,CO2,2007,-1035.61924807076
+Forest Land,Middle East,CO2,2007,-9.058358417515041
+Forest Land,North America,CO2,2007,-1928.96055696763
+Forest Land,South-East Asia and developing Pacific,CO2,2007,-82.93573282732591
+Forest Land,Southern Asia,CO2,2007,1132.88301752665
+Organic Soil,Asia-Pacific Developed,CO2,2007,3.1701597955442002
+Organic Soil,Eurasia,CO2,2007,139.170665395051
+Organic Soil,Europe,CO2,2007,122.681490947923
+Organic Soil,North America,CO2,2007,44.5991295211027
+Organic Soil,South-East Asia and developing Pacific,CO2,2007,647.5958
+Other,Africa,CO2,2007,37.84576
+Other,Asia-Pacific Developed,CO2,2007,-9.051572518999999
+Other,Eastern Asia,CO2,2007,-136.806704
+Other,Eurasia,CO2,2007,-186.60452859
+Other,Europe,CO2,2007,-199.398284953108
+Other,Latin America and Caribbean,CO2,2007,-11.5392552
+Other,Middle East,CO2,2007,-1.007384
+Other,North America,CO2,2007,-307.04171269999995
+Other,South-East Asia and developing Pacific,CO2,2007,-40.55064
+Other,Southern Asia,CO2,2007,-139.475
+nan,nan,,2007,
+nan,nan,,2007,
+Net,EU27,CO2,2007,-367.0236065617663
+Forest Land,EU27,CO2,2007,-324.7621603890491
+Organic Soil,EU27,CO2,2007,95.1120829405514
+Deforestation,EU27,CO2,2007,35.8007184335862
+Other,EU27,CO2,2007,-179.55180511885496
+Fires,EU27,CO2,2007,6.377557571999999
+Net,WORLD,CO2,2007,-3467.216798783609
+Forest Land,WORLD,CO2,2007,-8593.3
+Organic Soil,WORLD,CO2,2007,957.217245659622
+Deforestation,WORLD,CO2,2007,4247.90668532411
+Other,WORLD,CO2,2007,-993.629
+Fires,WORLD,CO2,2007,914.588270232658
+Net,Africa,CO2,2008,-962.5557554031226
+Net,Asia-Pacific Developed,CO2,2008,-239.4261284449892
+Net,Eastern Asia,CO2,2008,-1477.221257568381
+Net,Eurasia,CO2,2008,-1416.096052742115
+Net,Europe,CO2,2008,-569.1069476443907
+Net,Latin America and Caribbean,CO2,2008,404.9133516953919
+Net,Middle East,CO2,2008,90.07168329096294
+Net,North America,CO2,2008,-2167.9031729934
+Net,South-East Asia and developing Pacific,CO2,2008,981.0225706549439
+Net,Southern Asia,CO2,2008,1025.0649787363056
+nan,nan,,2008,
+Deforestation,Africa,CO2,2008,1636.71756854
+Deforestation,Asia-Pacific Developed,CO2,2008,80.58762880148069
+Deforestation,Eastern Asia,CO2,2008,2.303
+Deforestation,Eurasia,CO2,2008,11.5564500625131
+Deforestation,Europe,CO2,2008,77.0569015707688
+Deforestation,Latin America and Caribbean,CO2,2008,1653.06822939999
+Deforestation,Middle East,CO2,2008,99.6917299999999
+Deforestation,North America,CO2,2008,131.805038825654
+Deforestation,South-East Asia and developing Pacific,CO2,2008,518.9159931999991
+Deforestation,Southern Asia,CO2,2008,28.8934165999999
+Fires,Africa,CO2,2008,176.070337561927
+Fires,Asia-Pacific Developed,CO2,2008,229.934419985641
+Fires,Eastern Asia,CO2,2008,31.450665878349298
+Fires,Eurasia,CO2,2008,354.03178989843695
+Fires,Europe,CO2,2008,2.88427247977447
+Fires,Latin America and Caribbean,CO2,2008,22.409844027671802
+Fires,Middle East,CO2,2008,0.214638673835754
+Fires,North America,CO2,2008,47.109819358642504
+Fires,South-East Asia and developing Pacific,CO2,2008,1.16019631145477
+Fires,Southern Asia,CO2,2008,1.56747826787567
+Forest Land,Africa,CO2,2008,-2813.1894215050497
+Forest Land,Asia-Pacific Developed,CO2,2008,-548.858851333832
+Forest Land,Eastern Asia,CO2,2008,-1374.16821944673
+Forest Land,Eurasia,CO2,2008,-1714.53598072611
+Forest Land,Europe,CO2,2008,-613.168787386114
+Forest Land,Latin America and Caribbean,CO2,2008,-1259.02546653227
+Forest Land,Middle East,CO2,2008,-8.827301382872712
+Forest Land,North America,CO2,2008,-2168.3738945865703
+Forest Land,South-East Asia and developing Pacific,CO2,2008,-146.09877885651
+Forest Land,Southern Asia,CO2,2008,1134.07908386843
+Organic Soil,Asia-Pacific Developed,CO2,2008,3.2533332037211697
+Organic Soil,Eurasia,CO2,2008,137.948705503045
+Organic Soil,Europe,CO2,2008,122.219885824057
+Organic Soil,North America,CO2,2008,44.434957708873995
+Organic Soil,South-East Asia and developing Pacific,CO2,2008,647.5958
+Other,Africa,CO2,2008,37.84576
+Other,Asia-Pacific Developed,CO2,2008,-4.342659102
+Other,Eastern Asia,CO2,2008,-136.806704
+Other,Eurasia,CO2,2008,-205.09701748
+Other,Europe,CO2,2008,-158.099220132877
+Other,Latin America and Caribbean,CO2,2008,-11.5392552
+Other,Middle East,CO2,2008,-1.007384
+Other,North America,CO2,2008,-222.8790943
+Other,South-East Asia and developing Pacific,CO2,2008,-40.55064
+Other,Southern Asia,CO2,2008,-139.475
+nan,nan,,2008,
+nan,nan,,2008,
+Net,EU27,CO2,2008,-393.7671612103296
+Forest Land,EU27,CO2,2008,-396.4924291148963
+Organic Soil,EU27,CO2,2008,94.6774113462047
+Deforestation,EU27,CO2,2008,36.0027855274344
+Other,EU27,CO2,2008,-129.46962052007257
+Fires,EU27,CO2,2008,1.5146915509999999
+Net,WORLD,CO2,2008,-4331.168898316281
+Forest Land,WORLD,CO2,2008,-9512.1
+Organic Soil,WORLD,CO2,2008,955.452682239698
+Deforestation,WORLD,CO2,2008,4240.595957000411
+Other,WORLD,CO2,2008,-881.951
+Fires,WORLD,CO2,2008,866.8334624436101
+Net,Africa,CO2,2009,-991.9076993888069
+Net,Asia-Pacific Developed,CO2,2009,-200.75062655166732
+Net,Eastern Asia,CO2,2009,-1444.4952819627454
+Net,Eurasia,CO2,2009,-1624.7421207643624
+Net,Europe,CO2,2009,-648.0610511363889
+Net,Latin America and Caribbean,CO2,2009,371.7120011288237
+Net,Middle East,CO2,2009,90.16729508359903
+Net,North America,CO2,2009,-2321.0242105528287
+Net,South-East Asia and developing Pacific,CO2,2009,878.9875136303982
+Net,Southern Asia,CO2,2009,1032.842960958042
+nan,nan,,2009,
+Deforestation,Africa,CO2,2009,1636.71756854
+Deforestation,Asia-Pacific Developed,CO2,2009,69.7847533942519
+Deforestation,Eastern Asia,CO2,2009,2.303
+Deforestation,Eurasia,CO2,2009,14.185929751901499
+Deforestation,Europe,CO2,2009,50.695445486749406
+Deforestation,Latin America and Caribbean,CO2,2009,1653.06822939999
+Deforestation,Middle East,CO2,2009,99.6917299999999
+Deforestation,North America,CO2,2009,131.996657398856
+Deforestation,South-East Asia and developing Pacific,CO2,2009,518.9159931999991
+Deforestation,Southern Asia,CO2,2009,28.8934165999999
+Fires,Africa,CO2,2009,122.355350255073
+Fires,Asia-Pacific Developed,CO2,2009,268.696506340217
+Fires,Eastern Asia,CO2,2009,16.8419753031845
+Fires,Eurasia,CO2,2009,149.37448775440203
+Fires,Europe,CO2,2009,5.62186982014465
+Fires,Latin America and Caribbean,CO2,2009,16.023388133033702
+Fires,Middle East,CO2,2009,0.208238331207275
+Fires,North America,CO2,2009,33.390528862197804
+Fires,South-East Asia and developing Pacific,CO2,2009,7.0067421880722
+Fires,Southern Asia,CO2,2009,7.62781172315216
+Forest Land,Africa,CO2,2009,-2788.82637818388
+Forest Land,Asia-Pacific Developed,CO2,2009,-555.281720785319
+Forest Land,Eastern Asia,CO2,2009,-1326.8335532659298
+Forest Land,Eurasia,CO2,2009,-1731.02826658816
+Forest Land,Europe,CO2,2009,-699.905701225988
+Forest Land,Latin America and Caribbean,CO2,2009,-1285.8403612042
+Forest Land,Middle East,CO2,2009,-8.725289247608131
+Forest Land,North America,CO2,2009,-2315.8330432689504
+Forest Land,South-East Asia and developing Pacific,CO2,2009,-253.980381757673
+Forest Land,Southern Asia,CO2,2009,1135.7967326348898
+Organic Soil,Asia-Pacific Developed,CO2,2009,3.24052596518273
+Organic Soil,Eurasia,CO2,2009,137.674554037494
+Organic Soil,Europe,CO2,2009,121.164880396925
+Organic Soil,North America,CO2,2009,44.1994059550676
+Organic Soil,South-East Asia and developing Pacific,CO2,2009,647.5958
+Other,Africa,CO2,2009,37.84576
+Other,Asia-Pacific Developed,CO2,2009,12.809308534
+Other,Eastern Asia,CO2,2009,-136.806704
+Other,Eurasia,CO2,2009,-194.94882572
+Other,Europe,CO2,2009,-125.63754561422
+Other,Latin America and Caribbean,CO2,2009,-11.5392552
+Other,Middle East,CO2,2009,-1.007384
+Other,North America,CO2,2009,-214.77775949999997
+Other,South-East Asia and developing Pacific,CO2,2009,-40.55064
+Other,Southern Asia,CO2,2009,-139.475
+nan,nan,,2009,
+nan,nan,,2009,
+Net,EU27,CO2,2009,-458.2171901716339
+Forest Land,EU27,CO2,2009,-470.15071176817685
+Organic Soil,EU27,CO2,2009,94.4030867911969
+Deforestation,EU27,CO2,2009,34.981197653833
+Other,EU27,CO2,2009,-119.76576670848704
+Fires,EU27,CO2,2009,2.31500386
+Net,WORLD,CO2,2009,-4857.213211162894
+Forest Land,WORLD,CO2,2009,-9830.4
+Organic Soil,WORLD,CO2,2009,953.87516635467
+Deforestation,WORLD,CO2,2009,4206.25272377175
+Other,WORLD,CO2,2009,-814.088
+Fires,WORLD,CO2,2009,627.1468987106849
+Net,Africa,CO2,2010,-856.9864549178129
+Net,Asia-Pacific Developed,CO2,2010,-340.6767598581506
+Net,Eastern Asia,CO2,2010,-1419.5908542192562
+Net,Eurasia,CO2,2010,-1565.9470876790438
+Net,Europe,CO2,2010,-564.6633070794419
+Net,Latin America and Caribbean,CO2,2010,407.7918496351852
+Net,Middle East,CO2,2010,91.42997893732999
+Net,North America,CO2,2010,-2199.29701141849
+Net,South-East Asia and developing Pacific,CO2,2010,957.7209354931297
+Net,Southern Asia,CO2,2010,1031.0587554354386
+nan,nan,,2010,
+Deforestation,Africa,CO2,2010,1636.71756854
+Deforestation,Asia-Pacific Developed,CO2,2010,74.5699823503851
+Deforestation,Eastern Asia,CO2,2010,2.303
+Deforestation,Eurasia,CO2,2010,9.5369326080623
+Deforestation,Europe,CO2,2010,49.2477675604093
+Deforestation,Latin America and Caribbean,CO2,2010,1653.06822939999
+Deforestation,Middle East,CO2,2010,99.6917299999999
+Deforestation,North America,CO2,2010,132.188975022171
+Deforestation,South-East Asia and developing Pacific,CO2,2010,518.9159931999991
+Deforestation,Southern Asia,CO2,2010,28.8934165999999
+Fires,Africa,CO2,2010,206.30210544281698
+Fires,Asia-Pacific Developed,CO2,2010,129.150916691299
+Fires,Eastern Asia,CO2,2010,10.8938473451538
+Fires,Eurasia,CO2,2010,193.52593925253998
+Fires,Europe,CO2,2010,5.16366970397186
+Fires,Latin America and Caribbean,CO2,2010,8.11350788679504
+Fires,Middle East,CO2,2010,1.58850768818664
+Fires,North America,CO2,2010,44.8308686366424
+Fires,South-East Asia and developing Pacific,CO2,2010,7.52897842768859
+Fires,Southern Asia,CO2,2010,3.35905289894867
+Forest Land,Africa,CO2,2010,-2737.85188890063
+Forest Land,Asia-Pacific Developed,CO2,2010,-547.128625519059
+Forest Land,Eastern Asia,CO2,2010,-1295.98099756441
+Forest Land,Eurasia,CO2,2010,-1643.14777687191
+Forest Land,Europe,CO2,2010,-598.249549280271
+Forest Land,Latin America and Caribbean,CO2,2010,-1241.8506324516
+Forest Land,Middle East,CO2,2010,-8.84287475085653
+Forest Land,North America,CO2,2010,-2172.27997410002
+Forest Land,South-East Asia and developing Pacific,CO2,2010,-175.769196134558
+Forest Land,Southern Asia,CO2,2010,1138.28128593649
+Organic Soil,Asia-Pacific Developed,CO2,2010,3.3929632293243
+Organic Soil,Eurasia,CO2,2010,138.02283172226402
+Organic Soil,Europe,CO2,2010,120.615024853803
+Organic Soil,North America,CO2,2010,44.3807718227162
+Organic Soil,South-East Asia and developing Pacific,CO2,2010,647.5958
+Other,Africa,CO2,2010,37.84576
+Other,Asia-Pacific Developed,CO2,2010,-0.661996610100001
+Other,Eastern Asia,CO2,2010,-136.806704
+Other,Eurasia,CO2,2010,-263.88501439000004
+Other,Europe,CO2,2010,-141.440219917355
+Other,Latin America and Caribbean,CO2,2010,-11.5392552
+Other,Middle East,CO2,2010,-1.007384
+Other,North America,CO2,2010,-248.4176528
+Other,South-East Asia and developing Pacific,CO2,2010,-40.55064
+Other,Southern Asia,CO2,2010,-139.475
+nan,nan,,2010,
+nan,nan,,2010,
+Net,EU27,CO2,2010,-372.42526424390593
+Forest Land,EU27,CO2,2010,-379.0727389891853
+Organic Soil,EU27,CO2,2010,93.86150200358901
+Deforestation,EU27,CO2,2010,32.7065020088068
+Other,EU27,CO2,2010,-122.44436711711657
+Fires,EU27,CO2,2010,2.5238378499999996
+Net,WORLD,CO2,2010,-4459.139619116827
+Forest Land,WORLD,CO2,2010,-9282.8
+Organic Soil,WORLD,CO2,2010,954.0073916281079
+Deforestation,WORLD,CO2,2010,4205.1335952810205
+Other,WORLD,CO2,2010,-945.938
+Fires,WORLD,CO2,2010,610.457393974045
+Net,Africa,CO2,2011,-366.1773419646888
+Net,Asia-Pacific Developed,CO2,2011,795.1768624223187
+Net,Eastern Asia,CO2,2011,-1484.3978461224838
+Net,Eurasia,CO2,2011,-1489.2760101978424
+Net,Europe,CO2,2011,-539.4884795642913
+Net,Latin America and Caribbean,CO2,2011,113.04556380403713
+Net,Middle East,CO2,2011,90.77320944346712
+Net,North America,CO2,2011,-2141.9550300431006
+Net,South-East Asia and developing Pacific,CO2,2011,1227.119466289988
+Net,Southern Asia,CO2,2011,933.4341969953088
+nan,nan,,2011,
+Deforestation,Africa,CO2,2011,1982.6247319600002
+Deforestation,Asia-Pacific Developed,CO2,2011,60.5924342079026
+Deforestation,Eastern Asia,CO2,2011,2.303
+Deforestation,Eurasia,CO2,2011,12.6656987416227
+Deforestation,Europe,CO2,2011,44.8272369231928
+Deforestation,Latin America and Caribbean,CO2,2011,1225.977510522
+Deforestation,Middle East,CO2,2011,99.6917299999999
+Deforestation,North America,CO2,2011,132.42368691272398
+Deforestation,South-East Asia and developing Pacific,CO2,2011,583.6999955999989
+Deforestation,Southern Asia,CO2,2011,28.9630579999999
+Fires,Africa,CO2,2011,316.089302836341
+Fires,Asia-Pacific Developed,CO2,2011,1257.9601797666899
+Fires,Eastern Asia,CO2,2011,9.83486086886596
+Fires,Eurasia,CO2,2011,175.44940208805
+Fires,Europe,CO2,2011,6.55573401161194
+Fires,Latin America and Caribbean,CO2,2011,20.6660329920272
+Fires,Middle East,CO2,2011,1.06338084863281
+Fires,North America,CO2,2011,58.6122165694885
+Fires,South-East Asia and developing Pacific,CO2,2011,2.24014154298401
+Fires,Southern Asia,CO2,2011,1.40483057363891
+Forest Land,Africa,CO2,2011,-2700.68549676103
+Forest Land,Asia-Pacific Developed,CO2,2011,-538.268798183954
+Forest Land,Eastern Asia,CO2,2011,-1299.56214699135
+Forest Land,Eurasia,CO2,2011,-1575.33989913445
+Forest Land,Europe,CO2,2011,-584.837508459672
+Forest Land,Latin America and Caribbean,CO2,2011,-1103.84902870999
+Forest Land,Middle East,CO2,2011,-8.81651540516557
+Forest Land,North America,CO2,2011,-2115.64061475181
+Forest Land,South-East Asia and developing Pacific,CO2,2011,-115.160830852994
+Forest Land,Southern Asia,CO2,2011,1135.54230842167
+Organic Soil,Asia-Pacific Developed,CO2,2011,3.58177139068016
+Organic Soil,Eurasia,CO2,2011,137.135837966935
+Organic Soil,Europe,CO2,2011,119.71987571584
+Organic Soil,North America,CO2,2011,44.4714459264971
+Organic Soil,South-East Asia and developing Pacific,CO2,2011,771.3795999999991
+Other,Africa,CO2,2011,35.79412
+Other,Asia-Pacific Developed,CO2,2011,11.311275240999999
+Other,Eastern Asia,CO2,2011,-196.97356
+Other,Eurasia,CO2,2011,-239.18704986
+Other,Europe,CO2,2011,-125.753817755264
+Other,Latin America and Caribbean,CO2,2011,-29.748951
+Other,Middle East,CO2,2011,-1.165386
+Other,North America,CO2,2011,-261.8217647
+Other,South-East Asia and developing Pacific,CO2,2011,-15.0394400000001
+Other,Southern Asia,CO2,2011,-232.476
+nan,nan,,2011,
+nan,nan,,2011,
+Net,EU27,CO2,2011,-364.2657202441418
+Forest Land,EU27,CO2,2011,-370.16797874062644
+Organic Soil,EU27,CO2,2011,93.05390317899639
+Deforestation,EU27,CO2,2011,29.8269136161416
+Other,EU27,CO2,2011,-120.8213390586534
+Fires,EU27,CO2,2011,3.84278076
+Net,WORLD,CO2,2011,-2861.7263040342805
+Forest Land,WORLD,CO2,2011,-8906.6
+Organic Soil,WORLD,CO2,2011,1076.28853099995
+Deforestation,WORLD,CO2,2011,4173.76908286744
+Other,WORLD,CO2,2011,-1055.06
+Fires,WORLD,CO2,2011,1849.87608209833
+Net,Africa,CO2,2012,-413.79133661528385
+Net,Asia-Pacific Developed,CO2,2012,682.3055989911861
+Net,Eastern Asia,CO2,2012,-1491.710936196768
+Net,Eurasia,CO2,2012,-1378.0239209643705
+Net,Europe,CO2,2012,-555.1191112005596
+Net,Latin America and Caribbean,CO2,2012,204.60669353340202
+Net,Middle East,CO2,2012,90.46741597648808
+Net,North America,CO2,2012,-2151.089446063164
+Net,South-East Asia and developing Pacific,CO2,2012,1225.8162613857558
+Net,Southern Asia,CO2,2012,932.9987360990452
+nan,nan,,2012,
+Deforestation,Africa,CO2,2012,1982.6247319600002
+Deforestation,Asia-Pacific Developed,CO2,2012,56.0967585804995
+Deforestation,Eastern Asia,CO2,2012,2.303
+Deforestation,Eurasia,CO2,2012,11.7820222937964
+Deforestation,Europe,CO2,2012,44.3219621190245
+Deforestation,Latin America and Caribbean,CO2,2012,1225.977510522
+Deforestation,Middle East,CO2,2012,99.6917299999999
+Deforestation,North America,CO2,2012,132.65750345939202
+Deforestation,South-East Asia and developing Pacific,CO2,2012,583.6999955999989
+Deforestation,Southern Asia,CO2,2012,28.9630579999999
+Fires,Africa,CO2,2012,225.657265003616
+Fires,Asia-Pacific Developed,CO2,2012,1161.20984638815
+Fires,Eastern Asia,CO2,2012,6.11773108428192
+Fires,Eurasia,CO2,2012,280.21242306166
+Fires,Europe,CO2,2012,12.046149588356
+Fires,Latin America and Caribbean,CO2,2012,12.4855830270919
+Fires,Middle East,CO2,2012,0.388804699859619
+Fires,North America,CO2,2012,78.8858297012329
+Fires,South-East Asia and developing Pacific,CO2,2012,5.13893746929168
+Fires,Southern Asia,CO2,2012,5.8790009817352304
+Forest Land,Africa,CO2,2012,-2657.8674535789
+Forest Land,Asia-Pacific Developed,CO2,2012,-542.091954229791
+Forest Land,Eastern Asia,CO2,2012,-1303.15810728105
+Forest Land,Eurasia,CO2,2012,-1554.07850036881
+Forest Land,Europe,CO2,2012,-592.5355459738231
+Forest Land,Latin America and Caribbean,CO2,2012,-1004.10744901569
+Forest Land,Middle East,CO2,2012,-8.447732723371429
+Forest Land,North America,CO2,2012,-2128.88786977659
+Forest Land,South-East Asia and developing Pacific,CO2,2012,-119.362831683534
+Forest Land,Southern Asia,CO2,2012,1130.63267711731
+Organic Soil,Asia-Pacific Developed,CO2,2012,3.27699690532762
+Organic Soil,Eurasia,CO2,2012,137.13616158898301
+Organic Soil,Europe,CO2,2012,119.01679611403999
+Organic Soil,North America,CO2,2012,44.5554673528011
+Organic Soil,South-East Asia and developing Pacific,CO2,2012,771.3795999999991
+Other,Africa,CO2,2012,35.79412
+Other,Asia-Pacific Developed,CO2,2012,3.813951347
+Other,Eastern Asia,CO2,2012,-196.97356
+Other,Eurasia,CO2,2012,-253.07602754
+Other,Europe,CO2,2012,-137.968473048157
+Other,Latin America and Caribbean,CO2,2012,-29.748951
+Other,Middle East,CO2,2012,-1.165386
+Other,North America,CO2,2012,-278.30037680000004
+Other,South-East Asia and developing Pacific,CO2,2012,-15.0394400000001
+Other,Southern Asia,CO2,2012,-232.476
+nan,nan,,2012,
+nan,nan,,2012,
+Net,EU27,CO2,2012,-373.7691060691787
+Forest Land,EU27,CO2,2012,-377.9211750243353
+Organic Soil,EU27,CO2,2012,92.46159468305511
+Deforestation,EU27,CO2,2012,29.506121129371202
+Other,EU27,CO2,2012,-124.50876140826978
+Fires,EU27,CO2,2012,6.693114551
+Net,WORLD,CO2,2012,-2853.5351344988794
+Forest Land,WORLD,CO2,2012,-8779.9
+Organic Soil,WORLD,CO2,2012,1075.36502196115
+Deforestation,WORLD,CO2,2012,4168.118272534701
+Other,WORLD,CO2,2012,-1105.14
+Fires,WORLD,CO2,2012,1788.02157100527
+Net,Africa,CO2,2013,-461.28313316604726
+Net,Asia-Pacific Developed,CO2,2013,-224.0208267178355
+Net,Eastern Asia,CO2,2013,-1481.6816749317486
+Net,Eurasia,CO2,2013,-1489.5376058517686
+Net,Europe,CO2,2013,-532.0674637374975
+Net,Latin America and Caribbean,CO2,2013,176.4372184415968
+Net,Middle East,CO2,2013,90.85007835193264
+Net,North America,CO2,2013,-2056.159501570084
+Net,South-East Asia and developing Pacific,CO2,2013,1316.3197654147493
+Net,Southern Asia,CO2,2013,923.7570855869945
+nan,nan,,2013,
+Deforestation,Africa,CO2,2013,1982.6247319600002
+Deforestation,Asia-Pacific Developed,CO2,2013,62.357853290076896
+Deforestation,Eastern Asia,CO2,2013,2.303
+Deforestation,Eurasia,CO2,2013,10.063027978996299
+Deforestation,Europe,CO2,2013,39.537652346380796
+Deforestation,Latin America and Caribbean,CO2,2013,1225.977510522
+Deforestation,Middle East,CO2,2013,99.6917299999999
+Deforestation,North America,CO2,2013,133.04287695894303
+Deforestation,South-East Asia and developing Pacific,CO2,2013,583.6999955999989
+Deforestation,Southern Asia,CO2,2013,28.9630579999999
+Fires,Africa,CO2,2013,134.663217418762
+Fires,Asia-Pacific Developed,CO2,2013,256.62022600434796
+Fires,Eastern Asia,CO2,2013,7.38062587361145
+Fires,Eurasia,CO2,2013,129.916590269813
+Fires,Europe,CO2,2013,4.5851497848587
+Fires,Latin America and Caribbean,CO2,2013,10.7003297946166
+Fires,Middle East,CO2,2013,0.604089258422851
+Fires,North America,CO2,2013,115.78767894976801
+Fires,South-East Asia and developing Pacific,CO2,2013,7.7383483620758
+Fires,Southern Asia,CO2,2013,1.6552962443847599
+Forest Land,Africa,CO2,2013,-2614.3652025448096
+Forest Land,Asia-Pacific Developed,CO2,2013,-534.9321649353869
+Forest Land,Eastern Asia,CO2,2013,-1294.39174080536
+Forest Land,Eurasia,CO2,2013,-1548.70829247856
+Forest Land,Europe,CO2,2013,-589.293366249492
+Forest Land,Latin America and Caribbean,CO2,2013,-1030.49167087502
+Forest Land,Middle East,CO2,2013,-8.2803549064901
+Forest Land,North America,CO2,2013,-2099.21549280001
+Forest Land,South-East Asia and developing Pacific,CO2,2013,-31.4587385473246
+Forest Land,Southern Asia,CO2,2013,1125.61473134261
+Organic Soil,Asia-Pacific Developed,CO2,2013,3.1250444651266
+Organic Soil,Eurasia,CO2,2013,136.730236922982
+Organic Soil,Europe,CO2,2013,117.997383205609
+Organic Soil,North America,CO2,2013,43.7520066212151
+Organic Soil,South-East Asia and developing Pacific,CO2,2013,771.3795999999991
+Other,Africa,CO2,2013,35.79412
+Other,Asia-Pacific Developed,CO2,2013,-11.191785542
+Other,Eastern Asia,CO2,2013,-196.97356
+Other,Eurasia,CO2,2013,-217.539168545
+Other,Europe,CO2,2013,-104.894282824854
+Other,Latin America and Caribbean,CO2,2013,-29.748951
+Other,Middle East,CO2,2013,-1.165386
+Other,North America,CO2,2013,-249.5265713
+Other,South-East Asia and developing Pacific,CO2,2013,-15.0394400000001
+Other,Southern Asia,CO2,2013,-232.476
+nan,nan,,2013,
+nan,nan,,2013,
+Net,EU27,CO2,2013,-362.43001543121306
+Forest Land,EU27,CO2,2013,-375.51058401386933
+Organic Soil,EU27,CO2,2013,91.5651374976818
+Deforestation,EU27,CO2,2013,29.3147502377764
+Other,EU27,CO2,2013,-110.18786834280206
+Fires,EU27,CO2,2013,2.38854919
+Net,WORLD,CO2,2013,-3737.362740168018
+Forest Land,WORLD,CO2,2013,-8625.5
+Organic Soil,WORLD,CO2,2013,1072.98427121493
+Deforestation,WORLD,CO2,2013,4168.26143665639
+Other,WORLD,CO2,2013,-1022.76
+Fires,WORLD,CO2,2013,669.651551960662
+Net,Africa,CO2,2014,-461.6280624048063
+Net,Asia-Pacific Developed,CO2,2014,-9.071099151276432
+Net,Eastern Asia,CO2,2014,-1564.2126144682293
+Net,Eurasia,CO2,2014,-1367.077262832044
+Net,Europe,CO2,2014,-517.0696908868232
+Net,Latin America and Caribbean,CO2,2014,179.85459877041424
+Net,Middle East,CO2,2014,91.56703096951875
+Net,North America,CO2,2014,-2114.716135742662
+Net,South-East Asia and developing Pacific,CO2,2014,1307.8034108050965
+Net,Southern Asia,CO2,2014,921.688398010493
+nan,nan,,2014,
+Deforestation,Africa,CO2,2014,1982.6247319600002
+Deforestation,Asia-Pacific Developed,CO2,2014,62.893286578258795
+Deforestation,Eastern Asia,CO2,2014,2.303
+Deforestation,Eurasia,CO2,2014,9.807888282256009
+Deforestation,Europe,CO2,2014,40.037705086392805
+Deforestation,Latin America and Caribbean,CO2,2014,1225.977510522
+Deforestation,Middle East,CO2,2014,99.6917299999999
+Deforestation,North America,CO2,2014,133.54520552987
+Deforestation,South-East Asia and developing Pacific,CO2,2014,583.6999955999989
+Deforestation,Southern Asia,CO2,2014,28.9630579999999
+Fires,Africa,CO2,2014,88.5230302067032
+Fires,Asia-Pacific Developed,CO2,2014,470.606672188079
+Fires,Eastern Asia,CO2,2014,16.324382874610798
+Fires,Eurasia,CO2,2014,260.622203272735
+Fires,Europe,CO2,2014,7.60824648587799
+Fires,Latin America and Caribbean,CO2,2014,8.41528390723419
+Fires,Middle East,CO2,2014,1.12315809975433
+Fires,North America,CO2,2014,77.3192167744598
+Fires,South-East Asia and developing Pacific,CO2,2014,4.75543053467559
+Fires,Southern Asia,CO2,2014,3.88620473573303
+Forest Land,Africa,CO2,2014,-2568.56994457151
+Forest Land,Asia-Pacific Developed,CO2,2014,-530.1751265890371
+Forest Land,Eastern Asia,CO2,2014,-1385.86643734284
+Forest Land,Eurasia,CO2,2014,-1503.9105343448798
+Forest Land,Europe,CO2,2014,-568.79740233638
+Forest Land,Latin America and Caribbean,CO2,2014,-1024.78924465882
+Forest Land,Middle East,CO2,2014,-8.08247113023547
+Forest Land,North America,CO2,2014,-2091.87159691777
+Forest Land,South-East Asia and developing Pacific,CO2,2014,-36.992175329577
+Forest Land,Southern Asia,CO2,2014,1121.31513527476
+Organic Soil,Asia-Pacific Developed,CO2,2014,3.25800008742279
+Organic Soil,Eurasia,CO2,2014,137.085154412845
+Organic Soil,Europe,CO2,2014,117.60544229286
+Organic Soil,North America,CO2,2014,43.3694368707781
+Organic Soil,South-East Asia and developing Pacific,CO2,2014,771.3795999999991
+Other,Africa,CO2,2014,35.79412
+Other,Asia-Pacific Developed,CO2,2014,-15.653931415999999
+Other,Eastern Asia,CO2,2014,-196.97356
+Other,Eurasia,CO2,2014,-270.68197445500005
+Other,Europe,CO2,2014,-113.523682415574
+Other,Latin America and Caribbean,CO2,2014,-29.748951
+Other,Middle East,CO2,2014,-1.165386
+Other,North America,CO2,2014,-277.078398
+Other,South-East Asia and developing Pacific,CO2,2014,-15.0394400000001
+Other,Southern Asia,CO2,2014,-232.476
+nan,nan,,2014,
+nan,nan,,2014,
+Net,EU27,CO2,2014,-360.50796193305155
+Forest Land,EU27,CO2,2014,-361.10841200292464
+Organic Soil,EU27,CO2,2014,91.23962249871501
+Deforestation,EU27,CO2,2014,28.9832839261991
+Other,EU27,CO2,2014,-121.85236562704117
+Fires,EU27,CO2,2014,2.2299092720000004
+Net,WORLD,CO2,2014,-3532.8244256974667
+Forest Land,WORLD,CO2,2014,-8597.7
+Organic Soil,WORLD,CO2,2014,1072.6976336639
+Deforestation,WORLD,CO2,2014,4169.54411155877
+Other,WORLD,CO2,2014,-1116.55
+Fires,WORLD,CO2,2014,939.1838290798639
+Net,Africa,CO2,2015,-405.29716798422805
+Net,Asia-Pacific Developed,CO2,2015,-37.51101283791891
+Net,Eastern Asia,CO2,2015,-1608.6687368696796
+Net,Eurasia,CO2,2015,-1442.3522641750355
+Net,Europe,CO2,2015,-520.0372782024688
+Net,Latin America and Caribbean,CO2,2015,115.40221793734807
+Net,Middle East,CO2,2015,90.71880502535178
+Net,North America,CO2,2015,-1985.7240723219263
+Net,South-East Asia and developing Pacific,CO2,2015,1135.9578894915376
+Net,Southern Asia,CO2,2015,904.7740847491522
+nan,nan,,2015,
+Deforestation,Africa,CO2,2015,1982.6247319600002
+Deforestation,Asia-Pacific Developed,CO2,2015,52.7118075232382
+Deforestation,Eastern Asia,CO2,2015,2.303
+Deforestation,Eurasia,CO2,2015,18.941109641941402
+Deforestation,Europe,CO2,2015,46.277583050420496
+Deforestation,Latin America and Caribbean,CO2,2015,1225.977510522
+Deforestation,Middle East,CO2,2015,99.6917299999999
+Deforestation,North America,CO2,2015,133.847715073174
+Deforestation,South-East Asia and developing Pacific,CO2,2015,583.6999955999989
+Deforestation,Southern Asia,CO2,2015,28.9630579999999
+Fires,Africa,CO2,2015,92.3307356127014
+Fires,Asia-Pacific Developed,CO2,2015,457.236272635047
+Fires,Eastern Asia,CO2,2015,8.26550741909027
+Fires,Eurasia,CO2,2015,97.856640161972
+Fires,Europe,CO2,2015,10.7964284499587
+Fires,Latin America and Caribbean,CO2,2015,17.201048549697802
+Fires,Middle East,CO2,2015,0.770506495666504
+Fires,North America,CO2,2015,130.42809046907
+Fires,South-East Asia and developing Pacific,CO2,2015,7.265270604316711
+Fires,Southern Asia,CO2,2015,1.9926043851623503
+Forest Land,Africa,CO2,2015,-2516.04675555693
+Forest Land,Asia-Pacific Developed,CO2,2015,-525.626798864833
+Forest Land,Eastern Asia,CO2,2015,-1422.26368428877
+Forest Land,Eurasia,CO2,2015,-1492.3211742660899
+Forest Land,Europe,CO2,2015,-562.46196475763
+Forest Land,Latin America and Caribbean,CO2,2015,-1098.0273901343498
+Forest Land,Middle East,CO2,2015,-8.57804547031462
+Forest Land,North America,CO2,2015,-2087.20401238987
+Forest Land,South-East Asia and developing Pacific,CO2,2015,-211.34753671277699
+Forest Land,Southern Asia,CO2,2015,1106.29442236399
+Organic Soil,Asia-Pacific Developed,CO2,2015,3.06961539052887
+Organic Soil,Eurasia,CO2,2015,133.52998482214102
+Organic Soil,Europe,CO2,2015,117.06238493219499
+Organic Soil,North America,CO2,2015,46.0016012256998
+Organic Soil,South-East Asia and developing Pacific,CO2,2015,771.3795999999991
+Other,Africa,CO2,2015,35.79412
+Other,Asia-Pacific Developed,CO2,2015,-24.901909521900002
+Other,Eastern Asia,CO2,2015,-196.97356
+Other,Eurasia,CO2,2015,-200.358824535
+Other,Europe,CO2,2015,-131.711709877413
+Other,Latin America and Caribbean,CO2,2015,-29.748951
+Other,Middle East,CO2,2015,-1.165386
+Other,North America,CO2,2015,-208.7974667
+Other,South-East Asia and developing Pacific,CO2,2015,-15.0394400000001
+Other,Southern Asia,CO2,2015,-232.476
+nan,nan,,2015,
+nan,nan,,2015,
+Net,EU27,CO2,2015,-359.6040960868489
+Forest Land,EU27,CO2,2015,-354.0306737433326
+Organic Soil,EU27,CO2,2015,90.7781562356824
+Deforestation,EU27,CO2,2015,30.6200543039443
+Other,EU27,CO2,2015,-128.81476799314314
+Fires,EU27,CO2,2015,1.84313511
+Net,WORLD,CO2,2015,-3752.655467475987
+Forest Land,WORLD,CO2,2015,-8817.5
+Organic Soil,WORLD,CO2,2015,1071.04318637056
+Deforestation,WORLD,CO2,2015,4175.03824137077
+Other,WORLD,CO2,2015,-1005.38
+Fires,WORLD,CO2,2015,824.143104782683
+Net,Africa,CO2,2016,-629.7305043323431
+Net,Asia-Pacific Developed,CO2,2016,-339.2380061557424
+Net,Eastern Asia,CO2,2016,-1517.978866580683
+Net,Eurasia,CO2,2016,-1346.6001060930332
+Net,Europe,CO2,2016,-522.2463836282113
+Net,Latin America and Caribbean,CO2,2016,213.60494398184053
+Net,Middle East,CO2,2016,90.95544213607207
+Net,North America,CO2,2016,-2232.5404994564196
+Net,South-East Asia and developing Pacific,CO2,2016,1090.6485204856094
+Net,Southern Asia,CO2,2016,905.266002207624
+nan,nan,,2016,
+Deforestation,Africa,CO2,2016,1760.9116456
+Deforestation,Asia-Pacific Developed,CO2,2016,51.972256507514494
+Deforestation,Eastern Asia,CO2,2016,2.303
+Deforestation,Eurasia,CO2,2016,6.23880139563776
+Deforestation,Europe,CO2,2016,45.695870891182004
+Deforestation,Latin America and Caribbean,CO2,2016,1263.5315048460002
+Deforestation,Middle East,CO2,2016,99.6917299999999
+Deforestation,North America,CO2,2016,134.027895957939
+Deforestation,South-East Asia and developing Pacific,CO2,2016,647.0226101999999
+Deforestation,Southern Asia,CO2,2016,28.968315999999902
+Fires,Africa,CO2,2016,105.096012212127
+Fires,Asia-Pacific Developed,CO2,2016,170.710558783828
+Fires,Eastern Asia,CO2,2016,7.79944551088714
+Fires,Eurasia,CO2,2016,203.127156045806
+Fires,Europe,CO2,2016,5.1207707549057
+Fires,Latin America and Caribbean,CO2,2016,18.7674701201705
+Fires,Middle East,CO2,2016,1.25996457292938
+Fires,North America,CO2,2016,59.3695159805374
+Fires,South-East Asia and developing Pacific,CO2,2016,4.55210330857849
+Fires,Southern Asia,CO2,2016,4.173042593994141
+Forest Land,Africa,CO2,2016,-2531.53228214447
+Forest Land,Asia-Pacific Developed,CO2,2016,-519.764809045217
+Forest Land,Eastern Asia,CO2,2016,-1331.10775209157
+Forest Land,Eurasia,CO2,2016,-1468.8177680828
+Forest Land,Europe,CO2,2016,-547.989121069803
+Forest Land,Latin America and Caribbean,CO2,2016,-1038.94507998433
+Forest Land,Middle East,CO2,2016,-8.830866436857201
+Forest Land,North America,CO2,2016,-2155.99326189477
+Forest Land,South-East Asia and developing Pacific,CO2,2016,-162.990353022969
+Forest Land,Southern Asia,CO2,2016,1104.60064361363
+Organic Soil,Asia-Pacific Developed,CO2,2016,3.0609359376321197
+Organic Soil,Eurasia,CO2,2016,132.796845206323
+Organic Soil,Europe,CO2,2016,116.743803187912
+Organic Soil,North America,CO2,2016,46.500194399874
+Organic Soil,South-East Asia and developing Pacific,CO2,2016,617.1036
+Other,Africa,CO2,2016,35.79412
+Other,Asia-Pacific Developed,CO2,2016,-45.2169483395
+Other,Eastern Asia,CO2,2016,-196.97356
+Other,Eurasia,CO2,2016,-219.94514065799999
+Other,Europe,CO2,2016,-141.81770739240798
+Other,Latin America and Caribbean,CO2,2016,-29.748951
+Other,Middle East,CO2,2016,-1.165386
+Other,North America,CO2,2016,-316.44484389999997
+Other,South-East Asia and developing Pacific,CO2,2016,-15.0394400000001
+Other,Southern Asia,CO2,2016,-232.476
+nan,nan,,2016,
+nan,nan,,2016,
+Net,EU27,CO2,2016,-359.25137758843846
+Forest Land,EU27,CO2,2016,-344.83103005040425
+Organic Soil,EU27,CO2,2016,90.5224471290351
+Deforestation,EU27,CO2,2016,33.0840612022228
+Other,EU27,CO2,2016,-142.2957443102921
+Fires,EU27,CO2,2016,4.2688884410000005
+Net,WORLD,CO2,2016,-4287.784949986222
+Forest Land,WORLD,CO2,2016,-8661.3
+Organic Soil,WORLD,CO2,2016,916.205378731741
+Deforestation,WORLD,CO2,2016,4040.3636313982697
+Other,WORLD,CO2,2016,-1163.03
+Fires,WORLD,CO2,2016,579.976039883766
+Net,Africa,CO2,2017,-553.8370843925798
+Net,Asia-Pacific Developed,CO2,2017,164.9776218203104
+Net,Eastern Asia,CO2,2017,-1528.7238391179744
+Net,Eurasia,CO2,2017,-1453.8927203812018
+Net,Europe,CO2,2017,-510.08566415476815
+Net,Latin America and Caribbean,CO2,2017,272.34366798061745
+Net,Middle East,CO2,2017,90.80675592960269
+Net,North America,CO2,2017,-2194.861338027308
+Net,South-East Asia and developing Pacific,CO2,2017,1070.5663117841887
+Net,Southern Asia,CO2,2017,894.6705381939163
+nan,nan,,2017,
+Deforestation,Africa,CO2,2017,1760.9116456
+Deforestation,Asia-Pacific Developed,CO2,2017,49.112327508037495
+Deforestation,Eastern Asia,CO2,2017,2.303
+Deforestation,Eurasia,CO2,2017,6.514554238804149
+Deforestation,Europe,CO2,2017,41.3476108703502
+Deforestation,Latin America and Caribbean,CO2,2017,1263.5315048460002
+Deforestation,Middle East,CO2,2017,99.6917299999999
+Deforestation,North America,CO2,2017,134.24384329187
+Deforestation,South-East Asia and developing Pacific,CO2,2017,647.0226101999999
+Deforestation,Southern Asia,CO2,2017,28.968315999999902
+Fires,Africa,CO2,2017,141.46731769915
+Fires,Asia-Pacific Developed,CO2,2017,671.312478433578
+Fires,Eastern Asia,CO2,2017,6.04565739390564
+Fires,Eurasia,CO2,2017,109.49685849020301
+Fires,Europe,CO2,2017,20.9309296493377
+Fires,Latin America and Caribbean,CO2,2017,45.492027885597196
+Fires,Middle East,CO2,2017,0.950485501647949
+Fires,North America,CO2,2017,92.586956993103
+Fires,South-East Asia and developing Pacific,CO2,2017,1.17327993863678
+Fires,Southern Asia,CO2,2017,1.66605739837646
+Forest Land,Africa,CO2,2017,-2492.0101676917297
+Forest Land,Asia-Pacific Developed,CO2,2017,-497.032531555478
+Forest Land,Eastern Asia,CO2,2017,-1340.09893651188
+Forest Land,Eurasia,CO2,2017,-1469.57441365968
+Forest Land,Europe,CO2,2017,-546.26894046125
+Forest Land,Latin America and Caribbean,CO2,2017,-1006.93091375098
+Forest Land,Middle East,CO2,2017,-8.670073572045151
+Forest Land,North America,CO2,2017,-2152.79092175784
+Forest Land,South-East Asia and developing Pacific,CO2,2017,-179.693738354448
+Forest Land,Southern Asia,CO2,2017,1096.51216479554
+Organic Soil,Asia-Pacific Developed,CO2,2017,3.30619923517283
+Organic Soil,Eurasia,CO2,2017,132.70329940147099
+Organic Soil,Europe,CO2,2017,116.71690814924999
+Organic Soil,North America,CO2,2017,47.2908105455587
+Organic Soil,South-East Asia and developing Pacific,CO2,2017,617.1036
+Other,Africa,CO2,2017,35.79412
+Other,Asia-Pacific Developed,CO2,2017,-61.720851800999995
+Other,Eastern Asia,CO2,2017,-196.97356
+Other,Eurasia,CO2,2017,-233.033018852
+Other,Europe,CO2,2017,-142.812172362456
+Other,Latin America and Caribbean,CO2,2017,-29.748951
+Other,Middle East,CO2,2017,-1.165386
+Other,North America,CO2,2017,-316.1920271
+Other,South-East Asia and developing Pacific,CO2,2017,-15.0394400000001
+Other,Southern Asia,CO2,2017,-232.476
+nan,nan,,2017,
+nan,nan,,2017,
+Net,EU27,CO2,2017,-341.2802850316137
+Forest Land,EU27,CO2,2017,-342.3610623158303
+Organic Soil,EU27,CO2,2017,90.5463563507901
+Deforestation,EU27,CO2,2017,28.453806921423503
+Other,EU27,CO2,2017,-136.87656131199714
+Fires,EU27,CO2,2017,18.957175324
+Net,WORLD,CO2,2017,-3748.079990729957
+Forest Land,WORLD,CO2,2017,-8596.6
+Organic Soil,WORLD,CO2,2017,917.120817331453
+Deforestation,WORLD,CO2,2017,4033.6471425550603
+Other,WORLD,CO2,2017,-1193.37
+Fires,WORLD,CO2,2017,1091.12204938353
+Net,Africa,CO2,2018,-563.6517253276895
+Net,Asia-Pacific Developed,CO2,2018,67.24490526716826
+Net,Eastern Asia,CO2,2018,-1492.1987259511402
+Net,Eurasia,CO2,2018,-1183.7263912604574
+Net,Europe,CO2,2018,-469.4588828252134
+Net,Latin America and Caribbean,CO2,2018,329.08203849627995
+Net,Middle East,CO2,2018,90.44591732141193
+Net,North America,CO2,2018,-2099.312974705761
+Net,South-East Asia and developing Pacific,CO2,2018,1079.5024031099604
+Net,Southern Asia,CO2,2018,889.9972560325588
+nan,nan,,2018,
+Deforestation,Africa,CO2,2018,1760.9116456
+Deforestation,Asia-Pacific Developed,CO2,2018,52.5984675156262
+Deforestation,Eastern Asia,CO2,2018,2.303
+Deforestation,Eurasia,CO2,2018,6.36721971249655
+Deforestation,Europe,CO2,2018,40.7906825269879
+Deforestation,Latin America and Caribbean,CO2,2018,1263.5315048460002
+Deforestation,Middle East,CO2,2018,99.6917299999999
+Deforestation,North America,CO2,2018,134.280988795305
+Deforestation,South-East Asia and developing Pacific,CO2,2018,647.0226101999999
+Deforestation,Southern Asia,CO2,2018,28.968315999999902
+Fires,Africa,CO2,2018,88.3869726453705
+Fires,Asia-Pacific Developed,CO2,2018,571.458767322494
+Fires,Eastern Asia,CO2,2018,10.1598788226699
+Fires,Eurasia,CO2,2018,254.17405882489703
+Fires,Europe,CO2,2018,4.77424076964569
+Fires,Latin America and Caribbean,CO2,2018,16.0595961683578
+Fires,Middle East,CO2,2018,0.471160862190246
+Fires,North America,CO2,2018,105.42846440155
+Fires,South-East Asia and developing Pacific,CO2,2018,1.69158618051147
+Fires,Southern Asia,CO2,2018,3.09694199256897
+Forest Land,Africa,CO2,2018,-2448.74446357306
+Forest Land,Asia-Pacific Developed,CO2,2018,-493.158919461127
+Forest Land,Eastern Asia,CO2,2018,-1307.6880447738101
+Forest Land,Eurasia,CO2,2018,-1345.5126387466098
+Forest Land,Europe,CO2,2018,-487.700772116713
+Forest Land,Latin America and Caribbean,CO2,2018,-920.760111518078
+Forest Land,Middle East,CO2,2018,-8.55158754077821
+Forest Land,North America,CO2,2018,-2099.0140662683298
+Forest Land,South-East Asia and developing Pacific,CO2,2018,-171.27595327055099
+Forest Land,Southern Asia,CO2,2018,1090.40799803999
+Organic Soil,Asia-Pacific Developed,CO2,2018,3.204532383175
+Organic Soil,Eurasia,CO2,2018,133.441266058759
+Organic Soil,Europe,CO2,2018,116.180688264046
+Organic Soil,North America,CO2,2018,45.1196113657139
+Organic Soil,South-East Asia and developing Pacific,CO2,2018,617.1036
+Other,Africa,CO2,2018,35.79412
+Other,Asia-Pacific Developed,CO2,2018,-66.857942493
+Other,Eastern Asia,CO2,2018,-196.97356
+Other,Eurasia,CO2,2018,-232.19629711000002
+Other,Europe,CO2,2018,-143.50372226918
+Other,Latin America and Caribbean,CO2,2018,-29.748951
+Other,Middle East,CO2,2018,-1.165386
+Other,North America,CO2,2018,-285.127973
+Other,South-East Asia and developing Pacific,CO2,2018,-15.0394400000001
+Other,Southern Asia,CO2,2018,-232.476
+nan,nan,,2018,
+nan,nan,,2018,
+Net,EU27,CO2,2018,-321.7850561119456
+Forest Land,EU27,CO2,2018,-294.0848972100606
+Organic Soil,EU27,CO2,2018,90.0887556255371
+Deforestation,EU27,CO2,2018,28.4684781434722
+Other,EU27,CO2,2018,-147.90491406189432
+Fires,EU27,CO2,2018,1.647521391
+Net,WORLD,CO2,2018,-3352.0824687416443
+Forest Land,WORLD,CO2,2018,-8192.0
+Organic Soil,WORLD,CO2,2018,915.049698071695
+Deforestation,WORLD,CO2,2018,4036.46616519641
+Other,WORLD,CO2,2018,-1167.3
+Fires,WORLD,CO2,2018,1055.70166799025
+Net,Africa,CO2,2019,-605.6585926816813
+Net,Asia-Pacific Developed,CO2,2019,-8.158111925665814
+Net,Eastern Asia,CO2,2019,-1502.393279726596
+Net,Eurasia,CO2,2019,-1282.173681328288
+Net,Europe,CO2,2019,-428.37419959666954
+Net,Latin America and Caribbean,CO2,2019,226.71607556688903
+Net,Middle East,CO2,2019,111.22944503555733
+Net,North America,CO2,2019,-2064.370556099208
+Net,South-East Asia and developing Pacific,CO2,2019,1156.2590984324752
+Net,Southern Asia,CO2,2019,884.0272597062941
+nan,nan,,2019,
+Deforestation,Africa,CO2,2019,1760.9116456
+Deforestation,Asia-Pacific Developed,CO2,2019,40.125938354504804
+Deforestation,Eastern Asia,CO2,2019,2.303
+Deforestation,Eurasia,CO2,2019,13.887139489868101
+Deforestation,Europe,CO2,2019,41.4007407976519
+Deforestation,Latin America and Caribbean,CO2,2019,1263.5315048460002
+Deforestation,Middle East,CO2,2019,99.6917299999999
+Deforestation,North America,CO2,2019,134.287373221374
+Deforestation,South-East Asia and developing Pacific,CO2,2019,647.0226101999999
+Deforestation,Southern Asia,CO2,2019,28.968315999999902
+Fires,Africa,CO2,2019,77.7049210342788
+Fires,Asia-Pacific Developed,CO2,2019,510.045169532653
+Fires,Eastern Asia,CO2,2019,9.46788698048401
+Fires,Eurasia,CO2,2019,196.558255388725
+Fires,Europe,CO2,2019,9.53159902574157
+Fires,Latin America and Caribbean,CO2,2019,17.2748892042388
+Fires,Middle East,CO2,2019,21.1143688607635
+Fires,North America,CO2,2019,61.066846921524
+Fires,South-East Asia and developing Pacific,CO2,2019,4.89733842925262
+Fires,Southern Asia,CO2,2019,3.92039977148437
+Forest Land,Africa,CO2,2019,-2480.06927931596
+Forest Land,Asia-Pacific Developed,CO2,2019,-491.23480788835803
+Forest Land,Eastern Asia,CO2,2019,-1317.19060670708
+Forest Land,Eurasia,CO2,2019,-1410.69891643468
+Forest Land,Europe,CO2,2019,-459.02424611465597
+Forest Land,Latin America and Caribbean,CO2,2019,-1024.34136748335
+Forest Land,Middle East,CO2,2019,-8.41126782520606
+Forest Land,North America,CO2,2019,-2057.19902016137
+Forest Land,South-East Asia and developing Pacific,CO2,2019,-97.72501019677729
+Forest Land,Southern Asia,CO2,2019,1083.61454393481
+Organic Soil,Asia-Pacific Developed,CO2,2019,3.04253696753437
+Organic Soil,Eurasia,CO2,2019,133.398488952799
+Organic Soil,Europe,CO2,2019,115.91166071513399
+Organic Soil,North America,CO2,2019,44.199425319263995
+Organic Soil,South-East Asia and developing Pacific,CO2,2019,617.1036
+Other,Africa,CO2,2019,35.79412
+Other,Asia-Pacific Developed,CO2,2019,-70.136948892
+Other,Eastern Asia,CO2,2019,-196.97356
+Other,Eurasia,CO2,2019,-215.318648725
+Other,Europe,CO2,2019,-136.19395402054099
+Other,Latin America and Caribbean,CO2,2019,-29.748951
+Other,Middle East,CO2,2019,-1.165386
+Other,North America,CO2,2019,-246.7251814
+Other,South-East Asia and developing Pacific,CO2,2019,-15.0394400000001
+Other,Southern Asia,CO2,2019,-232.476
+nan,nan,,2019,
+nan,nan,,2019,
+Net,EU27,CO2,2019,-279.53253584821266
+Forest Land,EU27,CO2,2019,-260.3296147869698
+Organic Soil,EU27,CO2,2019,89.8849100382578
+Deforestation,EU27,CO2,2019,28.825662565229102
+Other,EU27,CO2,2019,-141.5917874867298
+Fires,EU27,CO2,2019,3.6782938219999997
+Net,WORLD,CO2,2019,-3512.91261438673
+Forest Land,WORLD,CO2,2019,-8262.3
+Organic Soil,WORLD,CO2,2019,913.655711954732
+Deforestation,WORLD,CO2,2019,4032.12999850939
+Other,WORLD,CO2,2019,-1107.98
+Fires,WORLD,CO2,2019,911.581675149146
+Net,Africa,CO2,2020,-483.38728633111214
+Net,Asia-Pacific Developed,CO2,2020,-283.3123827420717
+Net,Eastern Asia,CO2,2020,-1508.1301841684149
+Net,Eurasia,CO2,2020,-1332.46608633908
+Net,Europe,CO2,2020,-478.1719704287007
+Net,Latin America and Caribbean,CO2,2020,222.48214266433754
+Net,Middle East,CO2,2020,94.08907261250721
+Net,North America,CO2,2020,-2180.257140655769
+Net,South-East Asia and developing Pacific,CO2,2020,1140.7615525375716
+Net,Southern Asia,CO2,2020,873.816343639652
+nan,nan,,2020,
+Deforestation,Africa,CO2,2020,1760.9116456
+Deforestation,Asia-Pacific Developed,CO2,2020,42.188621447746
+Deforestation,Eastern Asia,CO2,2020,2.303
+Deforestation,Eurasia,CO2,2020,3.5345303204820797
+Deforestation,Europe,CO2,2020,39.9142067873318
+Deforestation,Latin America and Caribbean,CO2,2020,1263.5315048460002
+Deforestation,Middle East,CO2,2020,99.6917299999999
+Deforestation,North America,CO2,2020,134.33138357129502
+Deforestation,South-East Asia and developing Pacific,CO2,2020,647.0226101999999
+Deforestation,Southern Asia,CO2,2020,28.968315999999902
+Fires,Africa,CO2,2020,147.93750963195802
+Fires,Asia-Pacific Developed,CO2,2020,219.087948651733
+Fires,Eastern Asia,CO2,2020,8.29705076887512
+Fires,Eurasia,CO2,2020,152.339172772499
+Fires,Europe,CO2,2020,11.583289005073501
+Fires,Latin America and Caribbean,CO2,2020,25.2614739932174
+Fires,Middle East,CO2,2020,3.89363500572204
+Fires,North America,CO2,2020,89.3501844265823
+Fires,South-East Asia and developing Pacific,CO2,2020,3.18226038054656
+Fires,Southern Asia,CO2,2020,0.908672247032165
+Forest Land,Africa,CO2,2020,-2428.03056156307
+Forest Land,Asia-Pacific Developed,CO2,2020,-489.730025794385
+Forest Land,Eastern Asia,CO2,2020,-1321.75667493729
+Forest Land,Eurasia,CO2,2020,-1412.56715672486
+Forest Land,Europe,CO2,2020,-485.777857437182
+Forest Land,Latin America and Caribbean,CO2,2020,-1036.56188517488
+Forest Land,Middle East,CO2,2020,-8.330906393214729
+Forest Land,North America,CO2,2020,-2139.5369555729103
+Forest Land,South-East Asia and developing Pacific,CO2,2020,-111.507478042975
+Forest Land,Southern Asia,CO2,2020,1076.4153553926199
+Organic Soil,Asia-Pacific Developed,CO2,2020,3.04253696753437
+Organic Soil,Eurasia,CO2,2020,133.398488952799
+Organic Soil,Europe,CO2,2020,115.91166071513399
+Organic Soil,North America,CO2,2020,44.199425319263995
+Organic Soil,South-East Asia and developing Pacific,CO2,2020,617.1036
+Other,Africa,CO2,2020,35.79412
+Other,Asia-Pacific Developed,CO2,2020,-57.901464014700004
+Other,Eastern Asia,CO2,2020,-196.97356
+Other,Eurasia,CO2,2020,-209.17112166
+Other,Europe,CO2,2020,-159.803269499058
+Other,Latin America and Caribbean,CO2,2020,-29.748951
+Other,Middle East,CO2,2020,-1.165386
+Other,North America,CO2,2020,-308.6011784
+Other,South-East Asia and developing Pacific,CO2,2020,-15.0394400000001
+Other,Southern Asia,CO2,2020,-232.476
+nan,nan,,2020,
+nan,nan,,2020,
+Net,EU27,CO2,2020,-304.41028076610144
+Forest Land,EU27,CO2,2020,-283.35533899736373
+Organic Soil,EU27,CO2,2020,89.8849100382578
+Deforestation,EU27,CO2,2020,27.721992127995602
+Other,EU27,CO2,2020,-142.47353218599116
+Fires,EU27,CO2,2020,3.8116882509999996
+Net,WORLD,CO2,2020,-3934.495542389177
+Forest Land,WORLD,CO2,2020,-8357.3
+Organic Soil,WORLD,CO2,2020,913.655711954732
+Deforestation,WORLD,CO2,2020,4022.39754877285
+Other,WORLD,CO2,2020,-1175.09
+Fires,WORLD,CO2,2020,661.84119688324

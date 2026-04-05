@@ -21,7 +21,7 @@ st.set_page_config(
 HERE = Path(__file__).resolve().parent
 COUNTRY_YEAR_FILE = HERE / "co2_country_year_merged.csv"
 SECTOR_FILE = HERE / "co2_sector_country_long.csv"
-CENTROIDS_FILE = HERE / "country_centroids.csv"a
+CENTROIDS_FILE = HERE / "country_centroids.csv"
 
 ACCENT = "#2563EB"
 HIGHLIGHT = "#F59E0B"

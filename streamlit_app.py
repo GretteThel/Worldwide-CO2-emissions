@@ -190,6 +190,32 @@ def choose_selected_textposition(
     return "middle left" if selected_x >= x_med else "middle right"
 
 
+def build_comparison_view(
+    year_df: pd.DataFrame,
+    selected_countries: list[str],
+    active_country_code: Optional[str],
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Return (sidebar-filtered view, comparison view).
+
+    The comparison view keeps the sidebar filter as the base and appends the
+    actively clicked country when that country is outside the sidebar filter.
+    """
+    filtered_dff = year_df.copy()
+    if selected_countries:
+        filtered_dff = filtered_dff[filtered_dff["country"].isin(selected_countries)].copy()
+
+    dff = filtered_dff.copy()
+
+    if active_country_code:
+        active_row = year_df[year_df["country_code"] == active_country_code].copy()
+        if not active_row.empty:
+            if dff.empty or active_country_code not in set(dff["country_code"]):
+                dff = pd.concat([dff, active_row], ignore_index=True)
+                dff = dff.drop_duplicates(subset=["country_code"]).copy()
+
+    return filtered_dff, dff
+
+
 @st.cache_data
 def load_data():
     if not COUNTRY_YEAR_FILE.exists():

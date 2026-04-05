@@ -229,15 +229,14 @@ def bar_title_text(
 
 def sector_title_text(
     selected_year: int,
-    top_n: int,
-    has_country_filter: bool,
-    has_selection: bool,
+    selected_names: list[str],
+    shown_count: int,
 ) -> str:
-    if has_country_filter:
-        return f"Sector contributions in comparison view ({selected_year})"
-    if has_selection:
-        return f"Sector contributions for top {top_n} emitters + selected countries ({selected_year})"
-    return f"Sector contributions for top {top_n} emitters ({selected_year})"
+    if selected_names:
+        if len(selected_names) == 1:
+            return f"Sector contributions for {selected_names[0]} ({selected_year})"
+        return f"Sector contributions for selected countries ({selected_year})"
+    return f"Sector contributions for top {shown_count} emitters ({selected_year})"
 
 
 def unique_preserve_order(values: list[str]) -> list[str]:
@@ -940,22 +939,33 @@ with main_col:
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
-            height=360,
-            margin=dict(l=10, r=14, t=82, b=104),
+            height=350,
+            margin=dict(l=10, r=14, t=96, b=54),
             legend=dict(
                 orientation="h",
-                yanchor="top",
-                y=-0.30,
-                xanchor="center",
-                x=0.5,
-                bgcolor="rgba(255,255,255,0.92)",
-                bordercolor="rgba(226,232,240,0.9)",
+                yanchor="bottom",
+                y=1.03,
+                xanchor="left",
+                x=0,
+                bgcolor="rgba(255,255,255,0.70)",
+                bordercolor="rgba(226,232,240,0.8)",
                 borderwidth=1,
-                tracegroupgap=8,
+                tracegroupgap=6,
             ),
         )
-        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=10)
-        scatter_fig.update_yaxes(tickformat=".0f", title_standoff=10)
+        scatter_fig.add_annotation(
+            text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
+            xref="paper",
+            yref="paper",
+            x=0,
+            y=1.005,
+            xanchor="left",
+            yanchor="bottom",
+            showarrow=False,
+            font=dict(size=11, color="#64748B"),
+        )
+        scatter_fig.update_xaxes(tickformat=".2f")
+        scatter_fig.update_yaxes(tickformat=".0f")
 
     with right:
         scatter_event = st.plotly_chart(
@@ -977,12 +987,8 @@ with main_col:
         selected_country_codes=selected_country_codes,
     )
 
-    has_country_filter = bool(st.session_state["countries"])
     shown_bar_codes = top_df["country_code"].tolist() if not top_df.empty else []
-    if shown_bar_codes:
-        sector_scope_codes = shown_bar_codes
-    else:
-        sector_scope_codes = selected_country_codes
+    sector_scope_codes = selected_country_codes if selected_country_codes else shown_bar_codes
 
     comparison_country_df = (
         dff[dff["country_code"].isin(sector_scope_codes)][["country_code", "country", "total_mt_co2"]]
@@ -992,11 +998,15 @@ with main_col:
     )
     comparison_country_df = comparison_country_df.sort_values("total_mt_co2", ascending=False)
     sector_plot_df = sector_dff[sector_dff["country_code"].isin(sector_scope_codes)].copy()
+
+    sector_selected_names = (
+        comparison_country_df.set_index("country_code").reindex(selected_country_codes)["country"].dropna().tolist()
+        if selected_country_codes else []
+    )
     sector_title = sector_title_text(
         selected_year=selected_year,
-        top_n=st.session_state["top_n"],
-        has_country_filter=has_country_filter,
-        has_selection=bool(selected_country_codes),
+        selected_names=sector_selected_names,
+        shown_count=len(sector_scope_codes),
     )
 
     if comparison_country_df.empty or "sector" not in sector_plot_df.columns or "sector_mt_co2" not in sector_plot_df.columns:
@@ -1062,7 +1072,12 @@ with main_col:
         )
         sector_fig.update_yaxes(tickformat=",d")
 
-    st.caption("The sector chart mirrors the countries currently shown in the top-emitter comparison, so the drill-down stays readable and consistent.")
+    sector_caption = (
+        "The sector chart now switches into focus mode when you select countries, so it shows sector breakdowns only for the selected countries. When nothing is selected, it defaults to the countries shown in the top-emitter comparison."
+        if selected_country_codes else
+        "The sector chart defaults to the countries shown in the top-emitter comparison. Select one or more countries from the map, bar, or scatter to switch the sector chart into focus mode."
+    )
+    st.caption(sector_caption)
     st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
 
 # ----------------------------

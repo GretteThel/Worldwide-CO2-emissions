@@ -957,11 +957,11 @@ with main_col:
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
             height=350,
-            margin=dict(l=10, r=14, t=78, b=190),
+            margin=dict(l=10, r=14, t=78, b=230),
             legend=dict(
                 orientation="h",
                 yanchor="top",
-                y=-0.52,
+                y=-0.68,
                 xanchor="center",
                 x=0.5,
                 bgcolor="rgba(255,255,255,0.96)",
@@ -973,7 +973,7 @@ with main_col:
                 title_text="",
             ),
         )
-        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=10)
+        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=8)
         scatter_fig.update_yaxes(tickformat=".0f", title_standoff=12)
 
     with right:

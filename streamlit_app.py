@@ -173,6 +173,28 @@ def build_comparison_view(
     return filtered_dff, dff
 
 
+def build_sector_comparison_view(
+    sector_year_df: pd.DataFrame,
+    selected_countries: list[str],
+    selected_country_codes: list[str],
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    filtered_sector_df = sector_year_df.copy()
+    if selected_countries:
+        filtered_sector_df = filtered_sector_df[filtered_sector_df["country"].isin(selected_countries)].copy()
+
+    sector_dff = filtered_sector_df.copy()
+    if selected_country_codes:
+        extra_rows = sector_year_df[sector_year_df["country_code"].isin(selected_country_codes)].copy()
+        sector_dff = pd.concat([sector_dff, extra_rows], ignore_index=True)
+        dedupe_cols = [col for col in ["country_code", "country", "sector", "year"] if col in sector_dff.columns]
+        if dedupe_cols:
+            sector_dff = sector_dff.drop_duplicates(subset=dedupe_cols).copy()
+        else:
+            sector_dff = sector_dff.drop_duplicates().copy()
+
+    return filtered_sector_df, sector_dff
+
+
 def bar_title_text(
     filtered_count: int,
     requested_top_n: int,
@@ -309,15 +331,14 @@ def extract_country_code_from_map_event(points: list, lookups: dict) -> Optional
     point = points[0]
     curve = point.get("curveNumber", 0)
     idx = point.get("pointIndex", point.get("pointNumber"))
+    trace_meta = lookups.get("map_trace_meta", [])
 
-    if curve == 0 and idx is not None and 0 <= idx < len(lookups["map_df"]):
-        return lookups["map_df"].iloc[idx]["country_code"]
-    if curve == 1 and idx is not None and 0 <= idx < len(lookups["map_highlight_df"]):
-        return lookups["map_highlight_df"].iloc[idx]["country_code"]
-    if curve == 2 and idx is not None and 0 <= idx < len(lookups["map_marker_df"]):
-        return lookups["map_marker_df"].iloc[idx]["country_code"]
-    if curve == 3 and idx is not None and 0 <= idx < len(lookups["map_highlight_marker_df"]):
-        return lookups["map_highlight_marker_df"].iloc[idx]["country_code"]
+    if idx is None or curve is None or curve < 0 or curve >= len(trace_meta):
+        return None
+
+    _, trace_df = trace_meta[curve]
+    if 0 <= idx < len(trace_df):
+        return trace_df.iloc[idx]["country_code"]
     return None
 
 
@@ -479,9 +500,7 @@ with sidebar_col:
     st.multiselect("Country", COUNTRIES, key="countries", placeholder="All countries")
     st.slider("Top emitters to show", min_value=5, max_value=20, step=1, key="top_n")
     st.markdown(emitters_marks_html(st.session_state["top_n"]), unsafe_allow_html=True)
-    if st.button("Reset filters and focus", use_container_width=True):
-        reset_all()
-        st.rerun()
+    st.button("Reset filters and focus", use_container_width=True, on_click=reset_all)
 
 selected_year = st.session_state["year"]
 year_df = country_year[country_year["year"] == selected_year].copy()
@@ -534,9 +553,9 @@ latest_rank_line = (
     else "Latest selected country rank by total emissions: None"
 )
 selection_note = (
-    "Selected countries outside the country filter have been added to the comparison view."
+    "Selected countries outside the country filter are included in the comparison view."
     if selected_outside_filter
-    else "No selected country is outside the country filter."
+    else "All selected countries are inside the current country filter."
     if selected_country_codes
     else "No country selected from the visuals."
 )
@@ -581,22 +600,26 @@ with main_col:
     # ----------------------------
     map_df = year_df.dropna(subset=["co2_per_capita_t"]).copy()
 
-    highlight_codes = set(
+    filter_codes = set(
         year_df.loc[year_df["country"].isin(st.session_state["countries"]), "country_code"]
         .dropna()
         .astype(str)
         .str.upper()
         .tolist()
     )
-    highlight_codes.update(selected_country_codes)
+    selected_codes_set = set(selected_country_codes)
+    filter_only_codes = filter_codes - selected_codes_set
 
-    map_highlight_df = map_df[map_df["country_code"].isin(highlight_codes)].copy()
+    map_filter_outline_df = map_df[map_df["country_code"].isin(filter_only_codes)].copy()
+    map_selected_df = map_df[map_df["country_code"].isin(selected_codes_set)].copy()
 
     map_marker_df = map_df[["country_code", "country"]].drop_duplicates().copy()
     map_marker_df = map_marker_df.merge(centroids, on="country_code", how="left").dropna(subset=["lat", "lon"])
 
-    map_highlight_marker_df = map_highlight_df[["country_code", "country"]].drop_duplicates().copy()
-    map_highlight_marker_df = map_highlight_marker_df.merge(centroids, on="country_code", how="left").dropna(subset=["lat", "lon"])
+    map_selected_marker_df = map_selected_df[["country_code", "country"]].drop_duplicates().copy()
+    map_selected_marker_df = map_selected_marker_df.merge(centroids, on="country_code", how="left").dropna(subset=["lat", "lon"])
+
+    map_trace_meta: list[tuple[str, pd.DataFrame]] = []
 
     if map_df.empty:
         map_fig = empty_figure("CO₂ per capita by country", height=470)
@@ -635,29 +658,31 @@ with main_col:
                 ),
             )
         )
+        map_trace_meta.append(("base", map_df.reset_index(drop=True)))
 
-        if not map_highlight_df.empty:
+        if not map_filter_outline_df.empty:
             map_fig.add_trace(
                 go.Choropleth(
-                    locations=map_highlight_df["country_code"],
-                    z=np.ones(len(map_highlight_df)),
+                    locations=map_filter_outline_df["country_code"],
+                    z=np.ones(len(map_filter_outline_df)),
                     locationmode="ISO-3",
-                    colorscale=[[0, HIGHLIGHT], [1, HIGHLIGHT]],
+                    colorscale=[[0, "rgba(0,0,0,0)"], [1, "rgba(0,0,0,0)"]],
                     showscale=False,
-                    marker_line_color=HIGHLIGHT,
-                    marker_line_width=2.5,
+                    marker_line_color=ACCENT,
+                    marker_line_width=1.8,
                     customdata=np.stack(
                         [
-                            map_highlight_df["country_code"],
-                            map_highlight_df["country"],
-                            map_highlight_df["total_mt_co2"].fillna(np.nan),
-                            map_highlight_df["co2_per_gdp_t_per_kusd"].fillna(np.nan),
-                            map_highlight_df["co2_per_capita_t"].fillna(np.nan),
+                            map_filter_outline_df["country_code"],
+                            map_filter_outline_df["country"],
+                            map_filter_outline_df["total_mt_co2"].fillna(np.nan),
+                            map_filter_outline_df["co2_per_gdp_t_per_kusd"].fillna(np.nan),
+                            map_filter_outline_df["co2_per_capita_t"].fillna(np.nan),
                         ],
                         axis=-1,
                     ),
                     hovertemplate=(
                         "<b>%{customdata[1]}</b><br>"
+                        "Comparison-view country<br>"
                         "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr<br>"
                         "CO₂ per capita: %{customdata[4]:,.2f} t CO₂/cap/yr<br>"
                         "CO₂ per GDP: %{customdata[3]:,.2f} t CO₂/kUSD/yr"
@@ -665,6 +690,39 @@ with main_col:
                     ),
                 )
             )
+            map_trace_meta.append(("filter_outline", map_filter_outline_df.reset_index(drop=True)))
+
+        if not map_selected_df.empty:
+            map_fig.add_trace(
+                go.Choropleth(
+                    locations=map_selected_df["country_code"],
+                    z=np.ones(len(map_selected_df)),
+                    locationmode="ISO-3",
+                    colorscale=[[0, HIGHLIGHT], [1, HIGHLIGHT]],
+                    showscale=False,
+                    marker_line_color=HIGHLIGHT,
+                    marker_line_width=2.5,
+                    customdata=np.stack(
+                        [
+                            map_selected_df["country_code"],
+                            map_selected_df["country"],
+                            map_selected_df["total_mt_co2"].fillna(np.nan),
+                            map_selected_df["co2_per_gdp_t_per_kusd"].fillna(np.nan),
+                            map_selected_df["co2_per_capita_t"].fillna(np.nan),
+                        ],
+                        axis=-1,
+                    ),
+                    hovertemplate=(
+                        "<b>%{customdata[1]}</b><br>"
+                        "Selected country<br>"
+                        "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr<br>"
+                        "CO₂ per capita: %{customdata[4]:,.2f} t CO₂/cap/yr<br>"
+                        "CO₂ per GDP: %{customdata[3]:,.2f} t CO₂/kUSD/yr"
+                        "<extra></extra>"
+                    ),
+                )
+            )
+            map_trace_meta.append(("selected_fill", map_selected_df.reset_index(drop=True)))
 
         if not map_marker_df.empty:
             map_fig.add_trace(
@@ -677,21 +735,30 @@ with main_col:
                     showlegend=False,
                 )
             )
+            map_trace_meta.append(("markers_all", map_marker_df.reset_index(drop=True)))
 
-        if not map_highlight_marker_df.empty:
-            show_text = len(map_highlight_marker_df) <= 3
+        if not map_selected_marker_df.empty:
+            show_text = len(map_selected_marker_df) <= 8
             map_fig.add_trace(
                 go.Scattergeo(
-                    lon=map_highlight_marker_df["lon"],
-                    lat=map_highlight_marker_df["lat"],
+                    lon=map_selected_marker_df["lon"],
+                    lat=map_selected_marker_df["lat"],
                     mode="markers+text" if show_text else "markers",
-                    text=map_highlight_marker_df["country"] if show_text else None,
+                    text=map_selected_marker_df["country"] if show_text else None,
                     textposition="top center",
                     marker=dict(size=11, color=HIGHLIGHT, line=dict(color="white", width=1.6)),
-                    hoverinfo="skip",
+                    customdata=np.stack(
+                        [
+                            map_selected_marker_df["country_code"],
+                            map_selected_marker_df["country"],
+                        ],
+                        axis=-1,
+                    ),
+                    hovertemplate="<b>%{customdata[1]}</b><extra></extra>",
                     showlegend=False,
                 )
             )
+            map_trace_meta.append(("selected_markers", map_selected_marker_df.reset_index(drop=True)))
 
         map_fig.update_layout(
             template="plotly_white",
@@ -906,16 +973,18 @@ with main_col:
     # Sector chart
     # ----------------------------
     sector_year_df = sector_long[sector_long["year"] == selected_year].copy()
-
-    if st.session_state["countries"]:
-        sector_year_df = sector_year_df[sector_year_df["country"].isin(st.session_state["countries"])].copy()
+    filtered_sector_df, sector_dff = build_sector_comparison_view(
+        sector_year_df=sector_year_df,
+        selected_countries=st.session_state["countries"],
+        selected_country_codes=selected_country_codes,
+    )
 
     if selected_country_codes:
-        sector_plot_df = sector_year_df[sector_year_df["country_code"].isin(selected_country_codes)].copy()
+        sector_plot_df = sector_dff[sector_dff["country_code"].isin(selected_country_codes)].copy()
         sector_title = sector_title_text(selected_country_names, selected_year, 0, dff["country"].nunique())
     else:
         top_codes = bar_df.head(st.session_state["top_n"])["country_code"].tolist() if not bar_df.empty else []
-        sector_plot_df = sector_year_df[sector_year_df["country_code"].isin(top_codes)].copy()
+        sector_plot_df = sector_dff[sector_dff["country_code"].isin(top_codes)].copy()
         sector_title = sector_title_text([], selected_year, len(top_codes), dff["country"].nunique())
 
     if sector_plot_df.empty or "sector" not in sector_plot_df.columns or "sector_mt_co2" not in sector_plot_df.columns:
@@ -1006,10 +1075,7 @@ with main_col:
 # Process selections after rendering
 # ----------------------------
 lookups = {
-    "map_df": map_df.reset_index(drop=True),
-    "map_highlight_df": map_highlight_df.reset_index(drop=True),
-    "map_marker_df": map_marker_df.reset_index(drop=True),
-    "map_highlight_marker_df": map_highlight_marker_df.reset_index(drop=True),
+    "map_trace_meta": map_trace_meta,
 }
 
 changed = False

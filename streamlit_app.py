@@ -526,6 +526,16 @@ filtered_dff, dff = build_comparison_view(
     selected_country_codes=selected_country_codes,
 )
 
+country_filter_codes = unique_preserve_order(
+    year_df.loc[year_df["country"].isin(st.session_state["countries"]), "country_code"]
+    .dropna()
+    .astype(str)
+    .str.upper()
+    .tolist()
+)
+country_filter_set = set(country_filter_codes)
+country_filter_active = len(country_filter_codes) > 0
+
 selected_country_names = (
     year_df.loc[year_df["country_code"].isin(selected_country_codes), ["country_code", "country"]]
     .drop_duplicates()
@@ -545,7 +555,7 @@ bar_rank_df["rank_total_emissions"] = np.arange(1, len(bar_rank_df) + 1)
 rank_lookup = dict(zip(bar_rank_df["country_code"], bar_rank_df["rank_total_emissions"]))
 selected_rank = rank_lookup.get(active_country_code) if active_country_code else None
 selected_outside_topn = any(rank_lookup.get(code, 10**9) > st.session_state["top_n"] for code in selected_country_codes)
-selected_outside_filter = any(code not in set(filtered_dff["country_code"]) for code in selected_country_codes)
+selected_outside_filter = country_filter_active and any(code not in country_filter_set for code in selected_country_codes)
 
 scatter_df_for_status = dff.dropna(subset=["co2_per_gdp_t_per_kusd", "co2_per_capita_t", "total_mt_co2"]).copy()
 scatter_available = scatter_df_for_status["country"].nunique() if not scatter_df_for_status.empty else 0
@@ -560,6 +570,8 @@ selection_note = (
     "Selected countries outside the country filter are included in the comparison view."
     if selected_outside_filter
     else "All selected countries are inside the current country filter."
+    if selected_country_codes and country_filter_active
+    else "A country filter is not active; selected countries define the current focus."
     if selected_country_codes
     else "No country selected from the visuals."
 )
@@ -983,10 +995,10 @@ with main_col:
     )
 
     shown_bar_codes = top_df["country_code"].tolist() if not top_df.empty else []
-    filter_scope_codes = filtered_dff["country_code"].dropna().astype(str).str.upper().tolist()
+    filter_scope_codes = country_filter_codes
     if filter_scope_codes or selected_country_codes:
         sector_scope_codes = unique_preserve_order(filter_scope_codes + selected_country_codes)
-        has_filter_focus = True
+        has_filter_focus = len(filter_scope_codes) > 0
     else:
         sector_scope_codes = shown_bar_codes
         has_filter_focus = False
@@ -1095,7 +1107,7 @@ with main_col:
     elif selected_country_codes:
         sector_caption = "The sector chart is in focus mode for the countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
     else:
-        sector_caption = "The sector chart defaults to the top-emitter comparison. Use the country filter or select countries from the visuals to drill into sector contributions."
+        sector_caption = "The sector chart defaults to the largest-emitter comparison. Use the country filter or select countries from the visuals to drill into sector contributions."
     st.caption(sector_caption)
     st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
 

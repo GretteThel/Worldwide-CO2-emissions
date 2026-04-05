@@ -32,8 +32,15 @@ BG = "#F8FAFC"
 
 GRAPH_CONFIG = {
     "displaylogo": False,
-    "displayModeBar": True,
+    "displayModeBar": "hover",
     "scrollZoom": False,
+    "responsive": True,
+    "modeBarButtonsToRemove": [
+        "lasso2d",
+        "select2d",
+        "autoScale2d",
+        "toggleSpikelines",
+    ],
 }
 
 PREFERRED_SECTOR_ORDER = [
@@ -65,11 +72,18 @@ def empty_figure(title: str, x_title: str = "", y_title: str = "", height: int =
     fig = go.Figure()
     fig.update_layout(
         template="plotly_white",
-        title={"text": title, "x": 0.02, "xanchor": "left", "font": {"size": 20}},
+        title={
+            "text": title,
+            "x": 0.02,
+            "xanchor": "left",
+            "y": 0.98,
+            "yanchor": "top",
+            "font": {"size": 20},
+        },
         xaxis_title=x_title,
         yaxis_title=y_title,
         height=height,
-        margin=dict(l=10, r=10, t=60, b=10),
+        margin=dict(l=10, r=16, t=92, b=20),
         annotations=[
             {
                 "text": "No data available for the current filters",
@@ -300,17 +314,25 @@ def reset_all():
 st.markdown(
     """
     <style>
-    .block-container {padding-top: 1rem; padding-bottom: 1.25rem; max-width: 1500px;}
-    .main-title {font-size: 2rem; font-weight: 700; color: #0F172A; margin-bottom: 0.1rem;}
-    .sub-title {color: #475569; font-size: 0.95rem; margin-bottom: 0.1rem;}
-    .tip {color: #64748B; font-size: 0.8rem; margin-bottom: 1rem;}
+    .block-container {padding-top: 2.15rem; padding-bottom: 1.6rem; max-width: 1500px;}
+    .main-title {font-size: 2.15rem; line-height: 1.22; font-weight: 700; color: #0F172A; margin: 0 0 0.2rem 0;}
+    .sub-title {color: #475569; font-size: 0.97rem; line-height: 1.45; margin-bottom: 0.15rem;}
+    .tip {color: #64748B; font-size: 0.82rem; line-height: 1.45; margin-bottom: 1.15rem;}
     .card {
         background: white;
         border: 1px solid #E2E8F0;
         border-radius: 16px;
-        padding: 0.6rem 0.9rem 0.2rem 0.9rem;
+        padding: 1rem 1.05rem 0.7rem 1.05rem;
         box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
-        margin-bottom: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .chart-card {
+        background: white;
+        border: 1px solid #E2E8F0;
+        border-radius: 16px;
+        padding: 0.8rem 0.95rem 0.35rem 0.95rem;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+        margin-bottom: 1rem;
     }
     .status-box {border-top: 1px solid #E2E8F0; margin-top: 1rem; padding-top: 1rem; color: #475569; font-size: 0.92rem; white-space: pre-line;}
     .small-note {color: #64748B; font-size: 0.78rem; margin-top: 0.75rem;}
@@ -330,6 +352,26 @@ st.markdown(
 )
 
 # ----------------------------
+# UI helpers
+# ----------------------------
+def emitters_marks_html(selected_value: int) -> str:
+    marks = [5, 10, 15, 20]
+    chunks = []
+    for value in marks:
+        color = TEXT if value == selected_value else "#94A3B8"
+        weight = 700 if value == selected_value else 500
+        chunks.append(
+            f'<span style="color:{color};font-weight:{weight};min-width:26px;text-align:center;display:inline-block;">{value}</span>'
+        )
+    return (
+        '<div style="display:flex;justify-content:space-between;align-items:center;'
+        'margin:-0.45rem 0 0.35rem 0;padding:0 2px;font-size:0.82rem;">'
+        + "".join(chunks)
+        + "</div>"
+    )
+
+
+# ----------------------------
 # Layout
 # ----------------------------
 sidebar_col, main_col = st.columns([0.24, 0.76], vertical_alignment="top")
@@ -341,6 +383,7 @@ with sidebar_col:
     st.selectbox("Year", YEARS, key="year")
     st.multiselect("Country", COUNTRIES, key="countries", placeholder="All countries")
     st.slider("Top emitters to show", min_value=5, max_value=20, step=1, key="top_n")
+    st.markdown(emitters_marks_html(st.session_state["top_n"]), unsafe_allow_html=True)
 
     if st.button("Reset filters and focus", use_container_width=True):
         reset_all()
@@ -431,6 +474,7 @@ with sidebar_col:
     )
 
 with main_col:
+    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     # ----------------------------
     # Map
     # ----------------------------
@@ -559,10 +603,12 @@ with main_col:
                 "text": f"CO₂ per capita by country ({selected_year})",
                 "x": 0.02,
                 "xanchor": "left",
-                "font": {"size": 20},
+                "y": 0.98,
+                "yanchor": "top",
+                "font": {"size": 19},
             },
             height=470,
-            margin=dict(l=0, r=0, t=55, b=0),
+            margin=dict(l=0, r=8, t=88, b=10),
             geo=dict(
                 showframe=False,
                 showcoastlines=False,
@@ -584,11 +630,12 @@ with main_col:
         config=GRAPH_CONFIG,
         key=f"map_chart_{st.session_state['event_nonce']}",
     )
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # ----------------------------
     # Bar and Scatter
     # ----------------------------
-    left, right = st.columns(2)
+    left, right = st.columns(2, gap="medium")
 
     bar_df = dff.dropna(subset=["total_mt_co2"]).copy().sort_values("total_mt_co2", ascending=False)
 
@@ -634,27 +681,31 @@ with main_col:
                 ),
                 "x": 0.02,
                 "xanchor": "left",
-                "font": {"size": 17},
+                "y": 0.98,
+                "yanchor": "top",
+                "font": {"size": 16},
             },
             xaxis_title="Total fossil CO₂ emissions (Mt CO₂/yr)",
             yaxis_title="Country",
-            height=320,
-            margin=dict(l=10, r=10, t=72, b=10),
+            height=330,
+            margin=dict(l=10, r=14, t=96, b=24),
             clickmode="event+select",
         )
         bar_fig.update_xaxes(tickformat=",d")
 
     with left:
+        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         bar_points = plotly_events(
             bar_fig,
             click_event=True,
             select_event=False,
             hover_event=False,
-            override_height=320,
+            override_height=330,
             override_width="100%",
             config=GRAPH_CONFIG,
             key=f"bar_chart_{st.session_state['event_nonce']}",
         )
+        st.markdown('</div>', unsafe_allow_html=True)
 
     scatter_df = dff.dropna(subset=["co2_per_gdp_t_per_kusd", "co2_per_capita_t", "total_mt_co2"]).copy()
 
@@ -744,12 +795,14 @@ with main_col:
                         f"<br><sup>x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions</sup>",
                 "x": 0.02,
                 "xanchor": "left",
-                "font": {"size": 18},
+                "y": 0.98,
+                "yanchor": "top",
+                "font": {"size": 17},
             },
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
-            height=340,
-            margin=dict(l=10, r=10, t=85, b=70),
+            height=330,
+            margin=dict(l=10, r=14, t=108, b=84),
             legend=dict(
                 orientation="h",
                 yanchor="top",
@@ -763,16 +816,18 @@ with main_col:
         scatter_fig.update_yaxes(tickformat=".0f")
 
     with right:
+        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         scatter_points = plotly_events(
             scatter_fig,
             click_event=True,
             select_event=False,
             hover_event=False,
-            override_height=340,
+            override_height=330,
             override_width="100%",
             config=GRAPH_CONFIG,
             key=f"scatter_chart_{st.session_state['event_nonce']}",
         )
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # ----------------------------
     # Sector chart
@@ -861,13 +916,15 @@ with main_col:
                 "text": sector_title,
                 "x": 0.02,
                 "xanchor": "left",
-                "font": {"size": 20},
+                "y": 0.98,
+                "yanchor": "top",
+                "font": {"size": 19},
             },
             xaxis_title="Country",
             yaxis_title="Sector emissions (Mt CO₂/yr)",
             barmode="stack",
-            height=420,
-            margin=dict(l=10, r=170, t=70, b=20),
+            height=430,
+            margin=dict(l=10, r=170, t=96, b=26),
             legend=dict(
                 orientation="v",
                 yanchor="top",
@@ -879,7 +936,9 @@ with main_col:
         )
         sector_fig.update_yaxes(tickformat=",d")
 
+    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ----------------------------
 # Process click events after rendering

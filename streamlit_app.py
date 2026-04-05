@@ -53,6 +53,7 @@ GRAPH_CONFIG_SELECT = {
         "toggleSpikelines",
         "hoverClosestCartesian",
         "hoverCompareCartesian",
+        "pan2d",
     ],
 }
 
@@ -467,7 +468,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.markdown(
-    '<div class="tip">Tip: click the map to toggle countries, and use click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Hover reveals country names for a cleaner and more consistent view.</div>',
+    '<div class="tip">Tip: click the map to toggle countries, and use click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Hover reveals country names only when needed, keeping the view clean.</div>',
     unsafe_allow_html=True,
 )
 
@@ -796,7 +797,8 @@ with main_col:
         config=GRAPH_CONFIG_MAP,
     )
 
-    with st.expander("Open clean large map view"):
+    st.caption("The click-enabled map uses a custom Plotly component, so Streamlit’s native fullscreen button is not available on this map. Use the large map view below when you want a native fullscreen-style view.")
+    with st.expander("Open large map view with native fullscreen"):
         large_map_fig = go.Figure(map_fig)
         large_map_fig.update_layout(height=700, margin=dict(l=0, r=0, t=72, b=0))
         st.plotly_chart(large_map_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
@@ -854,7 +856,6 @@ with main_col:
         bar_fig.update_xaxes(tickformat=",d")
 
     with left:
-        st.caption("Blue = comparison view. Orange = selected countries.")
         bar_event = st.plotly_chart(
             bar_fig,
             use_container_width=True,
@@ -902,7 +903,7 @@ with main_col:
                         "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr"
                         "<extra></extra>"
                     ),
-                    name="Comparison view",
+                    name="Comparison set",
                 )
             )
 
@@ -929,7 +930,7 @@ with main_col:
                         "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr"
                         "<extra></extra>"
                     ),
-                    name="Selected countries",
+                    name="Selected",
                 )
             )
 
@@ -938,15 +939,36 @@ with main_col:
             title=chart_title(f"CO₂ intensity comparison ({selected_year})", 18),
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
+            hovermode="closest",
             height=350,
-            margin=dict(l=10, r=14, t=72, b=76),
-            legend=dict(orientation="h", yanchor="top", y=-0.18, xanchor="left", x=0),
+            margin=dict(l=10, r=14, t=96, b=54),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.03,
+                xanchor="left",
+                x=0,
+                bgcolor="rgba(255,255,255,0.70)",
+                bordercolor="rgba(226,232,240,0.8)",
+                borderwidth=1,
+                tracegroupgap=6,
+            ),
+        )
+        scatter_fig.add_annotation(
+            text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
+            xref="paper",
+            yref="paper",
+            x=0,
+            y=1.005,
+            xanchor="left",
+            yanchor="bottom",
+            showarrow=False,
+            font=dict(size=11, color="#64748B"),
         )
         scatter_fig.update_xaxes(tickformat=".2f")
         scatter_fig.update_yaxes(tickformat=".0f")
 
     with right:
-        st.caption("x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions")
         scatter_event = st.plotly_chart(
             scatter_fig,
             use_container_width=True,
@@ -967,13 +989,11 @@ with main_col:
     )
 
     has_country_filter = bool(st.session_state["countries"])
-    top_codes_full = bar_df.head(st.session_state["top_n"])["country_code"].tolist() if not bar_df.empty else []
-    if has_country_filter:
-        sector_scope_codes = dff[["country_code", "total_mt_co2"]].dropna().sort_values("total_mt_co2", ascending=False)["country_code"].tolist()
-    elif selected_country_codes:
-        sector_scope_codes = unique_preserve_order(top_codes_full + selected_country_codes)
+    shown_bar_codes = top_df["country_code"].tolist() if not top_df.empty else []
+    if shown_bar_codes:
+        sector_scope_codes = shown_bar_codes
     else:
-        sector_scope_codes = top_codes_full
+        sector_scope_codes = selected_country_codes
 
     comparison_country_df = (
         dff[dff["country_code"].isin(sector_scope_codes)][["country_code", "country", "total_mt_co2"]]
@@ -1053,7 +1073,7 @@ with main_col:
         )
         sector_fig.update_yaxes(tickformat=",d")
 
-    st.caption("The sector chart stays aligned with the current comparison scope, so it does not collapse to only the orange selections.")
+    st.caption("The sector chart mirrors the countries currently shown in the top-emitter comparison, so the drill-down stays readable and consistent.")
     st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
 
 # ----------------------------

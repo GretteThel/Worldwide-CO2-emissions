@@ -220,22 +220,27 @@ def bar_title_text(
     selected_count: int,
 ) -> str:
     if filtered_count <= 1 and selected_count == 0:
-        return f"Emissions in filtered view ({selected_year})"
+        return f"Emissions in current filter ({selected_year})"
     if selected_outside_topn:
         suffix = "countries" if selected_count > 1 else "country"
-        return f"Top {requested_top_n} emitters + selected {suffix} ({selected_year})"
-    return f"Top {actual_shown_count} emitters ({selected_year})"
+        return f"Largest emitters + selected {suffix} ({selected_year})"
+    return f"Largest emitters ({selected_year})"
 
 
 def sector_title_text(
     selected_year: int,
     selected_names: list[str],
+    has_filter_focus: bool,
     shown_count: int,
 ) -> str:
-    if selected_names:
+    if selected_names and not has_filter_focus:
         if len(selected_names) == 1:
             return f"Sector contributions for {selected_names[0]} ({selected_year})"
         return f"Sector contributions for selected countries ({selected_year})"
+    if has_filter_focus and selected_names:
+        return f"Sector contributions for current focus ({selected_year})"
+    if has_filter_focus:
+        return f"Sector contributions for filtered countries ({selected_year})"
     return f"Sector contributions for top {shown_count} emitters ({selected_year})"
 
 
@@ -587,7 +592,7 @@ with sidebar_col:
         <div class="small-note">
         Color guide: the blue scale next to the map belongs only to the choropleth and represents CO₂ per capita (t CO₂/cap/yr). In the other charts, blue shows the comparison view and orange highlights the selected countries. Country names appear on hover only, to keep the visuals consistent and uncluttered.
         <br><br>
-        Direct click, box select, and lasso select on the bar and scatter charts all feed the same selected-country set, so the map, bar, scatter, and sector chart update together.
+        Interactions are linked across the dashboard: the country filter defines the base comparison set, while clicks, box select, and lasso select add a focused layer on top. The sector chart follows that same focus so users can compare selected countries with the countries already in the filter.
         </div>
         """,
         unsafe_allow_html=True,
@@ -940,34 +945,24 @@ with main_col:
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
             height=350,
-            margin=dict(l=10, r=14, t=96, b=54),
+            margin=dict(l=10, r=14, t=78, b=110),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.03,
-                xanchor="left",
-                x=0,
-                bgcolor="rgba(255,255,255,0.70)",
-                bordercolor="rgba(226,232,240,0.8)",
+                yanchor="top",
+                y=-0.24,
+                xanchor="center",
+                x=0.5,
+                bgcolor="rgba(255,255,255,0.88)",
+                bordercolor="rgba(226,232,240,0.9)",
                 borderwidth=1,
-                tracegroupgap=6,
+                title_text="",
             ),
         )
-        scatter_fig.add_annotation(
-            text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
-            xref="paper",
-            yref="paper",
-            x=0,
-            y=1.005,
-            xanchor="left",
-            yanchor="bottom",
-            showarrow=False,
-            font=dict(size=11, color="#64748B"),
-        )
-        scatter_fig.update_xaxes(tickformat=".2f")
-        scatter_fig.update_yaxes(tickformat=".0f")
+        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=14)
+        scatter_fig.update_yaxes(tickformat=".0f", title_standoff=12)
 
     with right:
+        st.caption("x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions")
         scatter_event = st.plotly_chart(
             scatter_fig,
             use_container_width=True,
@@ -988,7 +983,13 @@ with main_col:
     )
 
     shown_bar_codes = top_df["country_code"].tolist() if not top_df.empty else []
-    sector_scope_codes = selected_country_codes if selected_country_codes else shown_bar_codes
+    filter_scope_codes = filtered_dff["country_code"].dropna().astype(str).str.upper().tolist()
+    if filter_scope_codes or selected_country_codes:
+        sector_scope_codes = unique_preserve_order(filter_scope_codes + selected_country_codes)
+        has_filter_focus = True
+    else:
+        sector_scope_codes = shown_bar_codes
+        has_filter_focus = False
 
     comparison_country_df = (
         dff[dff["country_code"].isin(sector_scope_codes)][["country_code", "country", "total_mt_co2"]]
@@ -996,7 +997,11 @@ with main_col:
         .drop_duplicates(subset=["country_code"])
         .copy()
     )
-    comparison_country_df = comparison_country_df.sort_values("total_mt_co2", ascending=False)
+    if not comparison_country_df.empty:
+        comparison_country_df["is_selected"] = comparison_country_df["country_code"].isin(selected_country_codes)
+        comparison_country_df = comparison_country_df.sort_values(
+            ["is_selected", "total_mt_co2"], ascending=[False, False]
+        )
     sector_plot_df = sector_dff[sector_dff["country_code"].isin(sector_scope_codes)].copy()
 
     sector_selected_names = (
@@ -1006,6 +1011,7 @@ with main_col:
     sector_title = sector_title_text(
         selected_year=selected_year,
         selected_names=sector_selected_names,
+        has_filter_focus=has_filter_focus,
         shown_count=len(sector_scope_codes),
     )
 
@@ -1024,7 +1030,16 @@ with main_col:
             "Other sectors",
         )
         sector_agg = sector_plot_df.groupby(["country", "country_code", "sector_group"], as_index=False)["sector_mt_co2"].sum()
-        country_order = comparison_country_df["country"].tolist()
+
+        display_country_df = comparison_country_df[["country_code", "country", "is_selected"]].copy()
+        display_country_df["display_country"] = np.where(
+            display_country_df["is_selected"],
+            "★ " + display_country_df["country"],
+            display_country_df["country"],
+        )
+        country_order = display_country_df["display_country"].tolist()
+        code_to_display = dict(zip(display_country_df["country_code"], display_country_df["display_country"]))
+        sector_agg["display_country"] = sector_agg["country_code"].map(code_to_display).fillna(sector_agg["country"])
 
         sector_names_present = (
             sector_agg.groupby("sector_group", as_index=False)["sector_mt_co2"]
@@ -1039,15 +1054,15 @@ with main_col:
         sector_fig = go.Figure()
         for sector_name in ordered_sector_names:
             df_s = (
-                sector_agg[sector_agg["sector_group"] == sector_name][["country", "sector_mt_co2"]]
-                .drop_duplicates(subset=["country"])
-                .set_index("country")
+                sector_agg[sector_agg["sector_group"] == sector_name][["display_country", "sector_mt_co2"]]
+                .drop_duplicates(subset=["display_country"])
+                .set_index("display_country")
                 .reindex(country_order, fill_value=0.0)
                 .reset_index()
             )
             sector_fig.add_trace(
                 go.Bar(
-                    x=df_s["country"],
+                    x=df_s["display_country"],
                     y=df_s["sector_mt_co2"],
                     name=sector_name,
                     marker=dict(color=palette.get(sector_name, "#999999"), line=dict(color="white", width=0.6)),
@@ -1067,16 +1082,20 @@ with main_col:
             yaxis_title="Sector emissions (Mt CO₂/yr)",
             barmode="stack",
             height=430,
-            margin=dict(l=10, r=170, t=72, b=20),
+            margin=dict(l=10, r=170, t=72, b=40),
             legend=dict(orientation="v", yanchor="top", y=1.0, xanchor="left", x=1.02, title_text="Sector"),
         )
         sector_fig.update_yaxes(tickformat=",d")
+        sector_fig.update_xaxes(tickangle=25)
 
-    sector_caption = (
-        "The sector chart now switches into focus mode when you select countries, so it shows sector breakdowns only for the selected countries. When nothing is selected, it defaults to the countries shown in the top-emitter comparison."
-        if selected_country_codes else
-        "The sector chart defaults to the countries shown in the top-emitter comparison. Select one or more countries from the map, bar, or scatter to switch the sector chart into focus mode."
-    )
+    if filter_scope_codes and selected_country_codes:
+        sector_caption = "The sector chart shows the current focus: countries from the filter plus any countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
+    elif filter_scope_codes:
+        sector_caption = "The sector chart follows the current country filter. Add map, bar, or scatter selections to compare extra countries without losing the filtered set."
+    elif selected_country_codes:
+        sector_caption = "The sector chart is in focus mode for the countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
+    else:
+        sector_caption = "The sector chart defaults to the top-emitter comparison. Use the country filter or select countries from the visuals to drill into sector contributions."
     st.caption(sector_caption)
     st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
 

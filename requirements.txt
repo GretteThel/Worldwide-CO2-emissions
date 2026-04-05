@@ -1,0 +1,5 @@
+streamlit>=1.46,<1.53
+plotly>=5.18,<6.0
+pandas>=2.0
+numpy>=1.24
+streamlit-plotly-events2==0.0.7

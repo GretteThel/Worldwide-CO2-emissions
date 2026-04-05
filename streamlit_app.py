@@ -216,12 +216,12 @@ def sector_title_text(
     selected_year: int,
     shown_count: int,
     filtered_count: int,
+    comparison_count: int,
+    has_country_filter: bool,
 ) -> str:
-    if len(selected_country_names) == 1:
-        return f"Sector contributions for {selected_country_names[0]} ({selected_year})"
-    if len(selected_country_names) > 1:
-        return f"Sector contributions for selected countries ({selected_year})"
-    if filtered_count <= 1:
+    if selected_country_names or has_country_filter:
+        return f"Sector contributions in comparison view ({selected_year})"
+    if filtered_count <= 1 and comparison_count <= 1:
         return f"Sector contributions in current filtered view ({selected_year})"
     return f"Sector contributions for top {shown_count} emitters ({selected_year})"
 
@@ -619,6 +619,9 @@ with main_col:
     map_selected_marker_df = map_selected_df[["country_code", "country"]].drop_duplicates().copy()
     map_selected_marker_df = map_selected_marker_df.merge(centroids, on="country_code", how="left").dropna(subset=["lat", "lon"])
 
+    map_filter_marker_df = map_filter_outline_df[["country_code", "country"]].drop_duplicates().copy()
+    map_filter_marker_df = map_filter_marker_df.merge(centroids, on="country_code", how="left").dropna(subset=["lat", "lon"])
+
     map_trace_meta: list[tuple[str, pd.DataFrame]] = []
 
     if map_df.empty:
@@ -737,8 +740,32 @@ with main_col:
             )
             map_trace_meta.append(("markers_all", map_marker_df.reset_index(drop=True)))
 
+        if not map_filter_marker_df.empty:
+            map_fig.add_trace(
+                go.Scattergeo(
+                    lon=map_filter_marker_df["lon"],
+                    lat=map_filter_marker_df["lat"],
+                    mode="markers",
+                    marker=dict(
+                        size=7,
+                        color="rgba(255,255,255,0.92)",
+                        line=dict(color=ACCENT, width=1.6),
+                    ),
+                    customdata=np.stack(
+                        [
+                            map_filter_marker_df["country_code"],
+                            map_filter_marker_df["country"],
+                        ],
+                        axis=-1,
+                    ),
+                    hovertemplate="<b>%{customdata[1]}</b><br>Country filter selection<extra></extra>",
+                    showlegend=False,
+                )
+            )
+            map_trace_meta.append(("filter_markers", map_filter_marker_df.reset_index(drop=True)))
+
         if not map_selected_marker_df.empty:
-            show_text = len(map_selected_marker_df) <= 8
+            show_text = len(map_selected_marker_df) <= 6
             map_fig.add_trace(
                 go.Scattergeo(
                     lon=map_selected_marker_df["lon"],
@@ -754,7 +781,7 @@ with main_col:
                         ],
                         axis=-1,
                     ),
-                    hovertemplate="<b>%{customdata[1]}</b><extra></extra>",
+                    hovertemplate="<b>%{customdata[1]}</b><br>Selected country<extra></extra>",
                     showlegend=False,
                 )
             )
@@ -979,15 +1006,39 @@ with main_col:
         selected_country_codes=selected_country_codes,
     )
 
-    if selected_country_codes:
-        sector_plot_df = sector_dff[sector_dff["country_code"].isin(selected_country_codes)].copy()
-        sector_title = sector_title_text(selected_country_names, selected_year, 0, dff["country"].nunique())
+    has_country_filter = bool(st.session_state["countries"])
+    comparison_country_df = (
+        dff[["country_code", "country", "total_mt_co2"]]
+        .dropna(subset=["country_code", "country"])
+        .drop_duplicates(subset=["country_code"])
+        .copy()
+    )
+
+    if has_country_filter or selected_country_codes:
+        comparison_codes = comparison_country_df["country_code"].tolist()
+        sector_plot_df = sector_dff[sector_dff["country_code"].isin(comparison_codes)].copy()
+        sector_title = sector_title_text(
+            selected_country_names,
+            selected_year,
+            len(comparison_codes),
+            filtered_dff["country"].nunique(),
+            dff["country"].nunique(),
+            has_country_filter,
+        )
     else:
         top_codes = bar_df.head(st.session_state["top_n"])["country_code"].tolist() if not bar_df.empty else []
+        comparison_country_df = comparison_country_df[comparison_country_df["country_code"].isin(top_codes)].copy()
         sector_plot_df = sector_dff[sector_dff["country_code"].isin(top_codes)].copy()
-        sector_title = sector_title_text([], selected_year, len(top_codes), dff["country"].nunique())
+        sector_title = sector_title_text(
+            [],
+            selected_year,
+            len(top_codes),
+            filtered_dff["country"].nunique(),
+            dff["country"].nunique(),
+            False,
+        )
 
-    if sector_plot_df.empty or "sector" not in sector_plot_df.columns or "sector_mt_co2" not in sector_plot_df.columns:
+    if comparison_country_df.empty or "sector" not in sector_plot_df.columns or "sector_mt_co2" not in sector_plot_df.columns:
         sector_fig = empty_figure(sector_title, "Country", "Mt CO₂/yr", 430)
     else:
         sector_order = (
@@ -1008,12 +1059,11 @@ with main_col:
             .sum()
         )
 
-        country_order = (
-            sector_agg.groupby("country", as_index=False)["sector_mt_co2"]
-            .sum()
-            .sort_values("sector_mt_co2", ascending=False)["country"]
-            .tolist()
-        )
+        country_totals = comparison_country_df.sort_values("total_mt_co2", ascending=False)
+        code_to_name = dict(zip(country_totals["country_code"], country_totals["country"]))
+        selected_order = [code_to_name[code] for code in selected_country_codes if code in code_to_name]
+        remaining_order = [name for name in country_totals["country"].tolist() if name not in selected_order]
+        country_order = selected_order + remaining_order
 
         sector_names_present = (
             sector_agg.groupby("sector_group", as_index=False)["sector_mt_co2"]
@@ -1028,9 +1078,13 @@ with main_col:
 
         sector_fig = go.Figure()
         for sector_name in ordered_sector_names:
-            df_s = sector_agg[sector_agg["sector_group"] == sector_name].copy()
-            df_s["country"] = pd.Categorical(df_s["country"], categories=country_order, ordered=True)
-            df_s = df_s.sort_values("country")
+            df_s = (
+                sector_agg[sector_agg["sector_group"] == sector_name][["country", "sector_mt_co2"]]
+                .drop_duplicates(subset=["country"])
+                .set_index("country")
+                .reindex(country_order, fill_value=0.0)
+                .reset_index()
+            )
 
             sector_fig.add_trace(
                 go.Bar(
@@ -1050,9 +1104,10 @@ with main_col:
                 )
             )
 
+        title_size = 19 if len(sector_title) < 48 else 17
         sector_fig.update_layout(
             template="plotly_white",
-            title=chart_title(sector_title, 19),
+            title=chart_title(sector_title, title_size),
             xaxis_title="Country",
             yaxis_title="Sector emissions (Mt CO₂/yr)",
             barmode="stack",
@@ -1066,6 +1121,18 @@ with main_col:
                 x=1.02,
                 title_text="Sector",
             ),
+            annotations=[
+                dict(
+                    text="The sector chart always shows the full comparison view. Selected countries remain highlighted in the other charts.",
+                    xref="paper",
+                    yref="paper",
+                    x=0.02,
+                    y=1.10,
+                    showarrow=False,
+                    xanchor="left",
+                    font={"size": 12, "color": "#475569"},
+                )
+            ],
         )
         sector_fig.update_yaxes(tickformat=",d")
 

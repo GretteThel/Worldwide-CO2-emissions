@@ -10,10 +10,7 @@ from streamlit_plotly_events2 import plotly_events
 # ----------------------------
 # Page config
 # ----------------------------
-st.set_page_config(
-    page_title="Worldwide CO₂ Emissions Dashboard",
-    layout="wide",
-)
+st.set_page_config(page_title="Worldwide CO₂ Emissions Dashboard", layout="wide")
 
 # ----------------------------
 # Paths and constants
@@ -25,12 +22,10 @@ CENTROIDS_FILE = HERE / "country_centroids.csv"
 
 ACCENT = "#2563EB"
 HIGHLIGHT = "#F59E0B"
-NEUTRAL = "#475569"
 TEXT = "#0F172A"
 BORDER = "#E2E8F0"
-BG = "#F8FAFC"
 
-GRAPH_CONFIG = {
+GRAPH_CONFIG_MAP = {
     "displaylogo": False,
     "displayModeBar": "hover",
     "scrollZoom": False,
@@ -38,6 +33,17 @@ GRAPH_CONFIG = {
     "modeBarButtonsToRemove": [
         "lasso2d",
         "select2d",
+        "autoScale2d",
+        "toggleSpikelines",
+    ],
+}
+
+GRAPH_CONFIG_SELECT = {
+    "displaylogo": False,
+    "displayModeBar": "hover",
+    "scrollZoom": False,
+    "responsive": True,
+    "modeBarButtonsToRemove": [
         "autoScale2d",
         "toggleSpikelines",
     ],
@@ -198,11 +204,7 @@ def sector_title_text(
     return f"Sector contributions for top {shown_count} emitters ({selected_year})"
 
 
-def choose_selected_textposition(
-    all_df: pd.DataFrame,
-    selected_x: float,
-    selected_y: float,
-) -> str:
+def choose_selected_textposition(all_df: pd.DataFrame, selected_x: float, selected_y: float) -> str:
     if all_df.empty:
         return "middle left"
 
@@ -215,6 +217,128 @@ def choose_selected_textposition(
     if selected_y <= y_q25:
         return "top left" if selected_x >= x_med else "top right"
     return "middle left" if selected_x >= x_med else "middle right"
+
+
+def unique_preserve_order(values: list[str]) -> list[str]:
+    seen = set()
+    out = []
+    for value in values:
+        if value not in seen:
+            seen.add(value)
+            out.append(value)
+    return out
+
+
+def get_selection_points(event) -> list[dict]:
+    if not event:
+        return []
+
+    selection = None
+    if isinstance(event, dict):
+        selection = event.get("selection")
+    else:
+        selection = getattr(event, "selection", None)
+
+    if selection is None:
+        return []
+
+    if isinstance(selection, dict):
+        return selection.get("points", []) or []
+
+    points = getattr(selection, "points", None)
+    if points is None and hasattr(selection, "get"):
+        points = selection.get("points", [])
+    return points or []
+
+
+def extract_codes_from_selection_points(points: list[dict]) -> list[str]:
+    codes = []
+    for point in points:
+        custom = point.get("customdata")
+        if isinstance(custom, (list, tuple, np.ndarray)):
+            code = custom[0] if len(custom) > 0 else None
+        else:
+            code = custom
+        if code is not None:
+            codes.append(str(code).strip().upper())
+    return unique_preserve_order(codes)
+
+
+def toggle_codes(codes: list[str]) -> bool:
+    codes = unique_preserve_order([str(code).strip().upper() for code in codes if code])
+    if not codes:
+        return False
+
+    selected_codes = list(st.session_state.get("selected_country_codes", []))
+    selected_set = set(selected_codes)
+    codes_set = set(codes)
+
+    if codes_set.issubset(selected_set):
+        selected_codes = [code for code in selected_codes if code not in codes_set]
+    else:
+        for code in codes:
+            if code not in selected_set:
+                selected_codes.append(code)
+                selected_set.add(code)
+
+    st.session_state["selected_country_codes"] = selected_codes
+    return True
+
+
+def process_native_selection(chart_name: str, event) -> bool:
+    points = get_selection_points(event)
+    codes = extract_codes_from_selection_points(points)
+    sig_key = f"last_{chart_name}_selection_sig"
+    sig = tuple(codes)
+
+    if not codes:
+        st.session_state[sig_key] = None
+        return False
+
+    if st.session_state.get(sig_key) == sig:
+        return False
+
+    st.session_state[sig_key] = sig
+    return toggle_codes(codes)
+
+
+def extract_country_code_from_map_event(points: list, lookups: dict) -> Optional[str]:
+    if not points:
+        return None
+
+    point = points[0]
+    curve = point.get("curveNumber", 0)
+    idx = point.get("pointIndex", point.get("pointNumber"))
+
+    if curve == 0 and idx is not None and 0 <= idx < len(lookups["map_df"]):
+        return lookups["map_df"].iloc[idx]["country_code"]
+    if curve == 1 and idx is not None and 0 <= idx < len(lookups["map_highlight_df"]):
+        return lookups["map_highlight_df"].iloc[idx]["country_code"]
+    if curve == 2 and idx is not None and 0 <= idx < len(lookups["map_marker_df"]):
+        return lookups["map_marker_df"].iloc[idx]["country_code"]
+    if curve == 3 and idx is not None and 0 <= idx < len(lookups["map_highlight_marker_df"]):
+        return lookups["map_highlight_marker_df"].iloc[idx]["country_code"]
+    return None
+
+
+def process_map_click(points: list, lookups: dict) -> bool:
+    if not points:
+        return False
+
+    point = points[0]
+    click_sig = (
+        point.get("curveNumber"),
+        point.get("pointIndex", point.get("pointNumber")),
+        point.get("x"),
+        point.get("y"),
+    )
+
+    if st.session_state.get("last_map_click_sig") == click_sig:
+        return False
+
+    st.session_state["last_map_click_sig"] = click_sig
+    code = extract_country_code_from_map_event(points, lookups)
+    return toggle_codes([code]) if code else False
 
 
 @st.cache_data
@@ -262,57 +386,6 @@ def load_data():
     return country_year, sector_long, centroids
 
 
-def extract_country_code_from_event(chart_name: str, points: list, lookups: dict) -> Optional[str]:
-    if not points:
-        return None
-
-    point = points[0]
-    country_code = None
-
-    if chart_name == "map":
-        curve = point.get("curveNumber", 0)
-        idx = point.get("pointIndex", point.get("pointNumber"))
-
-        if curve == 0 and idx is not None and 0 <= idx < len(lookups["map_df"]):
-            country_code = lookups["map_df"].iloc[idx]["country_code"]
-        elif curve == 1 and idx is not None and 0 <= idx < len(lookups["map_highlight_df"]):
-            country_code = lookups["map_highlight_df"].iloc[idx]["country_code"]
-        elif curve == 2 and idx is not None and 0 <= idx < len(lookups["map_marker_df"]):
-            country_code = lookups["map_marker_df"].iloc[idx]["country_code"]
-        elif curve == 3 and idx is not None and 0 <= idx < len(lookups["map_highlight_marker_df"]):
-            country_code = lookups["map_highlight_marker_df"].iloc[idx]["country_code"]
-
-    elif chart_name == "bar":
-        idx = point.get("pointIndex", point.get("pointNumber"))
-        if idx is not None and 0 <= idx < len(lookups["bar_df"]):
-            country_code = lookups["bar_df"].iloc[idx]["country_code"]
-
-    elif chart_name == "scatter":
-        curve = point.get("curveNumber", 0)
-        idx = point.get("pointIndex", point.get("pointNumber"))
-        if curve == 0 and idx is not None and 0 <= idx < len(lookups["scatter_base_df"]):
-            country_code = lookups["scatter_base_df"].iloc[idx]["country_code"]
-        elif curve == 1 and idx is not None and 0 <= idx < len(lookups["scatter_selected_df"]):
-            country_code = lookups["scatter_selected_df"].iloc[idx]["country_code"]
-
-    return country_code
-
-
-def toggle_selected_country(country_code: Optional[str]) -> bool:
-    if not country_code:
-        return False
-
-    selected_codes = list(st.session_state.get("selected_country_codes", []))
-    if country_code in selected_codes:
-        selected_codes = [code for code in selected_codes if code != country_code]
-    else:
-        selected_codes.append(country_code)
-
-    st.session_state["selected_country_codes"] = selected_codes
-    st.session_state["event_nonce"] = st.session_state.get("event_nonce", 0) + 1
-    return True
-
-
 # ----------------------------
 # Load data
 # ----------------------------
@@ -332,8 +405,12 @@ if "top_n" not in st.session_state:
     st.session_state["top_n"] = 10
 if "selected_country_codes" not in st.session_state:
     st.session_state["selected_country_codes"] = []
-if "event_nonce" not in st.session_state:
-    st.session_state["event_nonce"] = 0
+if "last_map_click_sig" not in st.session_state:
+    st.session_state["last_map_click_sig"] = None
+if "last_bar_selection_sig" not in st.session_state:
+    st.session_state["last_bar_selection_sig"] = None
+if "last_scatter_selection_sig" not in st.session_state:
+    st.session_state["last_scatter_selection_sig"] = None
 
 
 def reset_all():
@@ -341,7 +418,9 @@ def reset_all():
     st.session_state["countries"] = []
     st.session_state["top_n"] = 10
     st.session_state["selected_country_codes"] = []
-    st.session_state["event_nonce"] = st.session_state.get("event_nonce", 0) + 1
+    st.session_state["last_map_click_sig"] = None
+    st.session_state["last_bar_selection_sig"] = None
+    st.session_state["last_scatter_selection_sig"] = None
 
 
 # ----------------------------
@@ -367,7 +446,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.markdown(
-    '<div class="tip">Tip: click countries on the map, bar chart, or bubble chart to build a multi-country selection across the dashboard. Click a selected country again to remove it. Use Reset filters and focus to reset everything.</div>',
+    '<div class="tip">Tip: use direct clicks on the map, and use direct click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Click the same selected points again to remove them. Use Reset filters and focus to clear everything.</div>',
     unsafe_allow_html=True,
 )
 
@@ -450,16 +529,16 @@ scatter_available = scatter_df_for_status["country"].nunique() if not scatter_df
 
 selected_names_text = ", ".join(selected_country_names) if selected_country_names else "None"
 latest_rank_line = (
-    f"Latest clicked country rank by total emissions: {selected_rank}"
+    f"Latest selected country rank by total emissions: {selected_rank}"
     if selected_rank is not None
-    else "Latest clicked country rank by total emissions: None"
+    else "Latest selected country rank by total emissions: None"
 )
 selection_note = (
     "Selected countries outside the country filter have been added to the comparison view."
     if selected_outside_filter
     else "No selected country is outside the country filter."
     if selected_country_codes
-    else "No country clicked."
+    else "No country selected from the visuals."
 )
 outside_top_note = (
     f"Selected countries outside the top {st.session_state['top_n']} emitters have been appended to the bar chart."
@@ -488,9 +567,9 @@ with sidebar_col:
     st.markdown(
         """
         <div class="small-note">
-        Color guide: the blue scale next to the map belongs only to the choropleth and represents CO₂ per capita (t CO₂/cap/yr). In the other charts, blue shows the comparison view and orange highlights the clicked countries. Sector colors identify emission sources.
+        Color guide: the blue scale next to the map belongs only to the choropleth and represents CO₂ per capita (t CO₂/cap/yr). In the other charts, blue shows the comparison view and orange highlights the selected countries. Sector colors identify emission sources.
         <br><br>
-        Bubble size in the scatter shows total emissions (Mt CO₂/yr). Each click toggles a country on or off, so users can build a multi-country selection from the visuals.
+        Direct click, box select, and lasso select on the bar and scatter charts all feed the same selected-country set, so the map, bar, scatter, and sector chart update together.
         </div>
         """,
         unsafe_allow_html=True,
@@ -618,7 +697,7 @@ with main_col:
             template="plotly_white",
             title=chart_title(f"CO₂ per capita by country ({selected_year})", 19),
             height=470,
-            margin=dict(l=0, r=8, t=88, b=10),
+            margin=dict(l=0, r=0, t=60, b=0),
             geo=dict(
                 showframe=False,
                 showcoastlines=False,
@@ -627,7 +706,6 @@ with main_col:
                 showcountries=True,
                 countrycolor="white",
             ),
-            clickmode="event+select",
         )
 
     map_points = plotly_events(
@@ -635,31 +713,37 @@ with main_col:
         click_event=True,
         select_event=False,
         hover_event=False,
+        key="map_chart",
         override_height=470,
         override_width="100%",
-        config=GRAPH_CONFIG,
-        key=f"map_chart_{st.session_state['event_nonce']}",
+        config=GRAPH_CONFIG_MAP,
     )
 
     # ----------------------------
     # Bar and Scatter
     # ----------------------------
-    left, right = st.columns(2, gap="medium")
+    left, right = st.columns(2)
 
     bar_df = dff.dropna(subset=["total_mt_co2"]).copy().sort_values("total_mt_co2", ascending=False)
 
     if bar_df.empty:
         bar_fig = empty_figure("Top total emitters", "Mt CO₂/yr", "Country", 330)
-        top_df = pd.DataFrame(columns=["country_code", "country", "total_mt_co2"])
+        top_df = pd.DataFrame(columns=["country_code"])
     else:
         top_df = bar_df.head(st.session_state["top_n"]).copy()
-        if selected_country_codes:
-            extras = bar_df[bar_df["country_code"].isin(selected_country_codes)].copy()
-            top_df = pd.concat([top_df, extras], ignore_index=True)
-            top_df = top_df.drop_duplicates(subset=["country_code"]).copy()
+
+        extra_codes = [code for code in selected_country_codes if code not in set(top_df["country_code"])]
+        if extra_codes:
+            extra_rows = bar_df[bar_df["country_code"].isin(extra_codes)].copy()
+            top_df = pd.concat([top_df, extra_rows], ignore_index=True)
+            top_df = (
+                top_df.sort_values("total_mt_co2", ascending=False)
+                .drop_duplicates(subset=["country_code"])
+                .copy()
+            )
 
         top_df = top_df.sort_values("total_mt_co2", ascending=True)
-        colors = [HIGHLIGHT if code in selected_country_codes else ACCENT for code in top_df["country_code"]]
+        colors = [HIGHLIGHT if code in set(selected_country_codes) else ACCENT for code in top_df["country_code"]]
 
         bar_fig = go.Figure()
         bar_fig.add_trace(
@@ -684,26 +768,23 @@ with main_col:
                     selected_outside_topn=selected_outside_topn,
                     selected_count=len(selected_country_codes),
                 ),
-                16,
+                18,
             ),
             xaxis_title="Total fossil CO₂ emissions (Mt CO₂/yr)",
             yaxis_title="Country",
             height=330,
-            margin=dict(l=10, r=14, t=96, b=24),
-            clickmode="event+select",
+            margin=dict(l=10, r=14, t=92, b=18),
         )
         bar_fig.update_xaxes(tickformat=",d")
 
     with left:
-        bar_points = plotly_events(
+        bar_event = st.plotly_chart(
             bar_fig,
-            click_event=True,
-            select_event=False,
-            hover_event=False,
-            override_height=330,
-            override_width="100%",
-            config=GRAPH_CONFIG,
-            key=f"bar_chart_{st.session_state['event_nonce']}",
+            use_container_width=True,
+            config=GRAPH_CONFIG_SELECT,
+            key="bar_select_chart",
+            on_select="rerun",
+            selection_mode=("points", "box", "lasso"),
         )
 
     scatter_df = dff.dropna(subset=["co2_per_gdp_t_per_kusd", "co2_per_capita_t", "total_mt_co2"]).copy()
@@ -713,15 +794,13 @@ with main_col:
             "CO₂ intensity comparison",
             "CO₂ per GDP (t CO₂/kUSD/yr)",
             "CO₂ per capita (t CO₂/cap/yr)",
-            330,
+            350,
         )
-        scatter_base_df = pd.DataFrame(columns=["country_code"])
-        scatter_selected_df = pd.DataFrame(columns=["country_code"])
     else:
         scatter_fig = go.Figure()
-        selected_mask = scatter_df["country_code"].isin(selected_country_codes)
-        scatter_base_df = scatter_df[~selected_mask].copy()
-        scatter_selected_df = scatter_df[selected_mask].copy()
+        selected_set = set(selected_country_codes)
+        scatter_base_df = scatter_df[~scatter_df["country_code"].isin(selected_set)].copy()
+        scatter_selected_df = scatter_df[scatter_df["country_code"].isin(selected_set)].copy()
 
         if not scatter_base_df.empty:
             scatter_fig.add_trace(
@@ -732,7 +811,7 @@ with main_col:
                     marker=dict(
                         size=get_bubble_sizes(scatter_base_df["total_mt_co2"], min_size=8, max_size=32),
                         color=ACCENT,
-                        opacity=0.55 if selected_country_codes else 0.75,
+                        opacity=0.58 if selected_country_codes else 0.78,
                         line=dict(color="white", width=0.5),
                     ),
                     customdata=np.stack(
@@ -751,103 +830,87 @@ with main_col:
             )
 
         if not scatter_selected_df.empty:
-            show_text = len(scatter_selected_df) <= 3
-            text_positions = []
-            for _, row in scatter_selected_df.iterrows():
-                text_positions.append(
-                    choose_selected_textposition(
-                        scatter_df,
-                        float(row["co2_per_gdp_t_per_kusd"]),
-                        float(row["co2_per_capita_t"]),
+            label_df = scatter_selected_df.copy()
+            label_df["label_position"] = [
+                choose_selected_textposition(scatter_df, float(x), float(y))
+                for x, y in zip(label_df["co2_per_gdp_t_per_kusd"], label_df["co2_per_capita_t"])
+            ]
+            for _, row in label_df.iterrows():
+                scatter_fig.add_trace(
+                    go.Scatter(
+                        x=[row["co2_per_gdp_t_per_kusd"]],
+                        y=[row["co2_per_capita_t"]],
+                        mode="markers+text",
+                        text=[row["country"]],
+                        textposition=row["label_position"],
+                        marker=dict(
+                            size=float(get_bubble_sizes(pd.Series([row["total_mt_co2"]]), min_size=20, max_size=30)[0]),
+                            color=HIGHLIGHT,
+                            opacity=0.96,
+                            line=dict(color="white", width=1.2),
+                        ),
+                        customdata=np.array([[row["country_code"], row["country"], row["total_mt_co2"]]], dtype=object),
+                        hovertemplate=(
+                            "<b>%{customdata[1]}</b><br>"
+                            "CO₂ per GDP: %{x:,.2f} t CO₂/kUSD/yr<br>"
+                            "CO₂ per capita: %{y:,.2f} t CO₂/cap/yr<br>"
+                            "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr"
+                            "<extra></extra>"
+                        ),
+                        name="Selected country" if len(selected_country_codes) == 1 else "Selected countries",
+                        showlegend=False,
                     )
                 )
 
-            scatter_fig.add_trace(
-                go.Scatter(
-                    x=scatter_selected_df["co2_per_gdp_t_per_kusd"],
-                    y=scatter_selected_df["co2_per_capita_t"],
-                    mode="markers+text" if show_text else "markers",
-                    text=scatter_selected_df["country"] if show_text else None,
-                    textposition=text_positions if show_text else None,
-                    marker=dict(
-                        size=get_bubble_sizes(scatter_selected_df["total_mt_co2"], min_size=18, max_size=30),
-                        color=HIGHLIGHT,
-                        opacity=0.95,
-                        line=dict(color="white", width=1.2),
-                    ),
-                    customdata=np.stack(
-                        [scatter_selected_df["country_code"], scatter_selected_df["country"], scatter_selected_df["total_mt_co2"]],
-                        axis=-1,
-                    ),
-                    hovertemplate=(
-                        "<b>%{customdata[1]}</b><br>"
-                        "CO₂ per GDP: %{x:,.2f} t CO₂/kUSD/yr<br>"
-                        "CO₂ per capita: %{y:,.2f} t CO₂/cap/yr<br>"
-                        "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr"
-                        "<extra></extra>"
-                    ),
-                    name="Selected countries" if len(selected_country_codes) > 1 else "Selected country",
-                )
-            )
-
         scatter_fig.update_layout(
             template="plotly_white",
-            title=chart_title(f"CO₂ intensity comparison ({selected_year})", 16),
-            annotations=[
-                dict(
-                    text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
-                    x=0.02,
-                    xref="paper",
-                    y=1.04,
-                    yref="paper",
-                    xanchor="left",
-                    yanchor="bottom",
-                    showarrow=False,
-                    font=dict(size=11, color=NEUTRAL),
-                )
-            ],
+            title=chart_title(f"CO₂ intensity comparison ({selected_year})", 18),
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
-            height=330,
-            margin=dict(l=10, r=14, t=96, b=84),
+            height=350,
+            margin=dict(l=10, r=14, t=92, b=76),
             legend=dict(
                 orientation="h",
                 yanchor="top",
-                y=-0.22,
+                y=-0.20,
                 xanchor="left",
                 x=0,
             ),
-            clickmode="event+select",
+            annotations=[
+                dict(
+                    text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
+                    xref="paper",
+                    yref="paper",
+                    x=0.02,
+                    y=1.10,
+                    showarrow=False,
+                    xanchor="left",
+                    font={"size": 12, "color": "#475569"},
+                )
+            ],
         )
         scatter_fig.update_xaxes(tickformat=".2f")
         scatter_fig.update_yaxes(tickformat=".0f")
 
     with right:
-        scatter_points = plotly_events(
+        scatter_event = st.plotly_chart(
             scatter_fig,
-            click_event=True,
-            select_event=False,
-            hover_event=False,
-            override_height=330,
-            override_width="100%",
-            config=GRAPH_CONFIG,
-            key=f"scatter_chart_{st.session_state['event_nonce']}",
+            use_container_width=True,
+            config=GRAPH_CONFIG_SELECT,
+            key="scatter_select_chart",
+            on_select="rerun",
+            selection_mode=("points", "box", "lasso"),
         )
 
     # ----------------------------
     # Sector chart
     # ----------------------------
     sector_year_df = sector_long[sector_long["year"] == selected_year].copy()
+
     if st.session_state["countries"]:
         sector_year_df = sector_year_df[sector_year_df["country"].isin(st.session_state["countries"])].copy()
 
     if selected_country_codes:
-        extra_sector_rows = sector_long[
-            (sector_long["year"] == selected_year)
-            & (sector_long["country_code"].isin(selected_country_codes))
-        ].copy()
-        sector_year_df = pd.concat([sector_year_df, extra_sector_rows], ignore_index=True)
-        sector_year_df = sector_year_df.drop_duplicates(subset=["country_code", "year", "sector"]).copy()
         sector_plot_df = sector_year_df[sector_year_df["country_code"].isin(selected_country_codes)].copy()
         sector_title = sector_title_text(selected_country_names, selected_year, 0, dff["country"].nunique())
     else:
@@ -863,41 +926,47 @@ with main_col:
             .sum()
             .sort_values("sector_mt_co2", ascending=False)
         )
+
         top_sectors = sector_order["sector"].head(6).tolist()
         sector_plot_df["sector_group"] = np.where(
             sector_plot_df["sector"].isin(top_sectors),
             sector_plot_df["sector"],
             "Other sectors",
         )
+
         sector_agg = (
             sector_plot_df.groupby(["country", "country_code", "sector_group"], as_index=False)["sector_mt_co2"]
             .sum()
         )
+
         country_order = (
             sector_agg.groupby("country", as_index=False)["sector_mt_co2"]
             .sum()
             .sort_values("sector_mt_co2", ascending=False)["country"]
             .tolist()
         )
+
         sector_names_present = (
             sector_agg.groupby("sector_group", as_index=False)["sector_mt_co2"]
             .sum()
             .sort_values("sector_mt_co2", ascending=False)["sector_group"]
             .tolist()
         )
+
         ordered_sector_names = [s for s in PREFERRED_SECTOR_ORDER if s in sector_names_present]
         ordered_sector_names += [s for s in sector_names_present if s not in ordered_sector_names]
         palette = choose_sector_palette(ordered_sector_names)
 
         sector_fig = go.Figure()
         for sector_name in ordered_sector_names:
-            df_sector = sector_agg[sector_agg["sector_group"] == sector_name].copy()
-            df_sector["country"] = pd.Categorical(df_sector["country"], categories=country_order, ordered=True)
-            df_sector = df_sector.sort_values("country")
+            df_s = sector_agg[sector_agg["sector_group"] == sector_name].copy()
+            df_s["country"] = pd.Categorical(df_s["country"], categories=country_order, ordered=True)
+            df_s = df_s.sort_values("country")
+
             sector_fig.add_trace(
                 go.Bar(
-                    x=df_sector["country"],
-                    y=df_sector["sector_mt_co2"],
+                    x=df_s["country"],
+                    y=df_s["sector_mt_co2"],
                     name=sector_name,
                     marker=dict(
                         color=palette.get(sector_name, "#999999"),
@@ -919,7 +988,7 @@ with main_col:
             yaxis_title="Sector emissions (Mt CO₂/yr)",
             barmode="stack",
             height=430,
-            margin=dict(l=10, r=170, t=96, b=26),
+            margin=dict(l=10, r=170, t=92, b=20),
             legend=dict(
                 orientation="v",
                 yanchor="top",
@@ -931,26 +1000,22 @@ with main_col:
         )
         sector_fig.update_yaxes(tickformat=",d")
 
-    st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG)
+    st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_SELECT)
 
 # ----------------------------
-# Process click events after rendering
+# Process selections after rendering
 # ----------------------------
 lookups = {
     "map_df": map_df.reset_index(drop=True),
     "map_highlight_df": map_highlight_df.reset_index(drop=True),
     "map_marker_df": map_marker_df.reset_index(drop=True),
     "map_highlight_marker_df": map_highlight_marker_df.reset_index(drop=True),
-    "bar_df": top_df.reset_index(drop=True) if 'top_df' in locals() else pd.DataFrame(),
-    "scatter_base_df": scatter_base_df.reset_index(drop=True) if 'scatter_base_df' in locals() else pd.DataFrame(),
-    "scatter_selected_df": scatter_selected_df.reset_index(drop=True) if 'scatter_selected_df' in locals() else pd.DataFrame(),
 }
 
 changed = False
-for chart_name, points in [("map", map_points), ("bar", bar_points), ("scatter", scatter_points)]:
-    clicked_code = extract_country_code_from_event(chart_name, points, lookups)
-    if clicked_code:
-        changed = toggle_selected_country(clicked_code) or changed
+changed = process_map_click(map_points, lookups) or changed
+changed = process_native_selection("bar", bar_event) or changed
+changed = process_native_selection("scatter", scatter_event) or changed
 
 if changed:
     st.rerun()

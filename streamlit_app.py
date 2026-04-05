@@ -940,33 +940,22 @@ with main_col:
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
-            height=350,
-            margin=dict(l=10, r=14, t=96, b=54),
+            height=360,
+            margin=dict(l=10, r=14, t=82, b=104),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.03,
-                xanchor="left",
-                x=0,
-                bgcolor="rgba(255,255,255,0.70)",
-                bordercolor="rgba(226,232,240,0.8)",
+                yanchor="top",
+                y=-0.30,
+                xanchor="center",
+                x=0.5,
+                bgcolor="rgba(255,255,255,0.92)",
+                bordercolor="rgba(226,232,240,0.9)",
                 borderwidth=1,
-                tracegroupgap=6,
+                tracegroupgap=8,
             ),
         )
-        scatter_fig.add_annotation(
-            text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
-            xref="paper",
-            yref="paper",
-            x=0,
-            y=1.005,
-            xanchor="left",
-            yanchor="bottom",
-            showarrow=False,
-            font=dict(size=11, color="#64748B"),
-        )
-        scatter_fig.update_xaxes(tickformat=".2f")
-        scatter_fig.update_yaxes(tickformat=".0f")
+        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=10)
+        scatter_fig.update_yaxes(tickformat=".0f", title_standoff=10)
 
     with right:
         scatter_event = st.plotly_chart(

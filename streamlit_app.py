@@ -919,7 +919,7 @@ with main_col:
                         "Total emissions: %{customdata[2]:,.1f} Mt CO₂/yr"
                         "<extra></extra>"
                     ),
-                    name="Comparison set",
+                    name="Comparison",
                 )
             )
 
@@ -957,11 +957,11 @@ with main_col:
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
             height=350,
-            margin=dict(l=10, r=14, t=78, b=110),
+            margin=dict(l=10, r=14, t=78, b=145),
             legend=dict(
                 orientation="h",
                 yanchor="top",
-                y=-0.24,
+                y=-0.34,
                 xanchor="center",
                 x=0.5,
                 bgcolor="rgba(255,255,255,0.88)",
@@ -970,7 +970,7 @@ with main_col:
                 title_text="",
             ),
         )
-        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=14)
+        scatter_fig.update_xaxes(tickformat=".2f", title_standoff=18)
         scatter_fig.update_yaxes(tickformat=".0f", title_standoff=12)
 
     with right:

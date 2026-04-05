@@ -177,18 +177,17 @@ def choose_selected_textposition(
     selected_y: float,
 ) -> str:
     if all_df.empty:
-        return "top center"
+        return "middle left"
 
     x_med = float(all_df["co2_per_gdp_t_per_kusd"].median())
-    y_med = float(all_df["co2_per_capita_t"].median())
+    y_q25 = float(all_df["co2_per_capita_t"].quantile(0.25))
+    y_q75 = float(all_df["co2_per_capita_t"].quantile(0.75))
 
-    if selected_x >= x_med and selected_y >= y_med:
-        return "bottom left"
-    if selected_x >= x_med and selected_y < y_med:
-        return "top left"
-    if selected_x < x_med and selected_y >= y_med:
-        return "bottom right"
-    return "top right"
+    if selected_y >= y_q75:
+        return "bottom left" if selected_x >= x_med else "bottom right"
+    if selected_y <= y_q25:
+        return "top left" if selected_x >= x_med else "top right"
+    return "middle left" if selected_x >= x_med else "middle right"
 
 
 @st.cache_data
@@ -318,22 +317,7 @@ st.markdown(
     .main-title {font-size: 2.15rem; line-height: 1.22; font-weight: 700; color: #0F172A; margin: 0 0 0.2rem 0;}
     .sub-title {color: #475569; font-size: 0.97rem; line-height: 1.45; margin-bottom: 0.15rem;}
     .tip {color: #64748B; font-size: 0.82rem; line-height: 1.45; margin-bottom: 1.15rem;}
-    .card {
-        background: white;
-        border: 1px solid #E2E8F0;
-        border-radius: 16px;
-        padding: 1rem 1.05rem 0.7rem 1.05rem;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
-        margin-bottom: 1rem;
-    }
-    .chart-card {
-        background: white;
-        border: 1px solid #E2E8F0;
-        border-radius: 16px;
-        padding: 0.8rem 0.95rem 0.35rem 0.95rem;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
-        margin-bottom: 1rem;
-    }
+
     .status-box {border-top: 1px solid #E2E8F0; margin-top: 1rem; padding-top: 1rem; color: #475569; font-size: 0.92rem; white-space: pre-line;}
     .small-note {color: #64748B; font-size: 0.78rem; margin-top: 0.75rem;}
     </style>
@@ -377,7 +361,6 @@ def emitters_marks_html(selected_value: int) -> str:
 sidebar_col, main_col = st.columns([0.24, 0.76], vertical_alignment="top")
 
 with sidebar_col:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown("## Filters")
 
     st.selectbox("Year", YEARS, key="year")
@@ -468,13 +451,11 @@ with sidebar_col:
         <br><br>
         Bubble size in the scatter shows total emissions (Mt CO₂/yr). The scatter excludes countries with missing GDP- or per-capita intensity values for the selected year. If a clicked country is outside the top-N emitters, it is still appended to the bar chart for comparison.
         </div>
-        </div>
         """,
         unsafe_allow_html=True,
     )
 
 with main_col:
-    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     # ----------------------------
     # Map
     # ----------------------------
@@ -630,8 +611,7 @@ with main_col:
         config=GRAPH_CONFIG,
         key=f"map_chart_{st.session_state['event_nonce']}",
     )
-    st.markdown('</div>', unsafe_allow_html=True)
-
+    
     # ----------------------------
     # Bar and Scatter
     # ----------------------------
@@ -694,8 +674,7 @@ with main_col:
         bar_fig.update_xaxes(tickformat=",d")
 
     with left:
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
-        bar_points = plotly_events(
+                bar_points = plotly_events(
             bar_fig,
             click_event=True,
             select_event=False,
@@ -705,8 +684,7 @@ with main_col:
             config=GRAPH_CONFIG,
             key=f"bar_chart_{st.session_state['event_nonce']}",
         )
-        st.markdown('</div>', unsafe_allow_html=True)
-
+        
     scatter_df = dff.dropna(subset=["co2_per_gdp_t_per_kusd", "co2_per_capita_t", "total_mt_co2"]).copy()
 
     if scatter_df.empty:
@@ -816,8 +794,7 @@ with main_col:
         scatter_fig.update_yaxes(tickformat=".0f")
 
     with right:
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
-        scatter_points = plotly_events(
+                scatter_points = plotly_events(
             scatter_fig,
             click_event=True,
             select_event=False,
@@ -827,8 +804,7 @@ with main_col:
             config=GRAPH_CONFIG,
             key=f"scatter_chart_{st.session_state['event_nonce']}",
         )
-        st.markdown('</div>', unsafe_allow_html=True)
-
+        
     # ----------------------------
     # Sector chart
     # ----------------------------
@@ -936,10 +912,8 @@ with main_col:
         )
         sector_fig.update_yaxes(tickformat=",d")
 
-    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
-    st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG)
-    st.markdown('</div>', unsafe_allow_html=True)
-
+        st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG)
+    
 # ----------------------------
 # Process click events after rendering
 # ----------------------------

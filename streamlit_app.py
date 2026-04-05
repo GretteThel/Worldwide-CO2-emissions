@@ -378,16 +378,20 @@ selected_year = st.session_state["year"]
 year_df = country_year[country_year["year"] == selected_year].copy()
 year_df = year_df.dropna(subset=["country_code", "country"]).copy()
 
-# Sidebar-filtered dataframe for comparison visuals
-dff = year_df.copy()
-if st.session_state["countries"]:
-    dff = dff[dff["country"].isin(st.session_state["countries"])].copy()
-
 available_year_codes = set(year_df["country_code"].tolist())
 active_country_code = (
     st.session_state["focus_country_code"]
     if st.session_state["focus_country_code"] in available_year_codes
     else None
+)
+
+# Sidebar filter remains the base, but clicked country is appended to the
+# comparison view so the other charts still update when a filtered-out country
+# is clicked on the map / bar / scatter.
+filtered_dff, dff = build_comparison_view(
+    year_df=year_df,
+    selected_countries=st.session_state["countries"],
+    active_country_code=active_country_code,
 )
 
 active_country_name = None
@@ -434,7 +438,7 @@ with sidebar_col:
         f"""
         <div class="status-box">
         Year: {selected_year}
-        <br>Countries in filtered comparison view: {dff['country'].nunique():,}
+        <br>Countries in comparison view: {dff['country'].nunique():,}
         <br>Scatter countries with complete intensity data: {scatter_available:,}
         <br>Clicked country: {active_country_name if active_country_name else 'None'}
         <br>{rank_line}
@@ -769,18 +773,28 @@ with main_col:
         scatter_fig.update_layout(
             template="plotly_white",
             title={
-                "text": f"CO₂ intensity comparison ({selected_year})"
-                        f"<br><sup>x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions</sup>",
+                "text": f"CO₂ intensity comparison ({selected_year})",
                 "x": 0.02,
                 "xanchor": "left",
-                "y": 0.98,
-                "yanchor": "top",
-                "font": {"size": 17},
+                "font": {"size": 16},
             },
+            annotations=[
+                dict(
+                    text="x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions",
+                    x=0.02,
+                    xref="paper",
+                    y=1.08,
+                    yref="paper",
+                    xanchor="left",
+                    yanchor="bottom",
+                    showarrow=False,
+                    font=dict(size=11, color=NEUTRAL),
+                )
+            ],
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             height=330,
-            margin=dict(l=10, r=14, t=108, b=84),
+            margin=dict(l=10, r=14, t=128, b=84),
             legend=dict(
                 orientation="h",
                 yanchor="top",
@@ -814,6 +828,11 @@ with main_col:
         sector_year_df = sector_year_df[sector_year_df["country"].isin(st.session_state["countries"])].copy()
 
     if active_country_code:
+        active_sector_rows = sector_long[(sector_long["year"] == selected_year) & (sector_long["country_code"] == active_country_code)].copy()
+        if not active_sector_rows.empty and active_country_code not in set(sector_year_df.get("country_code", [])):
+            sector_year_df = pd.concat([sector_year_df, active_sector_rows], ignore_index=True)
+            sector_year_df = sector_year_df.drop_duplicates(subset=["country_code", "year", "sector"]).copy()
+
         sector_plot_df = sector_year_df[sector_year_df["country_code"] == active_country_code].copy()
         sector_title = sector_title_text(active_country_name, selected_year, 0, dff["country"].nunique())
     else:

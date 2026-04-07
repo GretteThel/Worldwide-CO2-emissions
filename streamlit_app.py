@@ -20,27 +20,31 @@ def resolve_theme():
     primary = st.get_option("theme.primaryColor") or "#2563EB"
 
     if base == "dark":
-        text = "#E5E7EB"
+        text = "#F8FAFC"
         muted = "#CBD5E1"
         soft_text = "#94A3B8"
         border = "#334155"
-        legend_bg = "rgba(15,23,42,0.88)"
-        legend_border = "#334155"
+        legend_bg = "rgba(15,23,42,0.92)"
+        legend_border = "#475569"
         grid = "rgba(255,255,255,0.10)"
         zero = "rgba(255,255,255,0.16)"
         axis = "rgba(255,255,255,0.18)"
-        country_line = "rgba(255,255,255,0.45)"
+        country_line = "rgba(255,255,255,0.42)"
+        hover_bg = "#0F172A"
+        hover_text = "#F8FAFC"
     else:
         text = "#0F172A"
         muted = "#475569"
         soft_text = "#64748B"
         border = "#E2E8F0"
-        legend_bg = "rgba(255,255,255,0.92)"
-        legend_border = "#E2E8F0"
+        legend_bg = "rgba(255,255,255,0.96)"
+        legend_border = "#CBD5E1"
         grid = "rgba(15,23,42,0.08)"
         zero = "rgba(15,23,42,0.12)"
         axis = "rgba(15,23,42,0.16)"
         country_line = "white"
+        hover_bg = "#FFFFFF"
+        hover_text = "#0F172A"
 
     return {
         "base": base,
@@ -55,6 +59,8 @@ def resolve_theme():
         "zero": zero,
         "axis": axis,
         "country_line": country_line,
+        "hover_bg": hover_bg,
+        "hover_text": hover_text,
     }
 
 
@@ -74,7 +80,9 @@ TEXT = THEME["text"]
 BORDER = THEME["border"]
 MUTED = THEME["muted"]
 SOFT_TEXT = THEME["soft_text"]
-PLOTLY_TEMPLATE = "plotly"
+
+# Use a neutral template and style everything explicitly
+PLOTLY_TEMPLATE = "none"
 PAPER_BG = "rgba(0,0,0,0)"
 PLOT_BG = "rgba(0,0,0,0)"
 
@@ -154,6 +162,29 @@ def chart_title(text: str, size: int = 16) -> dict:
     }
 
 
+def common_hoverlabel() -> dict:
+    return dict(
+        bgcolor=THEME["hover_bg"],
+        font=dict(color=THEME["hover_text"], size=12),
+        bordercolor=THEME["legend_border"],
+    )
+
+
+def common_legend(x: float = 1.02, y: float = 0.5, title_text: str = "") -> dict:
+    return dict(
+        orientation="v",
+        yanchor="middle",
+        y=y,
+        xanchor="left",
+        x=x,
+        bgcolor=THEME["legend_bg"],
+        bordercolor=THEME["legend_border"],
+        borderwidth=1,
+        font=dict(color=TEXT, size=11),
+        title=dict(text=title_text, font=dict(color=TEXT, size=11)),
+    )
+
+
 def style_xy_axes(fig: go.Figure, xgrid: bool = True, ygrid: bool = True) -> None:
     fig.update_xaxes(
         showgrid=xgrid,
@@ -161,8 +192,8 @@ def style_xy_axes(fig: go.Figure, xgrid: bool = True, ygrid: bool = True) -> Non
         zeroline=True,
         zerolinecolor=THEME["zero"],
         linecolor=THEME["axis"],
-        tickfont=dict(color=TEXT),
-        title_font=dict(color=TEXT),
+        tickfont=dict(color=TEXT, size=11),
+        title_font=dict(color=TEXT, size=12),
     )
     fig.update_yaxes(
         showgrid=ygrid,
@@ -170,8 +201,8 @@ def style_xy_axes(fig: go.Figure, xgrid: bool = True, ygrid: bool = True) -> Non
         zeroline=True,
         zerolinecolor=THEME["zero"],
         linecolor=THEME["axis"],
-        tickfont=dict(color=TEXT),
-        title_font=dict(color=TEXT),
+        tickfont=dict(color=TEXT, size=11),
+        title_font=dict(color=TEXT, size=12),
     )
 
 
@@ -181,12 +212,13 @@ def empty_figure(title: str, x_title: str = "", y_title: str = "", height: int =
         template=PLOTLY_TEMPLATE,
         paper_bgcolor=PAPER_BG,
         plot_bgcolor=PLOT_BG,
-        font=dict(color=TEXT),
+        font=dict(color=TEXT, size=12),
         title=chart_title(title, 18),
         xaxis_title=x_title,
         yaxis_title=y_title,
         height=height,
         margin=dict(l=10, r=16, t=78, b=20),
+        hoverlabel=common_hoverlabel(),
         annotations=[
             {
                 "text": "No data available for the current filters",
@@ -740,9 +772,9 @@ with main_col:
                 colorbar=dict(
                     title=dict(
                         text="Map scale<br>CO₂ per capita<br>(t CO₂/cap/yr)",
-                        font=dict(color=TEXT),
+                        font=dict(color=TEXT, size=12),
                     ),
-                    tickfont=dict(color=TEXT),
+                    tickfont=dict(color=TEXT, size=11),
                     len=0.82,
                     y=0.5,
                     thickness=18,
@@ -883,10 +915,11 @@ with main_col:
             template=PLOTLY_TEMPLATE,
             paper_bgcolor=PAPER_BG,
             plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT),
+            font=dict(color=TEXT, size=12),
             title=chart_title(f"CO₂ per capita by country ({selected_year})", 19),
             height=470,
             margin=dict(l=0, r=0, t=72, b=0),
+            hoverlabel=common_hoverlabel(),
             geo=dict(
                 showframe=False,
                 showcoastlines=False,
@@ -952,7 +985,7 @@ with main_col:
             template=PLOTLY_TEMPLATE,
             paper_bgcolor=PAPER_BG,
             plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT),
+            font=dict(color=TEXT, size=12),
             title=chart_title(
                 bar_title_text(
                     filtered_count=dff["country"].nunique(),
@@ -968,6 +1001,7 @@ with main_col:
             yaxis_title="Country",
             height=330,
             margin=dict(l=10, r=14, t=72, b=18),
+            hoverlabel=common_hoverlabel(),
         )
         bar_fig.update_xaxes(tickformat=",d")
         style_xy_axes(bar_fig, xgrid=True, ygrid=False)
@@ -1056,25 +1090,15 @@ with main_col:
             template=PLOTLY_TEMPLATE,
             paper_bgcolor=PAPER_BG,
             plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT),
+            font=dict(color=TEXT, size=12),
             title=chart_title(f"CO₂ intensity comparison ({selected_year})", 18),
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
             height=350,
             margin=dict(l=10, r=118, t=78, b=64),
-            legend=dict(
-                orientation="v",
-                yanchor="middle",
-                y=0.5,
-                xanchor="left",
-                x=1.02,
-                bgcolor=THEME["legend_bg"],
-                bordercolor=THEME["legend_border"],
-                borderwidth=1,
-                title_text="",
-                font=dict(color=TEXT),
-            ),
+            hoverlabel=common_hoverlabel(),
+            legend=common_legend(x=1.02, y=0.5, title_text=""),
         )
         scatter_fig.update_xaxes(tickformat=".2f", title_standoff=10)
         scatter_fig.update_yaxes(tickformat=".0f", title_standoff=12)
@@ -1180,8 +1204,9 @@ with main_col:
             .tolist()
         )
         ordered_sector_names = [s for s in PREFERRED_SECTOR_ORDER if s in sector_names_present]
-        ordered_sector_names += [s for s in sector_names_present if s not in ordered_sector_names]
+        ordered_sector_names = ordered_sector_names + [s for s in sector_names_present if s not in ordered_sector_names]
         palette = choose_sector_palette(ordered_sector_names)
+
 
         sector_fig = go.Figure()
         for sector_name in ordered_sector_names:
@@ -1211,24 +1236,25 @@ with main_col:
             template=PLOTLY_TEMPLATE,
             paper_bgcolor=PAPER_BG,
             plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT),
+            font=dict(color=TEXT, size=12),
             title=chart_title(sector_title, 18),
             xaxis_title="Country",
             yaxis_title="Sector emissions (Mt CO₂/yr)",
             barmode="stack",
             height=430,
             margin=dict(l=10, r=170, t=72, b=40),
+            hoverlabel=common_hoverlabel(),
             legend=dict(
                 orientation="v",
                 yanchor="top",
                 y=1.0,
                 xanchor="left",
                 x=1.02,
-                title_text="Sector",
+                title=dict(text="Sector", font=dict(color=TEXT, size=11)),
                 bgcolor=THEME["legend_bg"],
                 bordercolor=THEME["legend_border"],
                 borderwidth=1,
-                font=dict(color=TEXT),
+                font=dict(color=TEXT, size=11),
             ),
         )
         sector_fig.update_yaxes(tickformat=",d")

@@ -248,7 +248,7 @@ def sector_title_text(
         return f"Sector contributions for current focus ({selected_year})"
     if has_filter_focus:
         return f"Sector contributions for filtered countries ({selected_year})"
-    return f"Sector contributions to fossil CO₂ emissions ({selected_year})"
+    return f"Sector contributions to fossil CO₂ emissions for top emitters ({selected_year})"
 
 
 def unique_preserve_order(values: list[str]) -> list[str]:
@@ -658,7 +658,7 @@ with main_col:
     map_trace_meta: list[tuple[str, pd.DataFrame]] = []
 
     if map_df.empty:
-        map_fig = empty_figure("Fossil CO₂ per capita by country", height=470)
+        map_fig = empty_figure("Fossil CO₂ emissions per capita by country", height=470)
     else:
         map_fig = go.Figure()
         map_fig.add_trace(
@@ -807,7 +807,7 @@ with main_col:
 
         map_fig.update_layout(
             template="plotly_white",
-            title=chart_title(f"Fossil CO₂ per capita by country ({selected_year})", 19),
+            title=chart_title(f"Fossil CO₂ emissions per capita by country ({selected_year})", 19),
             height=470,
             margin=dict(l=0, r=0, t=72, b=0),
             geo=dict(
@@ -905,7 +905,7 @@ with main_col:
 
     if scatter_df.empty:
         scatter_fig = empty_figure(
-            "CO₂ intensity vs per-capita emissions",
+            "CO₂ intensity vs emissions per-capita  ",
             "CO₂ per GDP (t CO₂/kUSD/yr)",
             "CO₂ per capita (t CO₂/cap/yr)",
             350,
@@ -972,7 +972,7 @@ with main_col:
 
         scatter_fig.update_layout(
             template="plotly_white",
-            title=chart_title(f"CO₂ intensity vs per-capita emissions ({selected_year})", 18),
+            title=chart_title(f"CO₂ intensity vs emissions per-capita  ({selected_year})", 18),
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",

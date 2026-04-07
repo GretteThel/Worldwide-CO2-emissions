@@ -1049,9 +1049,20 @@ with main_col:
             "★ " + display_country_df["country"],
             display_country_df["country"],
         )
-        country_order = display_country_df["display_country"].tolist()
         code_to_display = dict(zip(display_country_df["country_code"], display_country_df["display_country"]))
         sector_agg["display_country"] = sector_agg["country_code"].map(code_to_display).fillna(sector_agg["country"])
+
+        country_totals = (
+            sector_agg.groupby(["country_code", "display_country"], as_index=False)["sector_mt_co2"]
+            .sum()
+            .rename(columns={"sector_mt_co2": "sector_total_mt_co2"})
+        )
+        display_country_df = display_country_df.merge(country_totals, on=["country_code", "display_country"], how="left")
+        display_country_df["sector_total_mt_co2"] = display_country_df["sector_total_mt_co2"].fillna(0.0)
+        display_country_df = display_country_df.sort_values(
+            ["sector_total_mt_co2", "country"], ascending=[False, True]
+        )
+        country_order = display_country_df["display_country"].tolist()
 
         sector_names_present = (
             sector_agg.groupby("sector_group", as_index=False)["sector_mt_co2"]
@@ -1101,7 +1112,7 @@ with main_col:
         sector_fig.update_xaxes(tickangle=25)
 
     if filter_scope_codes and selected_country_codes:
-        sector_caption = "The sector chart shows the current focus: countries from the filter plus any countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
+        sector_caption = "The sector chart shows the current focus in descending order: countries from the filter plus any countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
     elif filter_scope_codes:
         sector_caption = "The sector chart follows the current country filter. Add map, bar, or scatter selections to compare extra countries without losing the filtered set."
     elif selected_country_codes:

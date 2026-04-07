@@ -13,6 +13,16 @@ from streamlit_plotly_events2 import plotly_events
 st.set_page_config(page_title="Worldwide CO₂ Emissions Dashboard", layout="wide")
 
 # ----------------------------
+# Theme-aware UI colors
+# ----------------------------
+THEME_BASE = st.get_option("theme.base") or "light"
+
+TEXT = "#F8FAFC" if THEME_BASE == "dark" else "#0F172A"
+BORDER = "#334155" if THEME_BASE == "dark" else "#E2E8F0"
+MUTED = "#CBD5E1" if THEME_BASE == "dark" else "#475569"
+SOFT = "#94A3B8" if THEME_BASE == "dark" else "#64748B"
+
+# ----------------------------
 # Paths and constants
 # ----------------------------
 HERE = Path(__file__).resolve().parent
@@ -22,9 +32,6 @@ CENTROIDS_FILE = HERE / "country_centroids.csv"
 
 ACCENT = "#2563EB"
 HIGHLIGHT = "#F59E0B"
-TEXT = "#0F172A"
-BORDER = "#E2E8F0"
-MUTED = "#475569"
 
 GRAPH_CONFIG_MAP = {
     "displaylogo": False,
@@ -93,7 +100,7 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def chart_title(text: str, size: int = 16) -> dict:
     return {
-        "text": text,
+        "text": f"<b>{text}</b>",
         "x": 0.02,
         "xanchor": "left",
         "y": 0.98,
@@ -223,8 +230,8 @@ def bar_title_text(
         return f"Emissions in current filter ({selected_year})"
     if selected_outside_topn:
         suffix = "countries" if selected_count > 1 else "country"
-        return f"Largest emitters + selected {suffix} ({selected_year})"
-    return f"Largest emitters ({selected_year})"
+        return f"Largest fossil CO₂ emitters + selected {suffix} ({selected_year})"
+    return f"Largest fossil CO₂ emitters ({selected_year})"
 
 
 def sector_title_text(
@@ -241,7 +248,7 @@ def sector_title_text(
         return f"Sector contributions for current focus ({selected_year})"
     if has_filter_focus:
         return f"Sector contributions for filtered countries ({selected_year})"
-    return f"Sector contributions for top {shown_count} emitters ({selected_year})"
+    return f"Sector contributions to fossil CO₂ emissions ({selected_year})"
 
 
 def unique_preserve_order(values: list[str]) -> list[str]:
@@ -443,6 +450,7 @@ def reset_all():
     st.session_state["selected_country_codes"] = []
     st.session_state["last_map_click_sig"] = None
     st.session_state["last_bar_selection_sig"] = None
+    st.session_state["last_scatter_SELECTION_SIG"] = None
     st.session_state["last_scatter_selection_sig"] = None
     st.session_state["ui_revision"] += 1
     st.session_state["skip_event_processing_once"] = True
@@ -452,28 +460,38 @@ def reset_all():
 # Page styles
 # ----------------------------
 st.markdown(
-    """
+    f"""
     <style>
-    .block-container {padding-top: 2.15rem; padding-bottom: 1.6rem; max-width: 1500px;}
-    .main-title {font-size: 2.15rem; line-height: 1.22; font-weight: 700; color: #0F172A; margin: 0 0 0.2rem 0;}
-    .sub-title {color: #475569; font-size: 0.97rem; line-height: 1.45; margin-bottom: 0.15rem;}
-    .tip {color: #64748B; font-size: 0.82rem; line-height: 1.45; margin-bottom: 1.15rem;}
-    .status-box {border-top: 1px solid #E2E8F0; margin-top: 1rem; padding-top: 1rem; color: #475569; font-size: 0.92rem; white-space: pre-line;}
-    .small-note {color: #64748B; font-size: 0.78rem; margin-top: 0.75rem;}
-    div[data-testid="stExpander"] details summary p {font-size: 0.88rem;}
+    .block-container {{
+        padding-top: 2.15rem;
+        padding-bottom: 1.6rem;
+        max-width: 1500px;
+    }}
+    .status-box {{
+        border-top: 1px solid {BORDER};
+        margin-top: 1rem;
+        padding-top: 1rem;
+        color: {MUTED};
+        font-size: 0.92rem;
+        white-space: pre-line;
+    }}
+    .small-note {{
+        color: {SOFT};
+        font-size: 0.78rem;
+        margin-top: 0.75rem;
+    }}
+    div[data-testid="stExpander"] details summary p {{
+        font-size: 0.88rem;
+    }}
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.markdown('<div class="main-title">Worldwide CO₂ Emissions Dashboard</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="sub-title">Explore which countries emit the most, how carbon-intensive they are, and which sectors explain those differences.</div>',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '<div class="tip">Tip: click the map to toggle countries, and use click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Hover reveals country names only when needed, keeping the view clean.</div>',
-    unsafe_allow_html=True,
+st.title("Worldwide CO₂ Emissions Dashboard")
+st.write("Explore which countries emit the most, how carbon-intensive they are, and which sectors explain those differences.")
+st.caption(
+    "Tip: click the map to toggle countries, and use click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Hover reveals country names only when needed, keeping the view clean."
 )
 
 
@@ -481,7 +499,7 @@ def emitters_marks_html(selected_value: int) -> str:
     marks = [5, 10, 15, 20]
     chunks = []
     for value in marks:
-        color = TEXT if value == selected_value else "#94A3B8"
+        color = TEXT if value == selected_value else SOFT
         weight = 700 if value == selected_value else 500
         chunks.append(
             f'<span style="color:{color};font-weight:{weight};min-width:26px;text-align:center;display:inline-block;">{value}</span>'
@@ -640,7 +658,7 @@ with main_col:
     map_trace_meta: list[tuple[str, pd.DataFrame]] = []
 
     if map_df.empty:
-        map_fig = empty_figure("CO₂ per capita by country", height=470)
+        map_fig = empty_figure("Fossil CO₂ per capita by country", height=470)
     else:
         map_fig = go.Figure()
         map_fig.add_trace(
@@ -789,7 +807,7 @@ with main_col:
 
         map_fig.update_layout(
             template="plotly_white",
-            title=chart_title(f"CO₂ per capita by country ({selected_year})", 19),
+            title=chart_title(f"Fossil CO₂ per capita by country ({selected_year})", 19),
             height=470,
             margin=dict(l=0, r=0, t=72, b=0),
             geo=dict(
@@ -813,7 +831,9 @@ with main_col:
         config=GRAPH_CONFIG_MAP,
     )
 
-    st.caption("The click-enabled map uses a custom Plotly component, so Streamlit’s native fullscreen button is not available on this map. Use the large map view below when you want a native fullscreen-style view.")
+    st.caption(
+        "The click-enabled map uses a custom Plotly component, so Streamlit’s native fullscreen button is not available on this map. Use the large map view below when you want a native fullscreen-style view."
+    )
     with st.expander("Open large map view with native fullscreen"):
         large_map_fig = go.Figure(map_fig)
         large_map_fig.update_layout(height=700, margin=dict(l=0, r=0, t=72, b=0))
@@ -826,7 +846,7 @@ with main_col:
     bar_df = dff.dropna(subset=["total_mt_co2"]).copy().sort_values("total_mt_co2", ascending=False)
 
     if bar_df.empty:
-        bar_fig = empty_figure("Top total emitters", "Mt CO₂/yr", "Country", 330)
+        bar_fig = empty_figure("Largest fossil CO₂ emitters", "Mt CO₂/yr", "Country", 330)
         top_df = pd.DataFrame(columns=["country_code"])
     else:
         top_df = bar_df.head(st.session_state["top_n"]).copy()
@@ -885,7 +905,7 @@ with main_col:
 
     if scatter_df.empty:
         scatter_fig = empty_figure(
-            "CO₂ intensity comparison",
+            "CO₂ intensity vs per-capita emissions",
             "CO₂ per GDP (t CO₂/kUSD/yr)",
             "CO₂ per capita (t CO₂/cap/yr)",
             350,
@@ -952,7 +972,7 @@ with main_col:
 
         scatter_fig.update_layout(
             template="plotly_white",
-            title=chart_title(f"CO₂ intensity comparison ({selected_year})", 18),
+            title=chart_title(f"CO₂ intensity vs per-capita emissions ({selected_year})", 18),
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",

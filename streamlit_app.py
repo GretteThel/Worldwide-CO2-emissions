@@ -13,60 +13,6 @@ from streamlit_plotly_events2 import plotly_events
 st.set_page_config(page_title="Worldwide CO₂ Emissions Dashboard", layout="wide")
 
 # ----------------------------
-# Theme
-# ----------------------------
-def resolve_theme():
-    base = st.get_option("theme.base") or "light"
-    primary = st.get_option("theme.primaryColor") or "#2563EB"
-
-    if base == "dark":
-        text = "#F8FAFC"
-        muted = "#CBD5E1"
-        soft_text = "#94A3B8"
-        border = "#334155"
-        legend_bg = "rgba(15,23,42,0.92)"
-        legend_border = "#475569"
-        grid = "rgba(255,255,255,0.10)"
-        zero = "rgba(255,255,255,0.16)"
-        axis = "rgba(255,255,255,0.18)"
-        country_line = "rgba(255,255,255,0.42)"
-        hover_bg = "#0F172A"
-        hover_text = "#F8FAFC"
-    else:
-        text = "#0F172A"
-        muted = "#475569"
-        soft_text = "#64748B"
-        border = "#E2E8F0"
-        legend_bg = "rgba(255,255,255,0.96)"
-        legend_border = "#CBD5E1"
-        grid = "rgba(15,23,42,0.08)"
-        zero = "rgba(15,23,42,0.12)"
-        axis = "rgba(15,23,42,0.16)"
-        country_line = "white"
-        hover_bg = "#FFFFFF"
-        hover_text = "#0F172A"
-
-    return {
-        "base": base,
-        "primary": primary,
-        "text": text,
-        "muted": muted,
-        "soft_text": soft_text,
-        "border": border,
-        "legend_bg": legend_bg,
-        "legend_border": legend_border,
-        "grid": grid,
-        "zero": zero,
-        "axis": axis,
-        "country_line": country_line,
-        "hover_bg": hover_bg,
-        "hover_text": hover_text,
-    }
-
-
-THEME = resolve_theme()
-
-# ----------------------------
 # Paths and constants
 # ----------------------------
 HERE = Path(__file__).resolve().parent
@@ -74,17 +20,11 @@ COUNTRY_YEAR_FILE = HERE / "co2_country_year_merged.csv"
 SECTOR_FILE = HERE / "co2_sector_country_long.csv"
 CENTROIDS_FILE = HERE / "country_centroids.csv"
 
-ACCENT = THEME["primary"]
+ACCENT = "#2563EB"
 HIGHLIGHT = "#F59E0B"
-TEXT = THEME["text"]
-BORDER = THEME["border"]
-MUTED = THEME["muted"]
-SOFT_TEXT = THEME["soft_text"]
-
-# Use a neutral template and style everything explicitly
-PLOTLY_TEMPLATE = "none"
-PAPER_BG = "rgba(0,0,0,0)"
-PLOT_BG = "rgba(0,0,0,0)"
+TEXT = "#0F172A"
+BORDER = "#E2E8F0"
+MUTED = "#475569"
 
 GRAPH_CONFIG_MAP = {
     "displaylogo": False,
@@ -158,67 +98,19 @@ def chart_title(text: str, size: int = 16) -> dict:
         "xanchor": "left",
         "y": 0.98,
         "yanchor": "top",
-        "font": {"size": size, "color": TEXT},
+        "font": {"size": size},
     }
 
 
-def common_hoverlabel() -> dict:
-    return dict(
-        bgcolor=THEME["hover_bg"],
-        font=dict(color=THEME["hover_text"], size=12),
-        bordercolor=THEME["legend_border"],
-    )
-
-
-def common_legend(x: float = 1.02, y: float = 0.5, title_text: str = "") -> dict:
-    return dict(
-        orientation="v",
-        yanchor="middle",
-        y=y,
-        xanchor="left",
-        x=x,
-        bgcolor=THEME["legend_bg"],
-        bordercolor=THEME["legend_border"],
-        borderwidth=1,
-        font=dict(color=TEXT, size=11),
-        title=dict(text=title_text, font=dict(color=TEXT, size=11)),
-    )
-
-
-def style_xy_axes(fig: go.Figure, xgrid: bool = True, ygrid: bool = True) -> None:
-    fig.update_xaxes(
-        showgrid=xgrid,
-        gridcolor=THEME["grid"],
-        zeroline=True,
-        zerolinecolor=THEME["zero"],
-        linecolor=THEME["axis"],
-        tickfont=dict(color=TEXT, size=11),
-        title_font=dict(color=TEXT, size=12),
-    )
-    fig.update_yaxes(
-        showgrid=ygrid,
-        gridcolor=THEME["grid"],
-        zeroline=True,
-        zerolinecolor=THEME["zero"],
-        linecolor=THEME["axis"],
-        tickfont=dict(color=TEXT, size=11),
-        title_font=dict(color=TEXT, size=12),
-    )
-
-
-def empty_figure(title: str, x_title: str = "", y_title: str = "", height: int = 320) -> go.Figure:
+def empty_figure(title: str, x_title: str = "", y_title: str = "", height: int = 320):
     fig = go.Figure()
     fig.update_layout(
-        template=PLOTLY_TEMPLATE,
-        paper_bgcolor=PAPER_BG,
-        plot_bgcolor=PLOT_BG,
-        font=dict(color=TEXT, size=12),
+        template="plotly_white",
         title=chart_title(title, 18),
         xaxis_title=x_title,
         yaxis_title=y_title,
         height=height,
         margin=dict(l=10, r=16, t=78, b=20),
-        hoverlabel=common_hoverlabel(),
         annotations=[
             {
                 "text": "No data available for the current filters",
@@ -227,11 +119,10 @@ def empty_figure(title: str, x_title: str = "", y_title: str = "", height: int =
                 "x": 0.5,
                 "y": 0.5,
                 "showarrow": False,
-                "font": {"size": 14, "color": SOFT_TEXT},
+                "font": {"size": 14, "color": "#64748B"},
             }
         ],
     )
-    style_xy_axes(fig)
     return fig
 
 
@@ -526,6 +417,7 @@ country_year, sector_long, centroids = load_data()
 YEARS = sorted(country_year["year"].dropna().unique().tolist())
 COUNTRIES = sorted(country_year["country"].dropna().unique().tolist())
 
+
 # ----------------------------
 # Session state
 # ----------------------------
@@ -560,40 +452,28 @@ def reset_all():
 # Page styles
 # ----------------------------
 st.markdown(
-    f"""
+    """
     <style>
-    .block-container {{
-        padding-top: 2.0rem;
-        padding-bottom: 1.6rem;
-        max-width: 1500px;
-    }}
-    .status-box {{
-        border-top: 1px solid {BORDER};
-        margin-top: 1rem;
-        padding-top: 1rem;
-        color: {MUTED};
-        font-size: 0.92rem;
-        white-space: pre-line;
-    }}
-    .small-note {{
-        color: {SOFT_TEXT};
-        font-size: 0.78rem;
-        margin-top: 0.75rem;
-    }}
-    div[data-testid="stExpander"] details summary p {{
-        font-size: 0.88rem;
-    }}
+    .block-container {padding-top: 2.15rem; padding-bottom: 1.6rem; max-width: 1500px;}
+    .main-title {font-size: 2.15rem; line-height: 1.22; font-weight: 700; color: #0F172A; margin: 0 0 0.2rem 0;}
+    .sub-title {color: #475569; font-size: 0.97rem; line-height: 1.45; margin-bottom: 0.15rem;}
+    .tip {color: #64748B; font-size: 0.82rem; line-height: 1.45; margin-bottom: 1.15rem;}
+    .status-box {border-top: 1px solid #E2E8F0; margin-top: 1rem; padding-top: 1rem; color: #475569; font-size: 0.92rem; white-space: pre-line;}
+    .small-note {color: #64748B; font-size: 0.78rem; margin-top: 0.75rem;}
+    div[data-testid="stExpander"] details summary p {font-size: 0.88rem;}
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.title("Worldwide CO₂ Emissions Dashboard")
-st.write(
-    "Explore which countries emit the most, how carbon-intensive they are, and which sectors explain those differences."
+st.markdown('<div class="main-title">Worldwide CO₂ Emissions Dashboard</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="sub-title">Explore which countries emit the most, how carbon-intensive they are, and which sectors explain those differences.</div>',
+    unsafe_allow_html=True,
 )
-st.caption(
-    "Tip: click the map to toggle countries, and use click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Hover reveals country names only when needed, keeping the view clean."
+st.markdown(
+    '<div class="tip">Tip: click the map to toggle countries, and use click, box select, or lasso select on the bar and scatter charts to update the whole dashboard. Hover reveals country names only when needed, keeping the view clean.</div>',
+    unsafe_allow_html=True,
 )
 
 
@@ -601,7 +481,7 @@ def emitters_marks_html(selected_value: int) -> str:
     marks = [5, 10, 15, 20]
     chunks = []
     for value in marks:
-        color = TEXT if value == selected_value else SOFT_TEXT
+        color = TEXT if value == selected_value else "#94A3B8"
         weight = 700 if value == selected_value else 500
         chunks.append(
             f'<span style="color:{color};font-weight:{weight};min-width:26px;text-align:center;display:inline-block;">{value}</span>'
@@ -770,16 +650,12 @@ with main_col:
                 locationmode="ISO-3",
                 colorscale="Blues",
                 colorbar=dict(
-                    title=dict(
-                        text="Map scale<br>CO₂ per capita<br>(t CO₂/cap/yr)",
-                        font=dict(color=TEXT, size=12),
-                    ),
-                    tickfont=dict(color=TEXT, size=11),
+                    title="Map scale<br>CO₂ per capita<br>(t CO₂/cap/yr)",
                     len=0.82,
                     y=0.5,
                     thickness=18,
                 ),
-                marker_line_color=THEME["country_line"],
+                marker_line_color="white",
                 marker_line_width=0.5,
                 customdata=np.stack(
                     [
@@ -912,21 +788,17 @@ with main_col:
             map_trace_meta.append(("selected_markers", map_selected_marker_df.reset_index(drop=True)))
 
         map_fig.update_layout(
-            template=PLOTLY_TEMPLATE,
-            paper_bgcolor=PAPER_BG,
-            plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT, size=12),
+            template="plotly_white",
             title=chart_title(f"CO₂ per capita by country ({selected_year})", 19),
             height=470,
             margin=dict(l=0, r=0, t=72, b=0),
-            hoverlabel=common_hoverlabel(),
             geo=dict(
                 showframe=False,
                 showcoastlines=False,
                 projection_type="equirectangular",
                 bgcolor="rgba(0,0,0,0)",
                 showcountries=True,
-                countrycolor=THEME["country_line"],
+                countrycolor="white",
             ),
         )
 
@@ -941,13 +813,11 @@ with main_col:
         config=GRAPH_CONFIG_MAP,
     )
 
-    st.caption(
-        "The click-enabled map uses a custom Plotly component, so Streamlit’s native fullscreen button is not available on this map. Use the large map view below when you want a native fullscreen-style view."
-    )
+    st.caption("The click-enabled map uses a custom Plotly component, so Streamlit’s native fullscreen button is not available on this map. Use the large map view below when you want a native fullscreen-style view.")
     with st.expander("Open large map view with native fullscreen"):
         large_map_fig = go.Figure(map_fig)
         large_map_fig.update_layout(height=700, margin=dict(l=0, r=0, t=72, b=0))
-        st.plotly_chart(large_map_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY, theme=None)
+        st.plotly_chart(large_map_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
 
     # ----------------------------
     # Bar and Scatter
@@ -982,10 +852,7 @@ with main_col:
             )
         )
         bar_fig.update_layout(
-            template=PLOTLY_TEMPLATE,
-            paper_bgcolor=PAPER_BG,
-            plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT, size=12),
+            template="plotly_white",
             title=chart_title(
                 bar_title_text(
                     filtered_count=dff["country"].nunique(),
@@ -1001,10 +868,8 @@ with main_col:
             yaxis_title="Country",
             height=330,
             margin=dict(l=10, r=14, t=72, b=18),
-            hoverlabel=common_hoverlabel(),
         )
         bar_fig.update_xaxes(tickformat=",d")
-        style_xy_axes(bar_fig, xgrid=True, ygrid=False)
 
     with left:
         bar_event = st.plotly_chart(
@@ -1014,7 +879,6 @@ with main_col:
             key=f"bar_select_chart_{revision}",
             on_select="rerun",
             selection_mode=("points", "box", "lasso"),
-            theme=None,
         )
 
     scatter_df = dff.dropna(subset=["co2_per_gdp_t_per_kusd", "co2_per_capita_t", "total_mt_co2"]).copy()
@@ -1087,22 +951,27 @@ with main_col:
             )
 
         scatter_fig.update_layout(
-            template=PLOTLY_TEMPLATE,
-            paper_bgcolor=PAPER_BG,
-            plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT, size=12),
+            template="plotly_white",
             title=chart_title(f"CO₂ intensity comparison ({selected_year})", 18),
             xaxis_title="CO₂ per GDP (t CO₂/kUSD/yr)",
             yaxis_title="CO₂ per capita (t CO₂/cap/yr)",
             hovermode="closest",
             height=350,
             margin=dict(l=10, r=118, t=78, b=64),
-            hoverlabel=common_hoverlabel(),
-            legend=common_legend(x=1.02, y=0.5, title_text=""),
+            legend=dict(
+                orientation="v",
+                yanchor="middle",
+                y=0.5,
+                xanchor="left",
+                x=1.02,
+                bgcolor="rgba(255,255,255,0.88)",
+                bordercolor="rgba(226,232,240,0.9)",
+                borderwidth=1,
+                title_text="",
+            ),
         )
         scatter_fig.update_xaxes(tickformat=".2f", title_standoff=10)
         scatter_fig.update_yaxes(tickformat=".0f", title_standoff=12)
-        style_xy_axes(scatter_fig, xgrid=True, ygrid=True)
 
     with right:
         st.caption("x = CO₂ per GDP, y = CO₂ per capita, bubble size = total emissions")
@@ -1113,7 +982,6 @@ with main_col:
             key=f"scatter_select_chart_{revision}",
             on_select="rerun",
             selection_mode=("points", "box", "lasso"),
-            theme=None,
         )
 
     # ----------------------------
@@ -1150,8 +1018,7 @@ with main_col:
 
     sector_selected_names = (
         comparison_country_df.set_index("country_code").reindex(selected_country_codes)["country"].dropna().tolist()
-        if selected_country_codes
-        else []
+        if selected_country_codes else []
     )
     sector_title = sector_title_text(
         selected_year=selected_year,
@@ -1204,9 +1071,8 @@ with main_col:
             .tolist()
         )
         ordered_sector_names = [s for s in PREFERRED_SECTOR_ORDER if s in sector_names_present]
-        ordered_sector_names = ordered_sector_names + [s for s in sector_names_present if s not in ordered_sector_names]
+        ordered_sector_names += [s for s in sector_names_present if s not in ordered_sector_names]
         palette = choose_sector_palette(ordered_sector_names)
-
 
         sector_fig = go.Figure()
         for sector_name in ordered_sector_names:
@@ -1233,52 +1099,28 @@ with main_col:
             )
 
         sector_fig.update_layout(
-            template=PLOTLY_TEMPLATE,
-            paper_bgcolor=PAPER_BG,
-            plot_bgcolor=PLOT_BG,
-            font=dict(color=TEXT, size=12),
+            template="plotly_white",
             title=chart_title(sector_title, 18),
             xaxis_title="Country",
             yaxis_title="Sector emissions (Mt CO₂/yr)",
             barmode="stack",
             height=430,
             margin=dict(l=10, r=170, t=72, b=40),
-            hoverlabel=common_hoverlabel(),
-            legend=dict(
-                orientation="v",
-                yanchor="top",
-                y=1.0,
-                xanchor="left",
-                x=1.02,
-                title=dict(text="Sector", font=dict(color=TEXT, size=11)),
-                bgcolor=THEME["legend_bg"],
-                bordercolor=THEME["legend_border"],
-                borderwidth=1,
-                font=dict(color=TEXT, size=11),
-            ),
+            legend=dict(orientation="v", yanchor="top", y=1.0, xanchor="left", x=1.02, title_text="Sector"),
         )
         sector_fig.update_yaxes(tickformat=",d")
         sector_fig.update_xaxes(tickangle=25)
-        style_xy_axes(sector_fig, xgrid=False, ygrid=True)
 
     if filter_scope_codes and selected_country_codes:
-        sector_caption = (
-            "The sector chart shows the current focus in descending order: countries from the filter plus any countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
-        )
+        sector_caption = "The sector chart shows the current focus in descending order: countries from the filter plus any countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
     elif filter_scope_codes:
-        sector_caption = (
-            "The sector chart follows the current country filter. Add map, bar, or scatter selections to compare extra countries without losing the filtered set."
-        )
+        sector_caption = "The sector chart follows the current country filter. Add map, bar, or scatter selections to compare extra countries without losing the filtered set."
     elif selected_country_codes:
-        sector_caption = (
-            "The sector chart is in focus mode for the countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
-        )
+        sector_caption = "The sector chart is in focus mode for the countries selected from the map, bar, or scatter. Selected countries are marked with ★ on the x-axis."
     else:
-        sector_caption = (
-            "The sector chart defaults to the largest-emitter comparison. Use the country filter or select countries from the visuals to drill into sector contributions."
-        )
+        sector_caption = "The sector chart defaults to the largest-emitter comparison. Use the country filter or select countries from the visuals to drill into sector contributions."
     st.caption(sector_caption)
-    st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY, theme=None)
+    st.plotly_chart(sector_fig, use_container_width=True, config=GRAPH_CONFIG_VIEW_ONLY)
 
 # ----------------------------
 # Process selections after rendering
